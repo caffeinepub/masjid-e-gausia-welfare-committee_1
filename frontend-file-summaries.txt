@@ -1,0 +1,14 @@
+{
+  "frontend/src/index.css": "Global stylesheet importing Google Fonts (Playfair Display, Cormorant Garamond, Inter) and defining an Islamic-themed OKLCH color system with deep green, gold, and cream palette, plus reusable component classes for the site.",
+  "frontend/tailwind.config.js": "Extended Tailwind config adding custom `forest`, `gold`, and `cream` color tokens, custom font families (playfair, cormorant, sans), and additional shadow/animation utilities for the Islamic-themed design system.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching announcements (sorted by date descending) and submitting contact inquiries to the backend canister.",
+  "frontend/src/components/Header.tsx": "Sticky navigation header with the committee logo, organization name, and smooth-scroll nav links; includes a responsive mobile hamburger menu.",
+  "frontend/src/components/HeroSection.tsx": "Full-width hero section with the mosque banner image as background, organization name, tagline, decorative Islamic star SVG, and CTA buttons.",
+  "frontend/src/components/GeometricDivider.tsx": "Reusable decorative divider component that renders the geometric-divider image between sections.",
+  "frontend/src/components/AboutSection.tsx": "About Us section with mission text, Quranic quote, statistics panel, and a four-value grid (Compassion, Brotherhood, Education, Integrity).",
+  "frontend/src/components/ServicesSection.tsx": "Services & Programs section displaying six welfare service cards in a responsive grid with icons, titles, and descriptions.",
+  "frontend/src/components/AnnouncementsSection.tsx": "Announcements section that fetches and displays backend announcements sorted by date, with loading, error, and empty states handled gracefully.",
+  "frontend/src/components/DonateSection.tsx": "Donate/Support section with Islamic-patterned background, donation impact table, bank/UPI details, and a CTA linking to the contact form.",
+  "frontend/src/components/ContactSection.tsx": "Contact section with address/phone/email info, a validated contact form that submits to the backend, success confirmation state, and the site footer with attribution.",
+  "frontend/src/App.tsx": "Root application component that composes all page sections (Header, Hero, About, Services, Announcements, Donate, Contact) in a single-page layout."
+}

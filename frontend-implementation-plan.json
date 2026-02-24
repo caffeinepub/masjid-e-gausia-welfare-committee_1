@@ -1,0 +1,212 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Masjid-e-Gausia Welfare Committee Website - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create Islamic-themed design system with deep green, gold, and cream color palette, geometric patterns, and elegant typography",
+      "acceptanceCriteria": [
+        "Site uses a deep green, gold, and cream color palette consistently",
+        "Islamic geometric decorative elements are present in headers, dividers, or borders",
+        "Typography is elegant and readable throughout all sections"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme with custom colors for deepGreen, gold, cream, and off-white. Add custom font families for elegant serif and Arabic-influenced typography. Define custom spacing and border utilities for geometric patterns."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Import elegant serif fonts (e.g., Playfair Display, Cormorant) via Google Fonts. Define global CSS custom properties for the Islamic-themed color palette. Add base styles for geometric border patterns and decorative elements using CSS gradients or SVG backgrounds."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Build Hero/Header section with organization name, tagline, and navigation bar linking to all main sections",
+      "acceptanceCriteria": [
+        "Organization name is prominently displayed in the hero section",
+        "A tagline is shown beneath the organization name",
+        "Navigation bar links scroll to all main page sections"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create a Header component displaying 'Masjid-e-Gausia Welfare Committee' as the organization name with the logo image from frontend/public/assets/generated/committee-logo.dim_256x256.png. Include a navigation bar with smooth-scroll links to sections: About Us, Services, Announcements, Donate, Contact. Style with Islamic geometric borders using the theme colors. Verify the generated image dimensions before implementing."
+        },
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "create",
+          "description": "Create a HeroSection component with the mosque banner image from frontend/public/assets/generated/mosque-hero-banner.dim_1440x600.png as a background or featured image. Display the organization name 'Masjid-e-Gausia Welfare Committee' and tagline 'Serving the Community with Faith and Compassion' overlaid on the image with elegant typography and gold accents. Verify the generated image dimensions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the Header and HeroSection components at the top of the page. Structure the App component to include all main sections in sequence with proper section IDs for navigation anchors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build About Us section describing mission, values, and community purpose with placeholder text",
+      "acceptanceCriteria": [
+        "About Us section is visible on the page",
+        "Contains mission and values text",
+        "Section is clearly titled and styled consistently with the theme"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AboutSection.tsx",
+          "operation": "create",
+          "description": "Create an AboutSection component with section ID 'about' for navigation. Include a title 'About Us' styled with the Islamic theme. Add placeholder content describing the Masjid-e-Gausia Welfare Committee's mission, values, and community purpose. Use the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png as a decorative separator. Apply consistent typography and spacing. Verify the generated image dimensions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the AboutSection component after the HeroSection in the main page flow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Build Services & Programs section listing welfare activities with icons, titles, and descriptions in a responsive grid",
+      "acceptanceCriteria": [
+        "At least 4 welfare services/programs are displayed as cards",
+        "Each card has an icon or visual element, a title, and a short description",
+        "Cards are laid out in a responsive grid"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ServicesSection.tsx",
+          "operation": "create",
+          "description": "Create a ServicesSection component with section ID 'services' for navigation. Display at least 4 service cards: Education Support, Food & Ration Distribution, Medical Assistance, and Community Events. Each card should have an icon (using lucide-react icons), a title, and a brief description. Layout cards in a responsive grid (1 column mobile, 2 columns tablet, 4 columns desktop). Style cards with subtle borders and geometric ornamental touches using the Islamic theme colors. Use the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png as a decorative separator. Verify the generated image dimensions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the ServicesSection component after the AboutSection in the main page flow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build Announcements/News section that fetches and displays community announcements from the backend",
+      "acceptanceCriteria": [
+        "Backend stores announcements with title, body, and date fields",
+        "Frontend fetches and displays announcements from the backend canister",
+        "Announcements section shows the most recent items first",
+        "Empty state is handled gracefully with a placeholder message"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useAnnouncements.ts",
+          "operation": "create",
+          "description": "Create a custom React hook that fetches announcements from the backend using the getAnnouncements() method. Handle loading, error, and empty states. Sort announcements by date in descending order (most recent first). Return the announcements array and loading/error states."
+        },
+        {
+          "path": "frontend/src/components/AnnouncementsSection.tsx",
+          "operation": "create",
+          "description": "Create an AnnouncementsSection component with section ID 'announcements' for navigation. Use the useAnnouncements hook to fetch and display announcements. Render each announcement with its title, body, and formatted date in a card layout. Show a loading spinner during fetch. Display 'No announcements at this time' message when the list is empty. Style consistently with the Islamic theme and use the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png as a decorative separator. Verify the generated image dimensions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the AnnouncementsSection component after the ServicesSection in the main page flow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build Donate/Support Us section with call-to-action encouraging community support",
+      "acceptanceCriteria": [
+        "Donation/support section is present on the page",
+        "Contains a clear call-to-action message",
+        "Styled prominently to draw attention"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/DonateSection.tsx",
+          "operation": "create",
+          "description": "Create a DonateSection component with section ID 'donate' for navigation. Include a compelling call-to-action headline encouraging support for the welfare committee. Add descriptive text about how donations help the community. Include placeholder contact/donation details. Style prominently with gold accents and Islamic geometric borders to draw attention. Use the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png as a decorative separator. Verify the generated image dimensions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the DonateSection component after the AnnouncementsSection in the main page flow."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Build Contact Us footer with contact details and inquiry form that submits to the backend",
+      "acceptanceCriteria": [
+        "Footer displays address, phone, and email placeholders",
+        "A contact form is present with name, email, and message fields",
+        "Form submission stores the inquiry in the backend canister",
+        "User sees a success confirmation after submitting"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useContactForm.ts",
+          "operation": "create",
+          "description": "Create a custom React hook for handling contact form submission. Implement form state management (name, email, message), validation, and submission logic using the backend submitInquiry() method. Handle loading, success, and error states. Reset form on successful submission."
+        },
+        {
+          "path": "frontend/src/components/ContactSection.tsx",
+          "operation": "create",
+          "description": "Create a ContactSection component with section ID 'contact' for navigation. Display placeholder contact information (address, phone, email) on the left side. On the right side, render a contact form with fields for name, email, and message, plus a submit button. Use the useContactForm hook for form logic. Show success message after submission and error handling. Style as a footer section with Islamic theme elements and geometric patterns."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Import and render the ContactSection component at the bottom of the page as the footer."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Render generated static images (mosque banner, logo, geometric divider) in appropriate sections",
+      "acceptanceCriteria": [
+        "Hero section displays the mosque banner image as background or featured image",
+        "Logo image is displayed in the navigation/header area",
+        "Geometric divider image is used between major sections"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Ensure the mosque banner image from frontend/public/assets/generated/mosque-hero-banner.dim_1440x600.png is properly integrated as the hero background or featured image. Use appropriate img tag with alt text or as a CSS background-image. Verify the image dimensions and optimize for responsive display."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Ensure the committee logo from frontend/public/assets/generated/committee-logo.dim_256x256.png is displayed in the navigation/header area with appropriate sizing. Use an img tag with proper alt text. Verify the image dimensions for optimal display."
+        },
+        {
+          "path": "frontend/src/components/AboutSection.tsx",
+          "operation": "modify",
+          "description": "Ensure the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png is used as a decorative separator in the section. Verify the image dimensions and apply as a section divider or border element."
+        },
+        {
+          "path": "frontend/src/components/ServicesSection.tsx",
+          "operation": "modify",
+          "description": "Ensure the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png is used as a decorative separator in the section. Verify the image dimensions and apply as a section divider or border element."
+        },
+        {
+          "path": "frontend/src/components/AnnouncementsSection.tsx",
+          "operation": "modify",
+          "description": "Ensure the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png is used as a decorative separator in the section. Verify the image dimensions and apply as a section divider or border element."
+        },
+        {
+          "path": "frontend/src/components/DonateSection.tsx",
+          "operation": "modify",
+          "description": "Ensure the geometric divider image from frontend/public/assets/generated/geometric-divider.dim_1200x80.png is used as a decorative separator in the section. Verify the image dimensions and apply as a section divider or border element."
+        }
+      ]
+    }
+  ]
+}

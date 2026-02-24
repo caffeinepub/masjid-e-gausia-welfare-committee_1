@@ -1,0 +1,152 @@
+{
+  "kind": "build_request",
+  "title": "Masjid-e-Gausia Welfare Committee Website",
+  "projectName": "Gausia Welfare Committee",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a visually cohesive and elegant website theme inspired by Islamic geometric patterns and traditional motifs. Use a color palette of deep green, gold, and cream/off-white. Apply consistent Arabic-influenced decorative borders, geometric ornaments, and serif/elegant typography throughout the site for a dignified community organization feel.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "मस्जिद ए गौसिया वेलफेयर कमेटी का वेबसाइट बनाये"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Site uses a deep green, gold, and cream color palette consistently",
+        "Islamic geometric decorative elements are present in headers, dividers, or borders",
+        "Typography is elegant and readable throughout all sections"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Build a Hero/Header section with the organization name 'Masjid-e-Gausia Welfare Committee', a tagline such as 'Serving the Community with Faith and Compassion', and a prominent navigation bar with links to all main sections.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Organization name is prominently displayed in the hero section",
+        "A tagline is shown beneath the organization name",
+        "Navigation bar links scroll to all main page sections"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Build an 'About Us' section describing the Masjid-e-Gausia Welfare Committee, its mission, values, and community purpose. Include placeholder text that can be edited later.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "About Us section is visible on the page",
+        "Contains mission and values text",
+        "Section is clearly titled and styled consistently with the theme"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Build a 'Services & Programs' section listing welfare activities such as Education Support, Food & Ration Distribution, Medical Assistance, and Community Events. Each service should have an icon, title, and brief description.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least 4 welfare services/programs are displayed as cards",
+        "Each card has an icon or visual element, a title, and a short description",
+        "Cards are laid out in a responsive grid"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build an 'Announcements / News' section that displays community announcements. On the backend, implement a Motoko actor with stable storage for announcements (title, body, date). Provide a public query to retrieve all announcements and an admin update function to add new ones. Display the announcements fetched from the backend on the frontend.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores announcements with title, body, and date fields",
+        "Frontend fetches and displays announcements from the backend canister",
+        "Announcements section shows the most recent items first",
+        "Empty state is handled gracefully with a placeholder message"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build a 'Donate / Support Us' section with a compelling call-to-action encouraging community members to support the welfare committee. Include a visible donation appeal message and a placeholder for donation/contact details.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Donation/support section is present on the page",
+        "Contains a clear call-to-action message",
+        "Styled prominently to draw attention"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Build a 'Contact Us' footer section with placeholder fields for address, phone number, email, and a simple contact inquiry form (name, email, message, submit button). Store submitted contact inquiries in the backend using Motoko stable storage.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Footer displays address, phone, and email placeholders",
+        "A contact form is present with name, email, and message fields",
+        "Form submission stores the inquiry in the backend canister",
+        "User sees a success confirmation after submitting"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Render the generated static images (mosque-hero-banner, logo, and geometric divider) from frontend/public/assets/generated as visual assets in the hero section, header/logo area, and as decorative section dividers respectively.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hero section displays the mosque banner image as background or featured image",
+        "Logo image is displayed in the navigation/header area",
+        "Geometric divider image is used between major sections"
+      ]
+    }
+  ],
+  "constraints": [
+    "All text on the website must be in English",
+    "Do not use blue or purple as primary colors",
+    "All backend logic must remain in a single Motoko actor in backend/main.mo"
+  ],
+  "nonGoals": [
+    "Online payment processing or real donation gateway integration",
+    "User authentication or admin login panel",
+    "Multi-language (Urdu/Hindi) support in this version",
+    "Real-time chat or messaging features"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Grand mosque exterior at dusk with warm golden lighting and minaret silhouettes against a deep teal-green sky, wide landscape banner (mosque-hero-banner.dim_1440x600.png)",
+      "Circular emblem with Islamic geometric star pattern in gold and deep green on a cream background, suitable as an organization logo (committee-logo.dim_256x256.png)",
+      "Horizontal decorative divider with repeating Islamic arabesque and geometric floral pattern in gold on transparent background (geometric-divider.dim_1200x80.png)"
+    ],
+    "edits": []
+  }
+}

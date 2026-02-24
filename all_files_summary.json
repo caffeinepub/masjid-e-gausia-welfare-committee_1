@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Motoko actor defining the backend canister with CRUD operations for Announcements and ContactInquiries, including input validation and timestamped storage using mutable lists.",
+  "feature_evidence.json": "Feature evidence report mapping implemented features (theme, hero, about, services, announcements, etc.) to their corresponding source files, components, and test IDs.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence summaries of each frontend source file, serving as a reference index for the project's frontend components and hooks.",
+  "frontend/index.css": "Base Tailwind CSS entry file defining OKLCH CSS custom properties for light and dark themes including background, foreground, primary, and chart color tokens.",
+  "frontend/index.html": "HTML entry point for the React app, setting the page title to 'Masjid-e-Gausia Welfare Committee' and mounting the app at the root div.",
+  "frontend/src/App.tsx": "Root React component that assembles the single-page layout by composing Header, HeroSection, AboutSection, ServicesSection, AnnouncementsSection, DonateSection, and ContactSection.",
+  "frontend/src/components/AboutSection.tsx": "About Us section component displaying mission text, a Quranic quote, a statistics panel, and a four-value grid (Compassion, Brotherhood, Education, Integrity) with Lucide icons.",
+  "frontend/src/components/AnnouncementsSection.tsx": "Announcements section that fetches backend announcements via React Query and renders them as dated cards, with loading, error, and empty-state handling.",
+  "frontend/src/components/ContactSection.tsx": "Contact section with organization info display and a validated contact form that submits inquiries to the backend canister, showing success or error states after submission.",
+  "frontend/src/components/DonateSection.tsx": "Renders a donation section with impact amounts, bank transfer details, and a contact scroll button, styled with an Islamic geometric background pattern.",
+  "frontend/src/components/GeometricDivider.tsx": "A simple presentational component that renders a decorative geometric divider image as a full-width separator.",
+  "frontend/src/components/Header.tsx": "Sticky navigation header with logo, desktop nav links, and a collapsible mobile menu, all using smooth-scroll to page sections.",
+  "frontend/src/components/HeroSection.tsx": "Full-screen hero section with a mosque background image, organization title, tagline, and CTA buttons that smooth-scroll to About and Donate sections.",
+  "frontend/src/components/ServicesSection.tsx": "Displays a grid of six welfare service cards (education, food, medical, etc.) with icons and descriptions, using alternating forest/gold color themes.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and caches an ICP backend actor (anonymous or authenticated) via React Query, invalidating dependent queries when the identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an Internet Identity authentication context and hook, managing AuthClient creation, login/logout flow, and identity persistence across page reloads.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for fetching announcements (sorted by date) and submitting contact inquiries via the ICP backend actor.",
+  "frontend/src/index.css": "Global CSS file that imports Google Fonts (Playfair Display, Cormorant Garamond, Inter), sets up Tailwind base/components/utilities, and defines an Islamic-themed design system with deep green, gold, and cream CSS custom properties for both light and dark modes, plus reusable component classes like `.islamic-pattern-bg` and `.gold-divider`.",
+  "frontend/src/main.tsx": "React app entry point that mounts the root component wrapped with `QueryClientProvider` (React Query) and `InternetIdentityProvider` for ICP authentication.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration extending the theme with Islamic-palette custom colors (forest, gold, cream), OKLCH-based semantic color tokens, custom font families, and plugins for typography, container queries, and animations.",
+  "project_state.json": "Project state manifest (schema v1.0.0, version 3) describing the Masjid-e-Gausia Welfare Committee website, listing implemented features (theme, hero, about, services, announcements, etc.), required images, and architectural metadata."
+}

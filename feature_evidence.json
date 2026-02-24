@@ -1,0 +1,170 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-visually-cohesive-and-elegant-website-theme-inspired-by-islamic-geometric-patterns-and-traditional-motifs-use-a-color-palette-of-deep-green-gold-and-cream-off-white-apply-consistent-arabic-influenced-decorative-borders-geometric-ornaments-and-serif-elegant-typography-throughout-the-site-for-a-dignified-community-organization-feel",
+      "featureTitle": "Create a visually cohesive and elegant website theme inspired by Islamic geometric patterns and traditional motifs. Use a color palette of deep green, gold, and cream/off-white. Apply consistent Arabic-influenced decorative borders, geometric ornaments, and serif/elegant typography throughout the site for a dignified community organization feel.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-hero-header-section-with-the-organization-name-masjid-e-gausia-welfare-committee-a-tagline-such-as-serving-the-community-with-faith-and-compassion-and-a-prominent-navigation-bar-with-links-to-all-main-sections",
+      "featureTitle": "Build a Hero/Header section with the organization name 'Masjid-e-Gausia Welfare Committee', a tagline such as 'Serving the Community with Faith and Compassion', and a prominent navigation bar with links to all main sections.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/HeroSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-an-about-us-section-describing-the-masjid-e-gausia-welfare-committee-its-mission-values-and-community-purpose-include-placeholder-text-that-can-be-edited-later",
+      "featureTitle": "Build an 'About Us' section describing the Masjid-e-Gausia Welfare Committee, its mission, values, and community purpose. Include placeholder text that can be edited later.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AboutSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-services-programs-section-listing-welfare-activities-such-as-education-support-food-ration-distribution-medical-assistance-and-community-events-each-service-should-have-an-icon-title-and-brief-description",
+      "featureTitle": "Build a 'Services & Programs' section listing welfare activities such as Education Support, Food & Ration Distribution, Medical Assistance, and Community Events. Each service should have an icon, title, and brief description.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ServicesSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-an-announcements-news-section-that-displays-community-announcements-on-the-backend-implement-a-motoko-actor-with-stable-storage-for-announcements-title-body-date-provide-a-public-query-to-retrieve-all-announcements-and-an-admin-update-function-to-add-new-ones-display-the-announcements-fetched-from-the-backend-on-the-frontend",
+      "featureTitle": "Build an 'Announcements / News' section that displays community announcements. On the backend, implement a Motoko actor with stable storage for announcements (title, body, date). Provide a public query to retrieve all announcements and an admin update function to add new ones. Display the announcements fetched from the backend on the frontend.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AnnouncementsSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-donate-support-us-section-with-a-compelling-call-to-action-encouraging-community-members-to-support-the-welfare-committee-include-a-visible-donation-appeal-message-and-a-placeholder-for-donation-contact-details",
+      "featureTitle": "Build a 'Donate / Support Us' section with a compelling call-to-action encouraging community members to support the welfare committee. Include a visible donation appeal message and a placeholder for donation/contact details.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/DonateSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-a-contact-us-footer-section-with-placeholder-fields-for-address-phone-number-email-and-a-simple-contact-inquiry-form-name-email-message-submit-button-store-submitted-contact-inquiries-in-the-backend-using-motoko-stable-storage",
+      "featureTitle": "Build a 'Contact Us' footer section with placeholder fields for address, phone number, email, and a simple contact inquiry form (name, email, message, submit button). Store submitted contact inquiries in the backend using Motoko stable storage.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ContactSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-render-the-generated-static-images-mosque-hero-banner-logo-and-geometric-divider-from-frontend-public-assets-generated-as-visual-assets-in-the-hero-section-header-logo-area-and-as-decorative-section-dividers-respectively",
+      "featureTitle": "Render the generated static images (mosque-hero-banner, logo, and geometric divider) from frontend/public/assets/generated as visual assets in the hero section, header/logo area, and as decorative section dividers respectively.",
+      "files": [
+        "frontend/src/components/AboutSection.tsx",
+        "frontend/src/components/AnnouncementsSection.tsx",
+        "frontend/src/components/DonateSection.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/HeroSection.tsx",
+        "frontend/src/components/ServicesSection.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
