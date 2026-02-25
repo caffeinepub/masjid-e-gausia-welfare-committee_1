@@ -1,13 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Apply a dhani (muted, earthy dark green, ~#4a7c59) color theme consistently across the entire website, replacing the current primary green color.
+**Goal:** Set the "समाज की सेवा में समर्पित" (Dedicated to Social Service) stat counter value to 0 in the AboutSection.
 
 **Planned changes:**
-- Update CSS custom properties and Tailwind config to replace the current primary/forest green with the dhani color (#4a7c59 or closest olive-green equivalent)
-- Apply the dhani color to the header/navbar background
-- Update all primary CTA buttons (HeroSection, DonateSection, ContactSection) to use the dhani color
-- Update section headings and decorative accents across all sections (About, Services, Announcements, Donate, Contact) to the dhani color
-- Ensure no components retain the old primary green color
+- Update the numeric value of the "समाज की सेवा में समर्पित" stat/counter to 0, leaving all other stats and UI elements unchanged.
 
-**User-visible outcome:** The website displays a cohesive dhani (earthy olive-green) color theme across all UI elements, including the header, buttons, headings, and accents.
+**User-visible outcome:** The stat labeled "समाज की सेवा में समर्पित" displays 0 on the page, while all other content remains the same.

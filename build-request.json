@@ -1,40 +1,35 @@
 {
   "kind": "build_request",
-  "title": "Apply Dhani (Dark Green) Color Theme to Website",
+  "title": "Set 'Samaj Ki Seva Mein Samarpит' stat counter to zero",
   "projectName": "Masjid-e-Gausia Welfare",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
+      "text": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "वेबसाइट को धानी कलर करे"
+          "समाज की सेवा में समर्पित को अभी के लिये जीरो रखे"
         ]
       },
       "acceptanceCriteria": [
-        "The header/navbar background uses the dhani color (#4a7c59 or closest equivalent earthy olive-green).",
-        "Primary buttons (CTA buttons in HeroSection, DonateSection, ContactSection) use the dhani color as their background.",
-        "Section headings and decorative accents across all sections (About, Services, Announcements, Donate, Contact) reflect the dhani color.",
-        "The Tailwind config and CSS custom properties (--color-forest or equivalent) are updated to the dhani value.",
-        "The overall color feel is cohesive and consistent — no components are left with the old primary green."
+        "The stat card or counter labeled 'समाज की सेवा में समर्पित' (or equivalent) displays 0 as its value.",
+        "No other stat values or UI elements are changed.",
+        "The change is visible on the live page without requiring a data refresh."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/hooks/ or frontend/src/components/ui.",
-    "Do not change any Hindi-language text content on the website.",
-    "Do not alter the layout or structure of any section — only color values should change."
+    "Only change the value of the 'समाज की सेवा में समर्पित' stat to 0; do not modify any other stats or content."
   ],
   "nonGoals": [
-    "Redesigning the layout or typography.",
-    "Adding new sections or features.",
-    "Changing the gold/cream accent colors unless needed for contrast with the new dhani primary.",
-    "Backend changes of any kind."
+    "Changing any other section's content.",
+    "Adding backend persistence for this stat value.",
+    "Modifying the ServicesSection or any other component."
   ],
   "imageRequirements": {
     "required": [],

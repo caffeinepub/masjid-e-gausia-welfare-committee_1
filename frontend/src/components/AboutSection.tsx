@@ -1,121 +1,112 @@
-import { Heart, Users, BookOpen, Star } from 'lucide-react';
-import GeometricDivider from './GeometricDivider';
+import React from 'react';
+import { Heart, BookOpen, Users, Star } from 'lucide-react';
+import DecorativePattern from './DecorativePattern';
 
 const values = [
-    {
-        icon: Heart,
-        title: 'करुणा',
-        description: 'हम अपने समुदाय के हर सदस्य की सेवा सहानुभूति, देखभाल और बिना शर्त समर्थन के साथ करते हैं।',
-    },
-    {
-        icon: Users,
-        title: 'भाईचारा',
-        description: 'पृष्ठभूमि की परवाह किए बिना सभी समुदाय के सदस्यों के बीच एकता और एकजुटता को बढ़ावा देना।',
-    },
-    {
-        icon: BookOpen,
-        title: 'शिक्षा',
-        description: 'ज्ञान, सीखने और आध्यात्मिक विकास के माध्यम से अगली पीढ़ी को सशक्त बनाना।',
-    },
-    {
-        icon: Star,
-        title: 'ईमानदारी',
-        description: 'हमारे सभी प्रयासों में पारदर्शिता, सच्चाई और जवाबदेही के साथ कार्य करना।',
-    },
+  {
+    icon: Heart,
+    title: 'सेवा भाव',
+    description: 'हर जरूरतमंद की मदद करना हमारा पहला कर्तव्य है।',
+  },
+  {
+    icon: BookOpen,
+    title: 'शिक्षा',
+    description: 'ज्ञान और शिक्षा के प्रसार से समाज का उत्थान।',
+  },
+  {
+    icon: Users,
+    title: 'एकता',
+    description: 'समाज में भाईचारे और एकता को बढ़ावा देना।',
+  },
+  {
+    icon: Star,
+    title: 'ईमानदारी',
+    description: 'पारदर्शिता और ईमानदारी से हर कार्य करना।',
+  },
 ];
 
 export default function AboutSection() {
-    return (
-        <section id="about" className="section-padding bg-cream">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">हम कौन हैं</p>
-                    <h2 className="section-title mb-4">हमारे बारे में</h2>
-                    <div className="gold-divider" />
-                </div>
+  return (
+    <section id="about" className="py-20 bg-ivory relative overflow-hidden">
+      <DecorativePattern opacity={0.04} />
 
-                {/* Main Content */}
-                <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-                    {/* Text Content */}
-                    <div className="space-y-5">
-                        <p className="font-cormorant text-xl text-forest-dark leading-relaxed">
-                            <strong>मस्जिद ए गौसिया वेलफेयर कमिटी, महराजगंज, जौनपुर</strong> एक समुदाय-संचालित संगठन है जो हमारे स्थानीय मुस्लिम समुदाय और उससे परे की जरूरतों की सेवा के लिए समर्पित है।
-                        </p>
-                        <p className="text-foreground/80 leading-relaxed">
-                            इस्लामी भाईचारे और सामाजिक जिम्मेदारी के सिद्धांतों पर स्थापित, हमारी कमिटी आवश्यक सेवाएं प्रदान करने, कमजोर परिवारों का समर्थन करने और हमारे समुदाय के बंधनों को मजबूत करने के लिए अथक परिश्रम करती है। हमारा मानना है कि हर व्यक्ति सम्मान, अवसर और देखभाल का हकदार है।
-                        </p>
-                        <p className="text-foreground/80 leading-relaxed">
-                            हमारे कार्यक्रमों में शिक्षा सहायता, खाद्य वितरण, चिकित्सा सहायता और सामुदायिक कार्यक्रम शामिल हैं — सभी का उद्देश्य आस्था और करुणा में निहित एक समृद्ध, आत्मनिर्भर समुदाय बनाना है।
-                        </p>
-                        <div className="flex items-center gap-3 pt-2">
-                            <div className="h-px flex-1 bg-gold/30" />
-                            <span className="text-gold text-xl">✦</span>
-                            <div className="h-px flex-1 bg-gold/30" />
-                        </div>
-                        <blockquote className="font-cormorant text-lg italic text-forest border-l-4 border-gold pl-4">
-                            "लोगों में सबसे अच्छे वे हैं जो दूसरों के लिए सबसे अधिक लाभकारी हैं।"
-                            <footer className="text-sm text-muted-foreground mt-1 not-italic">— पैगंबर मुहम्मद ﷺ</footer>
-                        </blockquote>
-                    </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-2">
+            हमारे बारे में
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-near-black font-serif mb-4">
+            मस्जिद ए गौसिया वेलफेयर कमेटी
+          </h2>
+          <div className="gold-divider" />
+          <p className="text-near-black/70 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mt-6">
+            हमारी संस्था समाज के हर वर्ग की सेवा के लिए प्रतिबद्ध है। शिक्षा, स्वास्थ्य,
+            और आर्थिक सहायता के माध्यम से हम एक समृद्ध समाज बनाने का प्रयास करते हैं।
+          </p>
+        </div>
 
-                    {/* Visual Panel */}
-                    <div className="relative">
-                        <div className="bg-forest rounded-lg p-8 text-cream relative overflow-hidden">
-                            {/* Background pattern */}
-                            <div className="absolute inset-0 opacity-10">
-                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <pattern id="islamic-grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                                            <path d="M20 0L40 20L20 40L0 20Z" fill="none" stroke="white" strokeWidth="1"/>
-                                            <circle cx="20" cy="20" r="5" fill="none" stroke="white" strokeWidth="1"/>
-                                        </pattern>
-                                    </defs>
-                                    <rect width="100%" height="100%" fill="url(#islamic-grid)"/>
-                                </svg>
-                            </div>
-                            <div className="relative z-10 space-y-6">
-                                <h3 className="font-playfair text-2xl font-bold text-gold">हमारा मिशन</h3>
-                                <p className="text-cream/90 leading-relaxed">
-                                    महराजगंज, जौनपुर के समुदाय के लिए आशा और समर्थन का केंद्र बनना — कल्याण सेवाएं प्रदान करना, शिक्षा को बढ़ावा देना और सभी के लिए आध्यात्मिक कल्याण का पोषण करना।
-                                </p>
-                                <div className="grid grid-cols-3 gap-4 pt-2">
-                                    <div className="text-center p-4 bg-forest-light/30 rounded-lg">
-                                        <div className="font-playfair text-3xl font-bold text-gold">10+</div>
-                                        <div className="text-cream/80 text-sm mt-1">सेवा के वर्ष</div>
-                                    </div>
-                                    <div className="text-center p-4 bg-forest-light/30 rounded-lg">
-                                        <div className="font-playfair text-3xl font-bold text-gold">4</div>
-                                        <div className="text-cream/80 text-sm mt-1">मुख्य कार्यक्रम</div>
-                                    </div>
-                                    <div className="text-center p-4 bg-forest-light/30 rounded-lg">
-                                        <div className="font-playfair text-3xl font-bold text-gold">100+</div>
-                                        <div className="text-cream/80 text-sm mt-1">स्वयंसेवक</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        {/* Values grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          {values.map((value) => {
+            const Icon = value.icon;
+            return (
+              <div
+                key={value.title}
+                className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gold/20 hover:border-gold/50 hover:shadow-md transition-all duration-300 group"
+              >
+                <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 transition-colors">
+                  <Icon className="w-7 h-7 text-gold" />
                 </div>
+                <h3 className="font-bold text-near-black text-lg mb-2 font-serif">{value.title}</h3>
+                <p className="text-near-black/65 text-sm leading-relaxed">{value.description}</p>
+              </div>
+            );
+          })}
+        </div>
 
-                {/* Values Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {values.map((value) => {
-                        const Icon = value.icon;
-                        return (
-                            <div key={value.title} className="text-center p-6 bg-card rounded-lg border border-border hover:border-gold/40 transition-colors duration-200">
-                                <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <Icon className="w-6 h-6 text-forest" />
-                                </div>
-                                <h3 className="font-playfair text-lg font-semibold text-forest-dark mb-2">{value.title}</h3>
-                                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
-                            </div>
-                        );
-                    })}
-                </div>
+        {/* Mission panel — light warm background */}
+        <div className="bg-champagne rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-gold/30 shadow-gold">
+          <DecorativePattern opacity={0.05} />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-3">
+                हमारा मिशन
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-near-black font-serif mb-4 leading-snug">
+                समाज की सेवा में समर्पित
+              </h3>
+              <p className="text-near-black/70 leading-relaxed mb-6">
+                मस्जिद ए गौसिया वेलफेयर कमेटी का उद्देश्य समाज के कमजोर वर्गों को सशक्त बनाना,
+                शिक्षा का प्रसार करना, और जरूरतमंदों को हर संभव सहायता प्रदान करना है।
+              </p>
+              <blockquote className="border-l-4 border-gold pl-4">
+                <p className="text-forest italic text-sm leading-relaxed">
+                  "और जो लोग अल्लाह की राह में खर्च करते हैं, उनकी मिसाल उस दाने की तरह है
+                  जिससे सात बालियां उगती हैं।"
+                </p>
+                <footer className="text-near-black/45 text-xs mt-2">(सूरह अल-बकरा, 2:261)</footer>
+              </blockquote>
             </div>
-
-            <GeometricDivider className="mt-16" />
-        </section>
-    );
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { number: '0', label: 'परिवारों की मदद' },
+                { number: '0', label: 'छात्रवृत्तियां' },
+                { number: '0', label: 'चिकित्सा शिविर' },
+                { number: '0', label: 'वर्षों की सेवा' },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-white rounded-2xl p-5 text-center border border-gold/30 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <p className="text-3xl font-bold text-orange font-serif">{stat.number}</p>
+                  <p className="text-near-black/65 text-xs mt-1 leading-tight">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-website-s-color-scheme-to-use-dhani-a-muted-earthy-dark-green-approximately-4a7c59-or-similar-olive-green-tone-as-the-primary-brand-color-throughout-the-site-replace-the-current-primary-forest-green-color-tokens-in-the-css-custom-properties-and-tailwind-config-with-the-dhani-color-apply-consistently-to-the-header-background-hero-section-accents-section-headings-buttons-dividers-card-borders-and-any-other-elements-currently-using-the-primary-green-color",
-      "featureTitle": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
+      "featureId": "feature-in-the-aboutsection-or-whichever-section-displays-the-stat-counter-for-dedicated-to-social-service-set-its-numeric-value-to-0-zero-for-now",
+      "featureTitle": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
       "files": [
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/components/AboutSection.tsx"
       ],
       "components": [
         "blob-storage@4.0.0",
@@ -14,7 +13,8 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
         "REQ-1"

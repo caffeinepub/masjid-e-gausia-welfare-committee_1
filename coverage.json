@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T08:47:49.631Z",
+  "generatedAt": "2026-02-25T20:44:37.683Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,22 +12,13 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
+        "summary": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/HeroSection.tsx",
-          "frontend/src/components/AboutSection.tsx",
-          "frontend/src/components/ServicesSection.tsx",
-          "frontend/src/components/AnnouncementsSection.tsx",
-          "frontend/src/components/DonateSection.tsx",
-          "frontend/src/components/ContactSection.tsx"
+          "frontend/src/components/AboutSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js"
+          "frontend/src/components/AboutSection.tsx"
         ]
       }
     ]
@@ -37,8 +28,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/index.css",
-    "frontend/tailwind.config.js",
+    "frontend/src/components/AboutSection.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

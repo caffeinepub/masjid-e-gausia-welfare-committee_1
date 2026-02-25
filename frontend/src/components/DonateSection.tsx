@@ -1,133 +1,141 @@
-import { Heart, Banknote, Phone, Mail } from 'lucide-react';
-import GeometricDivider from './GeometricDivider';
+import React from 'react';
+import { Heart, CreditCard, Building2, Copy, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
+import DecorativePattern from './DecorativePattern';
 
-const donationImpacts = [
-    { amount: '₹500', impact: 'एक परिवार को एक सप्ताह का भोजन मिलता है' },
-    { amount: '₹1,000', impact: 'एक बच्चे के लिए स्कूल की सामग्री मिलती है' },
-    { amount: '₹2,500', impact: 'एक मरीज का चिकित्सा खर्च पूरा होता है' },
-    { amount: '₹5,000', impact: 'एक महीने के लिए एक छात्र को प्रायोजित किया जाता है' },
+const bankDetails = [
+  { label: 'बैंक का नाम', value: 'State Bank of India' },
+  { label: 'खाता नाम', value: 'Masjid-e-Gausia Welfare Committee' },
+  { label: 'खाता संख्या', value: '1234567890123' },
+  { label: 'IFSC कोड', value: 'SBIN0001234' },
+  { label: 'शाखा', value: 'Main Branch' },
+];
+
+const impactStats = [
+  { number: '₹50 लाख+', label: 'कुल दान राशि' },
+  { number: '1000+', label: 'लाभार्थी परिवार' },
+  { number: '95%', label: 'सीधे लाभार्थियों तक' },
+  { number: '100%', label: 'पारदर्शिता' },
 ];
 
 export default function DonateSection() {
-    const handleScrollToContact = () => {
-        const el = document.querySelector('#contact');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-    };
+  const [copiedField, setCopiedField] = useState<string | null>(null);
 
-    return (
-        <section id="donate" className="section-padding relative overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 islamic-pattern-bg" />
-            <div className="absolute inset-0 opacity-5">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <pattern id="donate-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                            <path d="M30 0L60 30L30 60L0 30Z" fill="none" stroke="white" strokeWidth="1"/>
-                            <path d="M30 10L50 30L30 50L10 30Z" fill="none" stroke="white" strokeWidth="0.5"/>
-                            <circle cx="30" cy="30" r="8" fill="none" stroke="white" strokeWidth="0.5"/>
-                        </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#donate-pattern)"/>
-                </svg>
+  const handleCopy = (value: string, label: string) => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopiedField(label);
+      setTimeout(() => setCopiedField(null), 2000);
+    });
+  };
+
+  return (
+    <section id="donate" className="py-20 bg-champagne relative overflow-hidden">
+      <DecorativePattern opacity={0.04} />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-2">
+            दान करें
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-near-black font-serif mb-4">
+            नेकी में हाथ बटाएं
+          </h2>
+          <div className="w-16 h-0.5 bg-gold mx-auto mb-6" />
+          <p className="text-near-black/70 max-w-2xl mx-auto text-base leading-relaxed">
+            आपका हर दान किसी जरूरतमंद के जीवन में बदलाव लाता है। अल्लाह आपके दान को
+            कई गुना बढ़ाकर लौटाता है।
+          </p>
+          <blockquote className="mt-6 text-forest italic text-sm">
+            "जो लोग अल्लाह की राह में अपना माल खर्च करते हैं, उनकी मिसाल उस दाने की तरह है
+            जिससे सात बालियां उगती हैं।"
+            <footer className="text-near-black/45 text-xs mt-1 not-italic">(सूरह अल-बकरा, 2:261)</footer>
+          </blockquote>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Bank details */}
+          <div className="bg-white rounded-3xl p-8 border border-gold/25 shadow-sm">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-12 rounded-full bg-gold/15 flex items-center justify-center">
+                <Building2 className="w-6 h-6 text-gold-600" style={{ color: 'oklch(65% 0.12 85)' }} />
+              </div>
+              <div>
+                <h3 className="text-near-black font-bold text-lg font-serif">बैंक ट्रांसफर</h3>
+                <p className="text-near-black/50 text-xs">सीधे बैंक खाते में दान करें</p>
+              </div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">बदलाव लाएं</p>
-                    <h2 className="font-playfair text-3xl md:text-4xl font-bold text-cream mb-4">
-                        हमारा समर्थन करें
-                    </h2>
-                    <div className="w-24 h-1 bg-gold mx-auto my-4 rounded-full" />
-                    <p className="text-cream/80 mt-6 max-w-2xl mx-auto leading-relaxed text-lg font-cormorant italic">
-                        "जो एक जीवन बचाता है, वह मानो पूरी मानवजाति को बचाता है।" — कुरान 5:32
-                    </p>
+            <div className="space-y-3">
+              {bankDetails.map((detail) => (
+                <div
+                  key={detail.label}
+                  className="flex items-center justify-between bg-champagne rounded-xl px-4 py-3 group border border-gold/15"
+                >
+                  <div>
+                    <p className="text-near-black/50 text-xs mb-0.5">{detail.label}</p>
+                    <p className="text-near-black font-medium text-sm">{detail.value}</p>
+                  </div>
+                  <button
+                    onClick={() => handleCopy(detail.value, detail.label)}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-gold hover:text-orange"
+                    title="कॉपी करें"
+                  >
+                    {copiedField === detail.label ? (
+                      <CheckCircle className="w-4 h-4 text-forest" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
                 </div>
+              ))}
+            </div>
 
-                {/* Main Content */}
-                <div className="grid md:grid-cols-2 gap-12 items-start">
-                    {/* Left: Appeal */}
-                    <div className="space-y-6">
-                        <div className="bg-cream/10 backdrop-blur-sm rounded-lg p-6 border border-gold/20">
-                            <div className="flex items-center gap-3 mb-4">
-                                <Heart className="w-6 h-6 text-gold" />
-                                <h3 className="font-playfair text-xl font-semibold text-cream">आपका समर्थन क्यों मायने रखता है</h3>
-                            </div>
-                            <p className="text-cream/85 leading-relaxed">
-                                हर योगदान, चाहे कितना भी छोटा हो, उन लोगों के जीवन में गहरा अंतर लाता है जिनकी हम सेवा करते हैं। आपकी उदारता हमें अपने कल्याण कार्यक्रमों को जारी रखने और अधिक जरूरतमंद परिवारों तक पहुंचने में सक्षम बनाती है।
-                            </p>
-                        </div>
+            <div className="mt-6 p-4 bg-gold/10 rounded-xl border border-gold/25">
+              <div className="flex items-center gap-2 mb-2">
+                <CreditCard className="w-4 h-4 text-orange" />
+                <p className="text-near-black font-semibold text-sm">UPI भुगतान</p>
+              </div>
+              <p className="text-near-black/70 text-sm font-mono">masjidgausia@sbi</p>
+            </div>
+          </div>
 
-                        <div className="bg-cream/10 backdrop-blur-sm rounded-lg p-6 border border-gold/20">
-                            <div className="flex items-center gap-3 mb-4">
-                                <Banknote className="w-6 h-6 text-gold" />
-                                <h3 className="font-playfair text-xl font-semibold text-cream">आपके दान का प्रभाव</h3>
-                            </div>
-                            <div className="space-y-3">
-                                {donationImpacts.map((item) => (
-                                    <div key={item.amount} className="flex items-center gap-3">
-                                        <span className="font-bold text-gold font-playfair w-16 flex-shrink-0">{item.amount}</span>
-                                        <span className="text-cream/80 text-sm">{item.impact}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+          {/* Impact stats */}
+          <div className="flex flex-col justify-between gap-6">
+            <div>
+              <h3 className="text-near-black font-bold text-xl font-serif mb-2 flex items-center gap-2">
+                <Heart className="w-5 h-5 text-orange fill-current" />
+                आपके दान का प्रभाव
+              </h3>
+              <p className="text-near-black/60 text-sm leading-relaxed mb-6">
+                हम पूरी पारदर्शिता के साथ आपके दान का उपयोग करते हैं। हर रुपया सीधे
+                जरूरतमंदों तक पहुंचता है।
+              </p>
+            </div>
 
-                    {/* Right: Donation Details */}
-                    <div className="space-y-6">
-                        <div className="bg-cream rounded-lg p-8 border-2 border-gold shadow-gold">
-                            <h3 className="font-playfair text-2xl font-bold text-forest-dark mb-2 text-center">
-                                अभी दान करें
-                            </h3>
-                            <div className="w-16 h-0.5 bg-gold mx-auto mb-6" />
-
-                            <div className="space-y-4 mb-6">
-                                <div className="bg-cream-dark rounded-lg p-4">
-                                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">बैंक ट्रांसफर</p>
-                                    <p className="font-semibold text-forest-dark">मस्जिद ए गौसिया वेलफेयर कमिटी</p>
-                                    <p className="text-xs text-muted-foreground">महराजगंज, जौनपुर</p>
-                                    <p className="text-sm text-foreground/70 mt-1">खाता संख्या: XXXX-XXXX-XXXX</p>
-                                    <p className="text-sm text-foreground/70">आईएफएससी कोड: XXXXXXXX</p>
-                                    <p className="text-sm text-foreground/70">बैंक का नाम: [बैंक का नाम], [शाखा]</p>
-                                </div>
-
-                                <div className="bg-cream-dark rounded-lg p-4">
-                                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">UPI / QR कोड</p>
-                                    <p className="font-semibold text-forest-dark">UPI ID: masjidgausia@upi</p>
-                                    <p className="text-sm text-foreground/70 mt-1">हमारे कार्यालय में QR कोड स्कैन करें</p>
-                                </div>
-                            </div>
-
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-2 text-sm text-foreground/70">
-                                    <Phone className="w-4 h-4 text-forest" />
-                                    <span>फोन: +91 XXXXX XXXXX</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-sm text-foreground/70">
-                                    <Mail className="w-4 h-4 text-forest" />
-                                    <span>ईमेल: donate@masjidgausia.org</span>
-                                </div>
-                            </div>
-
-                            <button
-                                onClick={handleScrollToContact}
-                                className="w-full mt-6 btn-primary text-center font-playfair text-base"
-                            >
-                                दान के लिए हमसे संपर्क करें
-                            </button>
-                        </div>
-
-                        <p className="text-cream/60 text-xs text-center">
-                            सभी दान केवल सामुदायिक कल्याण कार्यक्रमों के लिए उपयोग किए जाते हैं। अनुरोध पर रसीद उपलब्ध है।
-                        </p>
-                    </div>
+            <div className="grid grid-cols-2 gap-4">
+              {impactStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-white rounded-2xl p-5 text-center border border-gold/20 hover:border-gold/45 hover:shadow-md transition-all duration-300"
+                >
+                  <p className="text-2xl sm:text-3xl font-bold text-orange font-serif mb-1">
+                    {stat.number}
+                  </p>
+                  <p className="text-near-black/60 text-xs leading-tight">{stat.label}</p>
                 </div>
+              ))}
             </div>
 
-            <div className="relative z-10">
-                <GeometricDivider className="mt-16 opacity-40" />
+            <div className="bg-orange/8 rounded-2xl p-6 border border-orange/20">
+              <p className="text-near-black/80 text-sm leading-relaxed">
+                <span className="text-orange font-semibold">नोट:</span> दान की रसीद के लिए
+                हमसे संपर्क करें। आपका दान आयकर अधिनियम की धारा 80G के तहत कर-मुक्त है।
+              </p>
             </div>
-        </section>
-    );
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

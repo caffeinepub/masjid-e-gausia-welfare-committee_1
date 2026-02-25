@@ -1,15 +1,23 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T08:47:49.628Z",
-  "summary": "The diff updates the CSS custom properties in index.css and the Tailwind config (tailwind.config.js) to use dhani (earthy olive-green, oklch(0.49 0.08 152) approximately #4a7c59) as the primary/forest color token. Component-level utility class references (bg-forest, text-forest, etc.) are preserved via the updated token, so header, hero, buttons, headings, dividers, and card borders should pick up the new color through existing class usage. All core acceptance criteria for REQ-1 appear addressed in the config/CSS layer. No files under frontend/src/hooks/ or frontend/src/components/ui/ were modified. No Hindi text content changes are evident.",
+  "generatedAt": "2026-02-25T20:44:37.681Z",
+  "summary": "The diff correctly implements REQ-1 by setting the stat counter for 'समाज की सेवा में समर्पित' to 0 in AboutSection.tsx. The file summary confirms all four stat counters in the mission panel are now set to 0. However, the constraint says only the 'समाज की सेवा में समर्पित' stat should be changed, not other stats. The truncated diff shows multiple counters being zeroed, which may exceed the requested scope.",
   "missing_requirements": [],
-  "hallucinated_features": [],
-  "confidence": 0.82,
+  "hallucinated_features": [
+    {
+      "description": "All four stat counters in the mission panel (परिवारों की मदद, छात्रवृत्तियां, चिकित्सा शिविर, वर्षों की सेवा) were set to 0, rather than only the specific 'समाज की सेवा में समर्पित' stat.",
+      "reason": "The build request constraint explicitly states 'Only change the value of the समाज की सेवा में समर्पित stat to 0; do not modify any other stats or content.' The file summary states 'the stat counters... are now all set to 0', implying multiple stats were changed beyond what was requested.",
+      "evidence": [
+        "frontend/src/components/AboutSection.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/index.css",
-    "frontend/tailwind.config.js",
+    "frontend/src/components/AboutSection.tsx",
     "project_state.json"
   ]
 }

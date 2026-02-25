@@ -1,251 +1,218 @@
-import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
-import { useSubmitInquiry } from '../hooks/useQueries';
+import React, { useState } from 'react';
+import { MapPin, Phone, Mail, Clock, Send, Loader2, CheckCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-
-interface FormState {
-    name: string;
-    email: string;
-    message: string;
-}
+import { useSubmitInquiry } from '../hooks/useQueries';
 
 const contactInfo = [
-    {
-        icon: MapPin,
-        label: 'पता',
-        value: 'मस्जिद ए गौसिया वेलफेयर कमिटी, महराजगंज, जौनपुर, उत्तर प्रदेश',
-    },
-    {
-        icon: Phone,
-        label: 'फोन',
-        value: '+91 XXXXX XXXXX',
-    },
-    {
-        icon: Mail,
-        label: 'ईमेल',
-        value: 'info@masjidgausia.org',
-    },
-    {
-        icon: Clock,
-        label: 'कार्यालय समय',
-        value: 'सोम–शनि: सुबह 9:00 – शाम 6:00',
-    },
+  {
+    icon: MapPin,
+    title: 'पता',
+    lines: ['मस्जिद ए गौसिया', 'मुख्य सड़क, शहर'],
+  },
+  {
+    icon: Phone,
+    title: 'फोन',
+    lines: ['+91 98765 43210', '+91 87654 32109'],
+  },
+  {
+    icon: Mail,
+    title: 'ईमेल',
+    lines: ['info@masjidgausia.org'],
+  },
+  {
+    icon: Clock,
+    title: 'कार्यालय समय',
+    lines: ['सोमवार से शनिवार', 'सुबह 9 बजे से शाम 6 बजे तक'],
+  },
 ];
 
 export default function ContactSection() {
-    const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
-    const [submitted, setSubmitted] = useState(false);
-    const [validationError, setValidationError] = useState('');
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitted, setSubmitted] = useState(false);
+  const submitInquiry = useSubmitInquiry();
 
-    const submitInquiry = useSubmitInquiry();
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!form.name.trim()) newErrors.name = 'नाम आवश्यक है';
+    if (!form.email.trim()) newErrors.email = 'ईमेल आवश्यक है';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      newErrors.email = 'सही ईमेल पता दर्ज करें';
+    if (!form.message.trim()) newErrors.message = 'संदेश आवश्यक है';
+    return newErrors;
+  };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-        setValidationError('');
-    };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+    try {
+      await submitInquiry.mutateAsync(form);
+      setSubmitted(true);
+      setForm({ name: '', email: '', message: '' });
+    } catch {
+      setErrors({ submit: 'संदेश भेजने में त्रुटि हुई। कृपया पुनः प्रयास करें।' });
+    }
+  };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setValidationError('');
+  return (
+    <section id="contact" className="py-20 bg-champagne relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-2">
+            संपर्क करें
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-near-black font-serif mb-4">
+            हमसे जुड़ें
+          </h2>
+          <div className="gold-divider" />
+          <p className="text-near-black/65 max-w-xl mx-auto text-base mt-6 leading-relaxed">
+            किसी भी सहायता, जानकारी, या सुझाव के लिए हमसे संपर्क करें।
+          </p>
+        </div>
 
-        if (!form.name.trim()) {
-            setValidationError('कृपया अपना नाम दर्ज करें।');
-            return;
-        }
-        if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-            setValidationError('कृपया एक वैध ईमेल पता दर्ज करें।');
-            return;
-        }
-        if (!form.message.trim()) {
-            setValidationError('कृपया अपना संदेश दर्ज करें।');
-            return;
-        }
-
-        try {
-            await submitInquiry.mutateAsync({
-                name: form.name.trim(),
-                email: form.email.trim(),
-                message: form.message.trim(),
-            });
-            setSubmitted(true);
-            setForm({ name: '', email: '', message: '' });
-        } catch {
-            // Error handled by mutation state
-        }
-    };
-
-    return (
-        <section id="contact" className="bg-forest-dark">
-            {/* Top gold bar */}
-            <div className="h-1 w-full bg-gold" />
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-                {/* Section Header */}
-                <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">संपर्क में रहें</p>
-                    <h2 className="font-playfair text-3xl md:text-4xl font-bold text-cream mb-4">हमसे संपर्क करें</h2>
-                    <div className="w-24 h-1 bg-gold mx-auto my-4 rounded-full" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* Contact info */}
+          <div className="space-y-5">
+            {contactInfo.map((info) => {
+              const Icon = info.icon;
+              return (
+                <div
+                  key={info.title}
+                  className="flex items-start gap-4 bg-white rounded-2xl p-5 shadow-sm border border-gold/15"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-6 h-6 text-gold" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-near-black text-sm mb-1">{info.title}</h3>
+                    {info.lines.map((line, i) => (
+                      <p key={i} className="text-near-black/65 text-sm">
+                        {line}
+                      </p>
+                    ))}
+                  </div>
                 </div>
+              );
+            })}
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    {/* Contact Info */}
-                    <div className="space-y-8">
-                        <div>
-                            <h3 className="font-playfair text-xl font-semibold text-gold mb-6">संपर्क जानकारी</h3>
-                            <div className="space-y-5">
-                                {contactInfo.map((item) => {
-                                    const Icon = item.icon;
-                                    return (
-                                        <div key={item.label} className="flex items-start gap-4">
-                                            <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                <Icon className="w-5 h-5 text-gold" />
-                                            </div>
-                                            <div>
-                                                <p className="text-gold/70 text-xs uppercase tracking-wider mb-1">{item.label}</p>
-                                                <p className="text-cream/90 text-sm leading-relaxed">{item.value}</p>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-
-                        {/* Decorative quote */}
-                        <div className="border-l-4 border-gold/40 pl-4 py-2">
-                            <p className="font-cormorant text-lg italic text-cream/70">
-                                "और अल्लाह उन लोगों से प्यार करता है जो भलाई करते हैं।"
-                            </p>
-                            <p className="text-gold/60 text-sm mt-1">— कुरान 2:195</p>
-                        </div>
-                    </div>
-
-                    {/* Contact Form */}
-                    <div>
-                        <h3 className="font-playfair text-xl font-semibold text-gold mb-6">संदेश भेजें</h3>
-
-                        {submitted ? (
-                            <div className="flex flex-col items-center justify-center py-12 text-center">
-                                <CheckCircle className="w-16 h-16 text-gold mb-4" />
-                                <h4 className="font-playfair text-xl font-semibold text-cream mb-2">शुक्रिया!</h4>
-                                <p className="text-cream/70">आपका संदेश प्राप्त हो गया है। हम जल्द ही आपसे संपर्क करेंगे।</p>
-                                <button
-                                    onClick={() => setSubmitted(false)}
-                                    className="mt-6 text-gold hover:text-gold/80 text-sm underline transition-colors"
-                                >
-                                    एक और संदेश भेजें
-                                </button>
-                            </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} className="space-y-5">
-                                <div className="space-y-2">
-                                    <Label htmlFor="name" className="text-cream/80 text-sm">
-                                        आपका नाम <span className="text-gold">*</span>
-                                    </Label>
-                                    <Input
-                                        id="name"
-                                        name="name"
-                                        value={form.name}
-                                        onChange={handleChange}
-                                        placeholder="अपना पूरा नाम दर्ज करें"
-                                        className="bg-forest/50 border-gold/20 text-cream placeholder:text-cream/40 focus:border-gold"
-                                        disabled={submitInquiry.isPending}
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label htmlFor="email" className="text-cream/80 text-sm">
-                                        ईमेल पता <span className="text-gold">*</span>
-                                    </Label>
-                                    <Input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        value={form.email}
-                                        onChange={handleChange}
-                                        placeholder="your@email.com"
-                                        className="bg-forest/50 border-gold/20 text-cream placeholder:text-cream/40 focus:border-gold"
-                                        disabled={submitInquiry.isPending}
-                                    />
-                                </div>
-
-                                <div className="space-y-2">
-                                    <Label htmlFor="message" className="text-cream/80 text-sm">
-                                        संदेश <span className="text-gold">*</span>
-                                    </Label>
-                                    <Textarea
-                                        id="message"
-                                        name="message"
-                                        value={form.message}
-                                        onChange={handleChange}
-                                        placeholder="अपना संदेश यहाँ लिखें..."
-                                        rows={5}
-                                        className="bg-forest/50 border-gold/20 text-cream placeholder:text-cream/40 focus:border-gold resize-none"
-                                        disabled={submitInquiry.isPending}
-                                    />
-                                </div>
-
-                                {validationError && (
-                                    <div className="flex items-center gap-2 text-red-400 text-sm">
-                                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                                        <span>{validationError}</span>
-                                    </div>
-                                )}
-
-                                {submitInquiry.isError && (
-                                    <div className="flex items-center gap-2 text-red-400 text-sm">
-                                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                                        <span>संदेश भेजने में त्रुटि हुई। कृपया पुनः प्रयास करें।</span>
-                                    </div>
-                                )}
-
-                                <Button
-                                    type="submit"
-                                    disabled={submitInquiry.isPending}
-                                    className="w-full btn-gold font-playfair text-base"
-                                >
-                                    {submitInquiry.isPending ? (
-                                        <>
-                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                            भेजा जा रहा है...
-                                        </>
-                                    ) : (
-                                        'संदेश भेजें'
-                                    )}
-                                </Button>
-                            </form>
-                        )}
-                    </div>
-                </div>
+            {/* Islamic quote */}
+            <div className="bg-near-black rounded-2xl p-6">
+              <p className="text-gold/90 italic text-sm leading-relaxed mb-2">
+                "और एक-दूसरे की मदद करो नेकी और तकवे में।"
+              </p>
+              <p className="text-ivory/40 text-xs">(सूरह अल-माइदा, 5:2)</p>
             </div>
+          </div>
 
-            {/* Footer */}
-            <div className="border-t border-gold/10 py-8">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p className="font-playfair text-gold font-semibold text-lg mb-1">
-                        मस्जिद ए गौसिया वेलफेयर कमिटी
-                    </p>
-                    <p className="text-cream/50 text-sm mb-4">महराजगंज, जौनपुर, उत्तर प्रदेश</p>
-                    <p className="text-cream/40 text-xs">
-                        © {new Date().getFullYear()} मस्जिद ए गौसिया वेलफेयर कमिटी। सर्वाधिकार सुरक्षित।
-                    </p>
-                    <p className="text-cream/30 text-xs mt-2">
-                        Built with{' '}
-                        <span className="text-gold/60">♥</span>{' '}
-                        using{' '}
-                        <a
-                            href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== 'undefined' ? window.location.hostname : 'masjid-gausia')}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gold/50 hover:text-gold/70 transition-colors underline"
-                        >
-                            caffeine.ai
-                        </a>
-                    </p>
+          {/* Contact form */}
+          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gold/15">
+            {submitted ? (
+              <div className="flex flex-col items-center justify-center h-full py-12 gap-4 text-center">
+                <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                  <CheckCircle className="w-8 h-8 text-green-600" />
                 </div>
-            </div>
-        </section>
-    );
+                <h3 className="text-xl font-bold text-near-black font-serif">
+                  संदेश भेज दिया गया!
+                </h3>
+                <p className="text-near-black/60 text-sm max-w-xs">
+                  आपका संदेश हमें मिल गया है। हम जल्द ही आपसे संपर्क करेंगे।
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="mt-2 text-orange text-sm font-medium hover:underline"
+                >
+                  नया संदेश भेजें
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <h3 className="text-xl font-bold text-near-black font-serif mb-6">
+                  संदेश भेजें
+                </h3>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="contact-name" className="text-near-black/80 text-sm font-medium">
+                    आपका नाम *
+                  </Label>
+                  <Input
+                    id="contact-name"
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="अपना पूरा नाम लिखें"
+                    className="border-gold/30 focus:border-gold"
+                    disabled={submitInquiry.isPending}
+                  />
+                  {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="contact-email" className="text-near-black/80 text-sm font-medium">
+                    ईमेल पता *
+                  </Label>
+                  <Input
+                    id="contact-email"
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    placeholder="your@email.com"
+                    className="border-gold/30 focus:border-gold"
+                    disabled={submitInquiry.isPending}
+                  />
+                  {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label htmlFor="contact-message" className="text-near-black/80 text-sm font-medium">
+                    संदेश *
+                  </Label>
+                  <Textarea
+                    id="contact-message"
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="अपना संदेश यहां लिखें..."
+                    rows={4}
+                    className="border-gold/30 focus:border-gold resize-none"
+                    disabled={submitInquiry.isPending}
+                  />
+                  {errors.message && <p className="text-red-500 text-xs">{errors.message}</p>}
+                </div>
+
+                {errors.submit && (
+                  <p className="text-red-500 text-sm bg-red-50 rounded-lg px-4 py-2">
+                    {errors.submit}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitInquiry.isPending}
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-orange text-white font-semibold rounded-xl hover:bg-orange/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {submitInquiry.isPending ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      भेज रहे हैं...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      संदेश भेजें
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

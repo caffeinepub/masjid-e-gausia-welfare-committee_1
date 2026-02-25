@@ -1,28 +1,21 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Website with dhani (dark green) color theme",
+  "summary": "New project",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-website-s-color-scheme-to-use-dhani-a-muted-earthy-dark-green-approximately-4a7c59-or-similar-olive-green-tone-as-the-primary-brand-color-throughout-the-site-replace-the-current-primary-forest-green-color-tokens-in-the-css-custom-properties-and-tailwind-config-with-the-dhani-color-apply-consistently-to-the-header-background-hero-section-accents-section-headings-buttons-dividers-card-borders-and-any-other-elements-currently-using-the-primary-green-color",
-      "title": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
+      "id": "feature-in-the-aboutsection-or-whichever-section-displays-the-stat-counter-for-dedicated-to-social-service-set-its-numeric-value-to-0-zero-for-now",
+      "title": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Apply dhani (dark green) color scheme to the website",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
+  "new_feature_requests": [],
   "projectName": "Masjid-e-Gausia Welfare",
   "clarification_mode": "instant",
   "clarification_rounds": 0

@@ -1,63 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Apply Dhani (Dark Green) Color Theme to Website",
+  "title": "Set 'Samaj Ki Seva Mein Samarpit' stat counter to zero",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59) as the primary brand color throughout all frontend components and global styles",
+      "summary": "Set the 'समाज की सेवा में समर्पित' (Dedicated to Social Service) stat value to 0 in the AboutSection component",
       "acceptanceCriteria": [
-        "The header/navbar background uses the dhani color (#4a7c59 or closest equivalent earthy olive-green).",
-        "Primary buttons (CTA buttons in HeroSection, DonateSection, ContactSection) use the dhani color as their background.",
-        "Section headings and decorative accents across all sections (About, Services, Announcements, Donate, Contact) reflect the dhani color.",
-        "The Tailwind config and CSS custom properties (--color-forest or equivalent) are updated to the dhani value.",
-        "The overall color feel is cohesive and consistent — no components are left with the old primary green."
+        "The stat card or counter labeled 'समाज की सेवा में समर्पित' (or equivalent) displays 0 as its value.",
+        "No other stat values or UI elements are changed.",
+        "The change is visible on the live page without requiring a data refresh."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Update the CSS custom properties for the forest/primary color tokens to use dhani (#4a7c59) in both light and dark mode color schemes. Replace the existing --color-forest values with the new dhani OKLCH equivalent to ensure consistent theming across all components."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Update the Tailwind theme configuration to replace the forest color definition with dhani (#4a7c59). Ensure the custom color mapping for 'forest' now points to the dhani color value so all Tailwind utility classes (bg-forest, text-forest, border-forest, etc.) render the new earthy olive-green tone."
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Verify that the header background color classes reference the updated forest/primary color token (e.g., bg-forest). No structural changes needed; the dhani color will be applied via the global theme changes in index.css and tailwind.config.js."
-        },
-        {
-          "path": "frontend/src/components/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Verify that the CTA buttons in the hero section use the updated primary color classes (e.g., bg-forest, hover:bg-forest/90). The dhani color will be applied automatically through the global theme updates."
-        },
-        {
           "path": "frontend/src/components/AboutSection.tsx",
           "operation": "modify",
-          "description": "Verify that section headings, decorative elements, and any accent colors reference the updated primary color token. Ensure the dhani color appears consistently in borders, text accents, or background elements."
-        },
-        {
-          "path": "frontend/src/components/ServicesSection.tsx",
-          "operation": "modify",
-          "description": "Verify that service card borders, icons, or accent colors use the updated primary color classes. The dhani color should be reflected in any elements currently styled with the forest/primary green."
-        },
-        {
-          "path": "frontend/src/components/AnnouncementsSection.tsx",
-          "operation": "modify",
-          "description": "Verify that announcement card borders, headings, or accent elements use the updated primary color classes. Ensure consistency with the dhani color scheme."
-        },
-        {
-          "path": "frontend/src/components/DonateSection.tsx",
-          "operation": "modify",
-          "description": "Verify that the CTA buttons and any decorative accents in the donation section use the updated primary color classes (e.g., bg-forest). The dhani color will be applied through the global theme."
-        },
-        {
-          "path": "frontend/src/components/ContactSection.tsx",
-          "operation": "modify",
-          "description": "Verify that the contact form submit button and any section accents use the updated primary color classes. Ensure the dhani color is consistently applied to interactive elements."
+          "description": "Locate the stat counter for 'समाज की सेवा में समर्पित' (Dedicated to Social Service) within the AboutSection component and change its numeric value to 0. Keep all other stats, styling, and content unchanged."
         }
       ]
     }

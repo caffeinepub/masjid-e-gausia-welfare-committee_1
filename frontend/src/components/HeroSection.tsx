@@ -1,86 +1,89 @@
+import React from 'react';
+import { Heart, ChevronDown } from 'lucide-react';
+
 export default function HeroSection() {
-    const handleScrollTo = (href: string) => {
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-    };
+  const handleScroll = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
-    return (
-        <section className="relative min-h-[520px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
-            {/* Background Image */}
-            <div className="absolute inset-0">
-                <img
-                    src="/assets/generated/mosque-hero-banner.dim_1440x600.png"
-                    alt="मस्जिद ए गौसिया"
-                    className="w-full h-full object-cover object-center"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 hero-overlay" />
-            </div>
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src="/assets/generated/mosque-hero.dim_1920x1080.png"
+          alt="मस्जिद ए गौसिया"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-near-black/70 via-near-black/50 to-near-black/80" />
+      </div>
 
-            {/* Decorative top border */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gold z-10" />
+      {/* Geometric pattern overlay */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
+        <img
+          src="/assets/generated/geometric-pattern.dim_800x800.png"
+          alt=""
+          className="w-full h-full object-cover mix-blend-overlay"
+        />
+      </div>
 
-            {/* Content */}
-            <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto py-16">
-                {/* Decorative star */}
-                <div className="flex justify-center mb-6">
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M24 2L28.5 18H44L31.5 27.5L36 44L24 34.5L12 44L16.5 27.5L4 18H19.5L24 2Z"
-                            fill="oklch(0.78 0.12 75)"
-                            opacity="0.9"
-                        />
-                        <circle cx="24" cy="24" r="6" fill="oklch(0.78 0.12 75)" opacity="0.6" />
-                    </svg>
-                </div>
+      {/* Content */}
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
+        {/* Bismillah */}
+        <p className="text-gold text-2xl sm:text-3xl mb-4 font-arabic tracking-widest opacity-90">
+          بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+        </p>
 
-                <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-cream leading-tight mb-4">
-                    मस्जिद ए गौसिया
-                </h1>
-                <h2 className="font-playfair text-xl sm:text-2xl md:text-3xl font-semibold text-gold mb-2">
-                    वेलफेयर कमिटी
-                </h2>
-                <p className="font-cormorant text-base sm:text-lg text-gold/80 mb-6 tracking-wide">
-                    महराजगंज, जौनपुर
-                </p>
+        {/* Logo */}
+        <div className="flex justify-center mb-6">
+          <img
+            src="/assets/generated/committee-logo.dim_256x256.png"
+            alt="Committee Logo"
+            className="w-24 h-24 rounded-full border-4 border-gold/60 shadow-2xl object-cover"
+          />
+        </div>
 
-                {/* Gold divider */}
-                <div className="flex items-center justify-center gap-3 mb-6">
-                    <div className="h-px w-16 bg-gold/60" />
-                    <div className="w-2 h-2 bg-gold rounded-full" />
-                    <div className="h-px w-16 bg-gold/60" />
-                </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ivory mb-4 font-serif leading-tight">
+          मस्जिद ए गौसिया
+        </h1>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl text-gold font-semibold mb-6 font-serif">
+          वेलफेयर कमेटी
+        </h2>
 
-                <p className="font-cormorant text-lg sm:text-xl md:text-2xl text-cream/90 italic mb-8 max-w-2xl mx-auto leading-relaxed">
-                    "आस्था और करुणा के साथ समुदाय की सेवा में समर्पित"
-                </p>
+        <p className="text-ivory/85 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          समाज की सेवा, शिक्षा का प्रसार, और जरूरतमंदों की मदद के लिए समर्पित एक संस्था।
+          हम मिलकर एक बेहतर समाज बनाते हैं।
+        </p>
 
-                <p className="text-cream/75 text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed">
-                    शिक्षा, स्वास्थ्य सेवा और सामुदायिक कल्याण के माध्यम से जीवन को उन्नत करने के लिए समर्पित — इस्लाम के सिद्धांतों और भाईचारे की भावना से प्रेरित।
-                </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={() => handleScroll('#donate')}
+            className="flex items-center justify-center gap-2 px-8 py-4 bg-orange text-white font-bold text-lg rounded-full hover:bg-orange/90 transition-all duration-200 shadow-lg hover:shadow-orange/30 hover:scale-105"
+          >
+            <Heart className="w-5 h-5 fill-current" />
+            दान करें
+          </button>
+          <button
+            onClick={() => handleScroll('#about')}
+            className="flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-ivory font-bold text-lg rounded-full border-2 border-gold/60 hover:bg-gold/10 hover:border-gold transition-all duration-200"
+          >
+            हमारे बारे में जानें
+          </button>
+        </div>
+      </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        onClick={() => handleScrollTo('#about')}
-                        className="btn-gold font-playfair text-base"
-                    >
-                        अधिक जानें
-                    </button>
-                    <button
-                        onClick={() => handleScrollTo('#donate')}
-                        className="border-2 border-gold text-gold hover:bg-gold hover:text-forest-dark px-6 py-3 rounded font-semibold transition-all duration-200 font-playfair text-base"
-                    >
-                        हमारे उद्देश्य का समर्थन करें
-                    </button>
-                </div>
-            </div>
-
-            {/* Bottom wave */}
-            <div className="absolute bottom-0 left-0 right-0">
-                <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-                    <path d="M0 60L1440 60L1440 20C1200 60 960 0 720 20C480 40 240 0 0 20L0 60Z" fill="oklch(0.97 0.012 85)" />
-                </svg>
-            </div>
-        </section>
-    );
+      {/* Scroll indicator */}
+      <button
+        onClick={() => handleScroll('#about')}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/70 hover:text-gold transition-colors animate-bounce"
+        aria-label="नीचे स्क्रॉल करें"
+      >
+        <ChevronDown className="w-8 h-8" />
+      </button>
+    </section>
+  );
 }
