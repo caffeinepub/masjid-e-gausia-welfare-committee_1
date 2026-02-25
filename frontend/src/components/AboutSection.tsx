@@ -4,23 +4,23 @@ import GeometricDivider from './GeometricDivider';
 const values = [
     {
         icon: Heart,
-        title: 'Compassion',
-        description: 'We serve every member of our community with empathy, care, and unconditional support.',
+        title: 'करुणा',
+        description: 'हम अपने समुदाय के हर सदस्य की सेवा सहानुभूति, देखभाल और बिना शर्त समर्थन के साथ करते हैं।',
     },
     {
         icon: Users,
-        title: 'Brotherhood',
-        description: 'Fostering unity and solidarity among all community members regardless of background.',
+        title: 'भाईचारा',
+        description: 'पृष्ठभूमि की परवाह किए बिना सभी समुदाय के सदस्यों के बीच एकता और एकजुटता को बढ़ावा देना।',
     },
     {
         icon: BookOpen,
-        title: 'Education',
-        description: 'Empowering the next generation through knowledge, learning, and spiritual growth.',
+        title: 'शिक्षा',
+        description: 'ज्ञान, सीखने और आध्यात्मिक विकास के माध्यम से अगली पीढ़ी को सशक्त बनाना।',
     },
     {
         icon: Star,
-        title: 'Integrity',
-        description: 'Operating with transparency, honesty, and accountability in all our endeavors.',
+        title: 'ईमानदारी',
+        description: 'हमारे सभी प्रयासों में पारदर्शिता, सच्चाई और जवाबदेही के साथ कार्य करना।',
     },
 ];
 
@@ -30,8 +30,8 @@ export default function AboutSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">Who We Are</p>
-                    <h2 className="section-title mb-4">About Us</h2>
+                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">हम कौन हैं</p>
+                    <h2 className="section-title mb-4">हमारे बारे में</h2>
                     <div className="gold-divider" />
                 </div>
 
@@ -40,19 +40,13 @@ export default function AboutSection() {
                     {/* Text Content */}
                     <div className="space-y-5">
                         <p className="font-cormorant text-xl text-forest-dark leading-relaxed">
-                            The <strong>Masjid-e-Gausia Welfare Committee</strong> is a community-driven organization
-                            dedicated to serving the needs of our local Muslim community and beyond.
+                            <strong>मस्जिद ए गौसिया वेलफेयर कमिटी, महराजगंज, जौनपुर</strong> एक समुदाय-संचालित संगठन है जो हमारे स्थानीय मुस्लिम समुदाय और उससे परे की जरूरतों की सेवा के लिए समर्पित है।
                         </p>
                         <p className="text-foreground/80 leading-relaxed">
-                            Founded on the principles of Islamic brotherhood and social responsibility, our committee
-                            works tirelessly to provide essential services, support vulnerable families, and strengthen
-                            the bonds of our community. We believe that every individual deserves dignity, opportunity,
-                            and care.
+                            इस्लामी भाईचारे और सामाजिक जिम्मेदारी के सिद्धांतों पर स्थापित, हमारी कमिटी आवश्यक सेवाएं प्रदान करने, कमजोर परिवारों का समर्थन करने और हमारे समुदाय के बंधनों को मजबूत करने के लिए अथक परिश्रम करती है। हमारा मानना है कि हर व्यक्ति सम्मान, अवसर और देखभाल का हकदार है।
                         </p>
                         <p className="text-foreground/80 leading-relaxed">
-                            Our programs span education support, food distribution, medical assistance, and community
-                            events — all aimed at creating a thriving, self-sufficient community rooted in faith and
-                            compassion.
+                            हमारे कार्यक्रमों में शिक्षा सहायता, खाद्य वितरण, चिकित्सा सहायता और सामुदायिक कार्यक्रम शामिल हैं — सभी का उद्देश्य आस्था और करुणा में निहित एक समृद्ध, आत्मनिर्भर समुदाय बनाना है।
                         </p>
                         <div className="flex items-center gap-3 pt-2">
                             <div className="h-px flex-1 bg-gold/30" />
@@ -60,8 +54,8 @@ export default function AboutSection() {
                             <div className="h-px flex-1 bg-gold/30" />
                         </div>
                         <blockquote className="font-cormorant text-lg italic text-forest border-l-4 border-gold pl-4">
-                            "The best of people are those who are most beneficial to others."
-                            <footer className="text-sm text-muted-foreground mt-1 not-italic">— Prophet Muhammad ﷺ</footer>
+                            "लोगों में सबसे अच्छे वे हैं जो दूसरों के लिए सबसे अधिक लाभकारी हैं।"
+                            <footer className="text-sm text-muted-foreground mt-1 not-italic">— पैगंबर मुहम्मद ﷺ</footer>
                         </blockquote>
                     </div>
 
@@ -81,27 +75,22 @@ export default function AboutSection() {
                                 </svg>
                             </div>
                             <div className="relative z-10 space-y-6">
-                                <h3 className="font-playfair text-2xl font-bold text-gold">Our Mission</h3>
+                                <h3 className="font-playfair text-2xl font-bold text-gold">हमारा मिशन</h3>
                                 <p className="text-cream/90 leading-relaxed">
-                                    To serve as a beacon of hope and support for our community — providing welfare
-                                    services, promoting education, and nurturing spiritual well-being for all.
+                                    महराजगंज, जौनपुर के समुदाय के लिए आशा और समर्थन का केंद्र बनना — कल्याण सेवाएं प्रदान करना, शिक्षा को बढ़ावा देना और सभी के लिए आध्यात्मिक कल्याण का पोषण करना।
                                 </p>
-                                <div className="grid grid-cols-2 gap-4 pt-2">
-                                    <div className="text-center p-4 bg-forest-light/30 rounded-lg">
-                                        <div className="font-playfair text-3xl font-bold text-gold">500+</div>
-                                        <div className="text-cream/80 text-sm mt-1">Families Served</div>
-                                    </div>
+                                <div className="grid grid-cols-3 gap-4 pt-2">
                                     <div className="text-center p-4 bg-forest-light/30 rounded-lg">
                                         <div className="font-playfair text-3xl font-bold text-gold">10+</div>
-                                        <div className="text-cream/80 text-sm mt-1">Years of Service</div>
+                                        <div className="text-cream/80 text-sm mt-1">सेवा के वर्ष</div>
                                     </div>
                                     <div className="text-center p-4 bg-forest-light/30 rounded-lg">
                                         <div className="font-playfair text-3xl font-bold text-gold">4</div>
-                                        <div className="text-cream/80 text-sm mt-1">Core Programs</div>
+                                        <div className="text-cream/80 text-sm mt-1">मुख्य कार्यक्रम</div>
                                     </div>
                                     <div className="text-center p-4 bg-forest-light/30 rounded-lg">
                                         <div className="font-playfair text-3xl font-bold text-gold">100+</div>
-                                        <div className="text-cream/80 text-sm mt-1">Volunteers</div>
+                                        <div className="text-cream/80 text-sm mt-1">स्वयंसेवक</div>
                                     </div>
                                 </div>
                             </div>

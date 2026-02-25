@@ -6,7 +6,7 @@ import type { Announcement } from '../backend';
 function formatDate(timestamp: bigint): string {
     const ms = Number(timestamp) / 1_000_000;
     const date = new Date(ms);
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString('hi-IN', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -45,11 +45,11 @@ export default function AnnouncementsSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">Stay Informed</p>
-                    <h2 className="section-title mb-4">Announcements & News</h2>
+                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">अपडेट रहें</p>
+                    <h2 className="section-title mb-4">घोषणाएं और समाचार</h2>
                     <div className="gold-divider" />
                     <p className="text-muted-foreground mt-6 max-w-xl mx-auto">
-                        Stay up to date with the latest news, events, and announcements from the Masjid-e-Gausia Welfare Committee.
+                        मस्जिद-ए-गौसिया वेलफेयर कमेटी की नवीनतम खबरों, कार्यक्रमों और घोषणाओं से अपडेट रहें।
                     </p>
                 </div>
 
@@ -57,14 +57,14 @@ export default function AnnouncementsSection() {
                 {isLoading && (
                     <div className="flex flex-col items-center justify-center py-16 gap-4">
                         <Loader2 className="w-10 h-10 text-forest animate-spin" />
-                        <p className="text-muted-foreground">Loading announcements...</p>
+                        <p className="text-muted-foreground">घोषणाएं लोड हो रही हैं...</p>
                     </div>
                 )}
 
                 {isError && (
                     <div className="flex flex-col items-center justify-center py-16 gap-4">
                         <AlertCircle className="w-10 h-10 text-destructive" />
-                        <p className="text-muted-foreground">Unable to load announcements. Please try again later.</p>
+                        <p className="text-muted-foreground">घोषणाएं लोड करने में त्रुटि। कृपया बाद में पुनः प्रयास करें।</p>
                     </div>
                 )}
 
@@ -73,9 +73,9 @@ export default function AnnouncementsSection() {
                         <div className="w-16 h-16 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4">
                             <Bell className="w-8 h-8 text-forest/40" />
                         </div>
-                        <h3 className="font-playfair text-xl text-forest-dark mb-2">No Announcements Yet</h3>
+                        <h3 className="font-playfair text-xl text-forest-dark mb-2">अभी कोई घोषणा नहीं है</h3>
                         <p className="text-muted-foreground">
-                            There are no announcements at this time. Please check back soon.
+                            इस समय कोई घोषणा नहीं है। कृपया जल्द वापस देखें।
                         </p>
                     </div>
                 )}

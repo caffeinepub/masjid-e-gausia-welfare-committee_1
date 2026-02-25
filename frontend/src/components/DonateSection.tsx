@@ -2,10 +2,10 @@ import { Heart, Banknote, Phone, Mail } from 'lucide-react';
 import GeometricDivider from './GeometricDivider';
 
 const donationImpacts = [
-    { amount: '₹500', impact: 'Feeds a family for a week' },
-    { amount: '₹1,000', impact: 'Provides school supplies for a child' },
-    { amount: '₹2,500', impact: 'Covers medical expenses for one patient' },
-    { amount: '₹5,000', impact: 'Sponsors a student for a month' },
+    { amount: '₹500', impact: 'एक परिवार को एक सप्ताह का भोजन मिलता है' },
+    { amount: '₹1,000', impact: 'एक बच्चे के लिए स्कूल की सामग्री मिलती है' },
+    { amount: '₹2,500', impact: 'एक मरीज का चिकित्सा खर्च पूरा होता है' },
+    { amount: '₹5,000', impact: 'एक महीने के लिए एक छात्र को प्रायोजित किया जाता है' },
 ];
 
 export default function DonateSection() {
@@ -34,13 +34,13 @@ export default function DonateSection() {
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">Make a Difference</p>
+                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">बदलाव लाएं</p>
                     <h2 className="font-playfair text-3xl md:text-4xl font-bold text-cream mb-4">
-                        Support Our Mission
+                        हमारा समर्थन करें
                     </h2>
                     <div className="w-24 h-1 bg-gold mx-auto my-4 rounded-full" />
                     <p className="text-cream/80 mt-6 max-w-2xl mx-auto leading-relaxed text-lg font-cormorant italic">
-                        "Whoever saves one life, it is as if he has saved all of mankind." — Quran 5:32
+                        "जो एक जीवन बचाता है, वह मानो पूरी मानवजाति को बचाता है।" — कुरान 5:32
                     </p>
                 </div>
 
@@ -51,19 +51,17 @@ export default function DonateSection() {
                         <div className="bg-cream/10 backdrop-blur-sm rounded-lg p-6 border border-gold/20">
                             <div className="flex items-center gap-3 mb-4">
                                 <Heart className="w-6 h-6 text-gold" />
-                                <h3 className="font-playfair text-xl font-semibold text-cream">Why Your Support Matters</h3>
+                                <h3 className="font-playfair text-xl font-semibold text-cream">आपका समर्थन क्यों मायने रखता है</h3>
                             </div>
                             <p className="text-cream/85 leading-relaxed">
-                                Every contribution, no matter how small, makes a profound difference in the lives of
-                                those we serve. Your generosity enables us to continue our welfare programs and reach
-                                more families in need.
+                                हर योगदान, चाहे कितना भी छोटा हो, उन लोगों के जीवन में गहरा अंतर लाता है जिनकी हम सेवा करते हैं। आपकी उदारता हमें अपने कल्याण कार्यक्रमों को जारी रखने और अधिक जरूरतमंद परिवारों तक पहुंचने में सक्षम बनाती है।
                             </p>
                         </div>
 
                         <div className="bg-cream/10 backdrop-blur-sm rounded-lg p-6 border border-gold/20">
                             <div className="flex items-center gap-3 mb-4">
                                 <Banknote className="w-6 h-6 text-gold" />
-                                <h3 className="font-playfair text-xl font-semibold text-cream">Your Donation Impact</h3>
+                                <h3 className="font-playfair text-xl font-semibold text-cream">आपके दान का प्रभाव</h3>
                             </div>
                             <div className="space-y-3">
                                 {donationImpacts.map((item) => (
@@ -80,34 +78,35 @@ export default function DonateSection() {
                     <div className="space-y-6">
                         <div className="bg-cream rounded-lg p-8 border-2 border-gold shadow-gold">
                             <h3 className="font-playfair text-2xl font-bold text-forest-dark mb-2 text-center">
-                                Donate Now
+                                अभी दान करें
                             </h3>
                             <div className="w-16 h-0.5 bg-gold mx-auto mb-6" />
 
                             <div className="space-y-4 mb-6">
                                 <div className="bg-cream-dark rounded-lg p-4">
-                                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Bank Transfer</p>
-                                    <p className="font-semibold text-forest-dark">Masjid-e-Gausia Welfare Committee</p>
-                                    <p className="text-sm text-foreground/70 mt-1">Account No: XXXX-XXXX-XXXX</p>
-                                    <p className="text-sm text-foreground/70">IFSC: XXXXXXXX</p>
-                                    <p className="text-sm text-foreground/70">Bank: [Bank Name], [Branch]</p>
+                                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">बैंक ट्रांसफर</p>
+                                    <p className="font-semibold text-forest-dark">मस्जिद ए गौसिया वेलफेयर कमिटी</p>
+                                    <p className="text-xs text-muted-foreground">महराजगंज, जौनपुर</p>
+                                    <p className="text-sm text-foreground/70 mt-1">खाता संख्या: XXXX-XXXX-XXXX</p>
+                                    <p className="text-sm text-foreground/70">आईएफएससी कोड: XXXXXXXX</p>
+                                    <p className="text-sm text-foreground/70">बैंक का नाम: [बैंक का नाम], [शाखा]</p>
                                 </div>
 
                                 <div className="bg-cream-dark rounded-lg p-4">
-                                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">UPI / QR Code</p>
+                                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">UPI / QR कोड</p>
                                     <p className="font-semibold text-forest-dark">UPI ID: masjidgausia@upi</p>
-                                    <p className="text-sm text-foreground/70 mt-1">Scan QR code at our office</p>
+                                    <p className="text-sm text-foreground/70 mt-1">हमारे कार्यालय में QR कोड स्कैन करें</p>
                                 </div>
                             </div>
 
                             <div className="space-y-3">
                                 <div className="flex items-center gap-2 text-sm text-foreground/70">
                                     <Phone className="w-4 h-4 text-forest" />
-                                    <span>Call us: +91 XXXXX XXXXX</span>
+                                    <span>फोन: +91 XXXXX XXXXX</span>
                                 </div>
                                 <div className="flex items-center gap-2 text-sm text-foreground/70">
                                     <Mail className="w-4 h-4 text-forest" />
-                                    <span>Email: donate@masjidgausia.org</span>
+                                    <span>ईमेल: donate@masjidgausia.org</span>
                                 </div>
                             </div>
 
@@ -115,12 +114,12 @@ export default function DonateSection() {
                                 onClick={handleScrollToContact}
                                 className="w-full mt-6 btn-primary text-center font-playfair text-base"
                             >
-                                Contact Us to Donate
+                                दान के लिए हमसे संपर्क करें
                             </button>
                         </div>
 
                         <p className="text-cream/60 text-xs text-center">
-                            All donations are used solely for community welfare programs. Receipts available on request.
+                            सभी दान केवल सामुदायिक कल्याण कार्यक्रमों के लिए उपयोग किए जाते हैं। अनुरोध पर रसीद उपलब्ध है।
                         </p>
                     </div>
                 </div>

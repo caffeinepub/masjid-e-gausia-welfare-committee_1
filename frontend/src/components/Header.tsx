@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-    { label: 'About Us', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Announcements', href: '#announcements' },
-    { label: 'Donate', href: '#donate' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'हमारे बारे में', href: '#about' },
+    { label: 'सेवाएं', href: '#services' },
+    { label: 'घोषणाएं', href: '#announcements' },
+    { label: 'दान करें', href: '#donate' },
+    { label: 'संपर्क करें', href: '#contact' },
 ];
 
 export default function Header() {
@@ -32,16 +32,19 @@ export default function Header() {
                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-gold flex-shrink-0">
                             <img
                                 src="/assets/generated/committee-logo.dim_256x256.png"
-                                alt="Masjid-e-Gausia Welfare Committee Logo"
+                                alt="मस्जिद ए गौसिया वेलफेयर कमिटी लोगो"
                                 className="w-full h-full object-cover"
                             />
                         </div>
                         <div>
                             <p className="font-playfair text-gold font-bold text-sm md:text-base leading-tight">
-                                Masjid-e-Gausia
+                                मस्जिद ए गौसिया
                             </p>
                             <p className="text-cream text-xs leading-tight opacity-80">
-                                Welfare Committee
+                                वेलफेयर कमिटी
+                            </p>
+                            <p className="text-cream/60 text-xs leading-tight">
+                                महराजगंज, जौनपुर
                             </p>
                         </div>
                     </div>
@@ -63,7 +66,7 @@ export default function Header() {
                     <button
                         className="md:hidden text-cream hover:text-gold transition-colors p-2"
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        aria-label="Toggle menu"
+                        aria-label="मेनू टॉगल करें"
                     >
                         {mobileOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>

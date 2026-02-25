@@ -10,7 +10,7 @@ export default function HeroSection() {
             <div className="absolute inset-0">
                 <img
                     src="/assets/generated/mosque-hero-banner.dim_1440x600.png"
-                    alt="Masjid-e-Gausia"
+                    alt="मस्जिद ए गौसिया"
                     className="w-full h-full object-cover object-center"
                 />
                 {/* Overlay */}
@@ -35,11 +35,14 @@ export default function HeroSection() {
                 </div>
 
                 <h1 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-cream leading-tight mb-4">
-                    Masjid-e-Gausia
+                    मस्जिद ए गौसिया
                 </h1>
-                <h2 className="font-playfair text-xl sm:text-2xl md:text-3xl font-semibold text-gold mb-6">
-                    Welfare Committee
+                <h2 className="font-playfair text-xl sm:text-2xl md:text-3xl font-semibold text-gold mb-2">
+                    वेलफेयर कमिटी
                 </h2>
+                <p className="font-cormorant text-base sm:text-lg text-gold/80 mb-6 tracking-wide">
+                    महराजगंज, जौनपुर
+                </p>
 
                 {/* Gold divider */}
                 <div className="flex items-center justify-center gap-3 mb-6">
@@ -49,11 +52,11 @@ export default function HeroSection() {
                 </div>
 
                 <p className="font-cormorant text-lg sm:text-xl md:text-2xl text-cream/90 italic mb-8 max-w-2xl mx-auto leading-relaxed">
-                    "Serving the Community with Faith and Compassion"
+                    "आस्था और करुणा के साथ समुदाय की सेवा में समर्पित"
                 </p>
 
                 <p className="text-cream/75 text-sm sm:text-base max-w-xl mx-auto mb-10 leading-relaxed">
-                    Dedicated to uplifting lives through education, healthcare, and community welfare — guided by the principles of Islam and the spirit of brotherhood.
+                    शिक्षा, स्वास्थ्य सेवा और सामुदायिक कल्याण के माध्यम से जीवन को उन्नत करने के लिए समर्पित — इस्लाम के सिद्धांतों और भाईचारे की भावना से प्रेरित।
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,13 +64,13 @@ export default function HeroSection() {
                         onClick={() => handleScrollTo('#about')}
                         className="btn-gold font-playfair text-base"
                     >
-                        Learn More
+                        अधिक जानें
                     </button>
                     <button
                         onClick={() => handleScrollTo('#donate')}
                         className="border-2 border-gold text-gold hover:bg-gold hover:text-forest-dark px-6 py-3 rounded font-semibold transition-all duration-200 font-playfair text-base"
                     >
-                        Support Us
+                        हमारे उद्देश्य का समर्थन करें
                     </button>
                 </div>
             </div>

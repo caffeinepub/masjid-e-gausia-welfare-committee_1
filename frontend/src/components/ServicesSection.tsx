@@ -4,44 +4,44 @@ import GeometricDivider from './GeometricDivider';
 const services = [
     {
         icon: GraduationCap,
-        title: 'Education Support',
+        title: 'शिक्षा सहायता',
         description:
-            'Providing scholarships, tutoring, and educational resources to students from underprivileged families. We believe education is the foundation of a better future.',
+            'वंचित परिवारों के छात्रों को छात्रवृत्ति, ट्यूशन और शैक्षिक संसाधन प्रदान करना। हमारा मानना है कि शिक्षा एक बेहतर भविष्य की नींव है।',
         color: 'bg-forest/10 text-forest',
     },
     {
         icon: ShoppingBasket,
-        title: 'Food & Ration Distribution',
+        title: 'भोजन और राशन वितरण',
         description:
-            'Monthly ration distribution to needy families, ensuring no one in our community goes hungry. Special food drives during Ramadan and Eid.',
+            'जरूरतमंद परिवारों को मासिक राशन वितरण, यह सुनिश्चित करना कि हमारे समुदाय में कोई भूखा न रहे। रमजान और ईद के दौरान विशेष खाद्य अभियान।',
         color: 'bg-gold/10 text-gold-dark',
     },
     {
         icon: Stethoscope,
-        title: 'Medical Assistance',
+        title: 'चिकित्सा सहायता',
         description:
-            'Facilitating access to healthcare for those who cannot afford it — including medical camps, medicine distribution, and hospital referrals.',
+            'उन लोगों के लिए स्वास्थ्य सेवा तक पहुंच सुगम बनाना जो इसे वहन नहीं कर सकते — चिकित्सा शिविर, दवा वितरण और अस्पताल रेफरल सहित।',
         color: 'bg-forest/10 text-forest',
     },
     {
         icon: CalendarDays,
-        title: 'Community Events',
+        title: 'सामुदायिक कार्यक्रम',
         description:
-            'Organizing Islamic lectures, Quran recitation programs, Eid celebrations, and community gatherings to strengthen our bonds.',
+            'इस्लामी व्याख्यान, कुरान पाठ कार्यक्रम, ईद समारोह और सामुदायिक सभाओं का आयोजन करना ताकि हमारे बंधन मजबूत हों।',
         color: 'bg-gold/10 text-gold-dark',
     },
     {
         icon: Home,
-        title: 'Housing Aid',
+        title: 'आवास सहायता',
         description:
-            'Assisting families in need with temporary shelter support and home repair assistance for the most vulnerable members of our community.',
+            'हमारे समुदाय के सबसे कमजोर सदस्यों के लिए अस्थायी आश्रय समर्थन और घर की मरम्मत सहायता के साथ जरूरतमंद परिवारों की मदद करना।',
         color: 'bg-forest/10 text-forest',
     },
     {
         icon: HandHeart,
-        title: 'Widow & Orphan Care',
+        title: 'विधवा और अनाथ देखभाल',
         description:
-            'Dedicated support programs for widows and orphans, providing financial assistance, counseling, and community integration.',
+            'विधवाओं और अनाथों के लिए समर्पित सहायता कार्यक्रम, वित्तीय सहायता, परामर्श और सामुदायिक एकीकरण प्रदान करना।',
         color: 'bg-gold/10 text-gold-dark',
     },
 ];
@@ -52,12 +52,11 @@ export default function ServicesSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <div className="text-center mb-14">
-                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">What We Do</p>
-                    <h2 className="section-title mb-4">Services & Programs</h2>
+                    <p className="text-gold font-medium text-sm uppercase tracking-widest mb-2">हम क्या करते हैं</p>
+                    <h2 className="section-title mb-4">सेवाएं और कार्यक्रम</h2>
                     <div className="gold-divider" />
                     <p className="text-muted-foreground mt-6 max-w-2xl mx-auto leading-relaxed">
-                        Our welfare programs are designed to address the most pressing needs of our community,
-                        guided by the Islamic principles of charity, justice, and compassion.
+                        हमारे कल्याण कार्यक्रम हमारे समुदाय की सबसे जरूरी जरूरतों को पूरा करने के लिए बनाए गए हैं, जो दान, न्याय और करुणा के इस्लामी सिद्धांतों द्वारा निर्देशित हैं।
                     </p>
                 </div>
 
@@ -68,27 +67,14 @@ export default function ServicesSection() {
                         return (
                             <div
                                 key={service.title}
-                                className="service-card group"
-                                style={{ animationDelay: `${index * 0.1}s` }}
+                                className="bg-card rounded-lg p-6 border border-border hover:border-gold/40 hover:shadow-md transition-all duration-200 flex flex-col gap-4"
                             >
-                                {/* Icon */}
-                                <div className={`w-14 h-14 rounded-lg flex items-center justify-center mb-5 ${service.color} transition-transform duration-300 group-hover:scale-110`}>
-                                    <Icon className="w-7 h-7" />
+                                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${service.color}`}>
+                                    <Icon className="w-6 h-6" />
                                 </div>
-
-                                {/* Content */}
-                                <h3 className="font-playfair text-xl font-semibold text-forest-dark mb-3">
-                                    {service.title}
-                                </h3>
-                                <p className="text-muted-foreground text-sm leading-relaxed">
-                                    {service.description}
-                                </p>
-
-                                {/* Bottom accent */}
-                                <div className="mt-5 pt-4 border-t border-border">
-                                    <span className="text-gold text-xs font-medium uppercase tracking-wider">
-                                        Learn More →
-                                    </span>
+                                <div>
+                                    <h3 className="font-playfair text-lg font-semibold text-forest-dark mb-2">{service.title}</h3>
+                                    <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
                                 </div>
                             </div>
                         );

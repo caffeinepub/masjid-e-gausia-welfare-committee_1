@@ -1,19 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Build a single-page website for Masjid-e-Gausia Welfare Committee with an Islamic-themed design, informational sections, and a backend for announcements and contact inquiries.
+**Goal:** Update all instances of the organization name and location across the website to "Masjid-e-Gausia Welfare Committee, Maharajganj, Jaunpur".
 
 **Planned changes:**
-- Apply a deep green, gold, and cream color palette with Islamic geometric decorative elements and elegant typography throughout
-- Hero/header section with organization name, tagline, mosque banner image, logo, and navigation bar linking to all sections
-- About Us section with mission, values, and placeholder community description text
-- Services & Programs section with four welfare activity cards (Education Support, Food & Ration Distribution, Medical Assistance, Community Events), each with an icon, title, and description in a responsive grid
-- Announcements/News section that fetches and displays announcements from the backend, sorted newest first, with an empty state message
-- Donate/Support Us section with a prominent call-to-action and placeholder donation/contact details
-- Contact Us footer section with address, phone, email placeholders and a contact form (name, email, message, submit)
-- Decorative geometric divider images used between major sections
-- Backend Motoko actor with stable storage for announcements (title, body, date) with public query and admin add function
-- Backend Motoko actor stores contact form submissions (name, email, message) in stable storage
-- Display the mosque hero banner as hero background, committee logo in the navigation, and geometric divider between sections
+- Update the browser tab title in `index.html` to "Masjid-e-Gausia Welfare Committee"
+- Update the Header component to display "Masjid-e-Gausia Welfare Committee" as the organization name
+- Update the HeroSection title/tagline with the correct organization name
+- Update the AboutSection, DonateSection, and any other components referencing the organization name
+- Update the ContactSection address to show "Maharajganj, Jaunpur"
+- Where Hindi text is used, update to "मस्जिद ए गौसिया वेलफेयर कमिटी" and "महराजगंज, जौनपुर"
 
-**User-visible outcome:** Visitors can browse an elegant Islamic-themed community website, read announcements pulled from the backend, learn about services, find donation/contact info, and submit contact inquiries that are stored on-chain.
+**User-visible outcome:** The entire website consistently displays the correct organization name "Masjid-e-Gausia Welfare Committee" and location "Maharajganj, Jaunpur" across all sections and the browser tab title.
