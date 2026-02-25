@@ -1,39 +1,40 @@
 {
   "kind": "build_request",
-  "title": "Update organization name to Masjid-e-Gausia Welfare Committee, Maharajganj Jaunpur",
-  "projectName": "Masjid-e-Gausia Welfare Committee",
+  "title": "Apply Dhani (Dark Green) Color Theme to Website",
+  "projectName": "Masjid-e-Gausia Welfare",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update all instances of the organization name and location across the website to read 'Masjid-e-Gausia Welfare Committee, Maharajganj, Jaunpur'. This includes the page title in index.html, the Header component (logo/name display), HeroSection tagline/title, AboutSection, ContactSection address, DonateSection, and any other component that references the organization name or location.",
+      "text": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-10"
+          "msg-1"
         ],
         "quotes": [
-          "मस्जिद ए गौसिया वेलफेयर कमिटी\nमहराजगंज जौनपुर करे"
+          "वेबसाइट को धानी कलर करे"
         ]
       },
       "acceptanceCriteria": [
-        "The browser tab title shows 'Masjid-e-Gausia Welfare Committee'",
-        "The Header displays 'Masjid-e-Gausia Welfare Committee' as the organization name",
-        "The location 'Maharajganj, Jaunpur' appears in the contact/address section",
-        "All sections consistently reference the correct organization name and location",
-        "Hindi text for the name reads 'मस्जिद ए गौसिया वेलफेयर कमिटी' and location reads 'महराजगंज, जौनपुर' where Hindi is used"
+        "The header/navbar background uses the dhani color (#4a7c59 or closest equivalent earthy olive-green).",
+        "Primary buttons (CTA buttons in HeroSection, DonateSection, ContactSection) use the dhani color as their background.",
+        "Section headings and decorative accents across all sections (About, Services, Announcements, Donate, Contact) reflect the dhani color.",
+        "The Tailwind config and CSS custom properties (--color-forest or equivalent) are updated to the dhani value.",
+        "The overall color feel is cohesive and consistent — no components are left with the old primary green."
       ]
     }
   ],
   "constraints": [
-    "Do not alter the Islamic visual theme (deep green, gold, cream color palette)",
-    "Do not change any backend data models or CRUD logic",
-    "Do not modify immutable frontend paths (hooks, main.tsx, ui components)"
+    "Do not modify files under frontend/src/hooks/ or frontend/src/components/ui.",
+    "Do not change any Hindi-language text content on the website.",
+    "Do not alter the layout or structure of any section — only color values should change."
   ],
   "nonGoals": [
-    "Adding new sections or features",
-    "Changing the website language or layout",
-    "Modifying backend announcement or contact inquiry logic"
+    "Redesigning the layout or typography.",
+    "Adding new sections or features.",
+    "Changing the gold/cream accent colors unless needed for contrast with the new dhani primary.",
+    "Backend changes of any kind."
   ],
   "imageRequirements": {
     "required": [],

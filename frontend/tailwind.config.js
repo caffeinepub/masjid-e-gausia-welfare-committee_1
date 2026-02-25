@@ -66,11 +66,11 @@ export default {
                     border: 'oklch(var(--sidebar-border))',
                     ring: 'oklch(var(--sidebar-ring))'
                 },
-                /* Islamic theme custom colors */
+                /* Dhani (earthy olive-green) theme custom colors */
                 forest: {
-                    DEFAULT: 'oklch(0.32 0.09 160)',
-                    dark: 'oklch(0.22 0.08 160)',
-                    light: 'oklch(0.42 0.09 160)',
+                    DEFAULT: 'oklch(0.49 0.08 152)',
+                    dark: 'oklch(0.36 0.07 152)',
+                    light: 'oklch(0.60 0.08 152)',
                 },
                 gold: {
                     DEFAULT: 'oklch(0.78 0.12 75)',
@@ -95,7 +95,7 @@ export default {
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
                 gold: '0 4px 20px oklch(0.78 0.12 75 / 0.3)',
-                forest: '0 4px 20px oklch(0.32 0.09 160 / 0.3)',
+                forest: '0 4px 20px oklch(0.49 0.08 152 / 0.3)',
             },
             keyframes: {
                 'accordion-down': {

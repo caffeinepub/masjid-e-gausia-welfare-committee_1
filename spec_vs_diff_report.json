@@ -1,19 +1,15 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T08:34:41.926Z",
-  "summary": "The diff implements REQ-1 comprehensively across all required components. The browser tab title in index.html shows 'मस्जिद ए गौसिया वेलफेयर कमिटी', the Header displays the organization name and location in Hindi, HeroSection shows the name and 'महराजगंज, जौनपुर', AboutSection uses the full Hindi name with location, ContactSection includes the full address, and DonateSection references the organization name and location. All acceptance criteria appear to be met.",
+  "generatedAt": "2026-02-25T08:47:49.628Z",
+  "summary": "The diff updates the CSS custom properties in index.css and the Tailwind config (tailwind.config.js) to use dhani (earthy olive-green, oklch(0.49 0.08 152) approximately #4a7c59) as the primary/forest color token. Component-level utility class references (bg-forest, text-forest, etc.) are preserved via the updated token, so header, hero, buttons, headings, dividers, and card borders should pick up the new color through existing class usage. All core acceptance criteria for REQ-1 appear addressed in the config/CSS layer. No files under frontend/src/hooks/ or frontend/src/components/ui/ were modified. No Hindi text content changes are evident.",
   "missing_requirements": [],
   "hallucinated_features": [],
-  "confidence": 0.92,
+  "confidence": 0.82,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/index.html",
-    "frontend/src/components/AboutSection.tsx",
-    "frontend/src/components/ContactSection.tsx",
-    "frontend/src/components/DonateSection.tsx",
-    "frontend/src/components/Header.tsx",
-    "frontend/src/components/HeroSection.tsx",
+    "frontend/src/index.css",
+    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

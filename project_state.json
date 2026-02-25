@@ -1,23 +1,29 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Hindi-language welfare committee website for Masjid-e-Gausia Welfare Committee, Maharajganj, Jaunpur.",
+  "summary": "Website with dhani (dark green) color theme",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-all-instances-of-the-organization-name-and-location-across-the-website-to-read-masjid-e-gausia-welfare-committee-maharajganj-jaunpur-this-includes-the-page-title-in-index-html-the-header-component-logo-name-display-herosection-tagline-title-aboutsection-contactsection-address-donatesection-and-any-other-component-that-references-the-organization-name-or-location",
-      "title": "Update all instances of the organization name and location across the website to read 'Masjid-e-Gausia Welfare Committee, Maharajganj, Jaunpur'. This includes the page title in index.html, the Header component (logo/name display), HeroSection tagline/title, AboutSection, ContactSection address, DonateSection, and any other component that references the organization name or location.",
+      "id": "feature-update-the-website-s-color-scheme-to-use-dhani-a-muted-earthy-dark-green-approximately-4a7c59-or-similar-olive-green-tone-as-the-primary-brand-color-throughout-the-site-replace-the-current-primary-forest-green-color-tokens-in-the-css-custom-properties-and-tailwind-config-with-the-dhani-color-apply-consistently-to-the-header-background-hero-section-accents-section-headings-buttons-dividers-card-borders-and-any-other-elements-currently-using-the-primary-green-color",
+      "title": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [],
-  "gameProjectType": "none",
-  "projectName": "मस्जिद ए गौसिया वेलफेयर कमिटी",
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Apply dhani (dark green) color scheme to the website",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Masjid-e-Gausia Welfare",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

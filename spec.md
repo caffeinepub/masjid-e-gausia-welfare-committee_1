@@ -1,14 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Update all instances of the organization name and location across the website to "Masjid-e-Gausia Welfare Committee, Maharajganj, Jaunpur".
+**Goal:** Apply a dhani (muted, earthy dark green, ~#4a7c59) color theme consistently across the entire website, replacing the current primary green color.
 
 **Planned changes:**
-- Update the browser tab title in `index.html` to "Masjid-e-Gausia Welfare Committee"
-- Update the Header component to display "Masjid-e-Gausia Welfare Committee" as the organization name
-- Update the HeroSection title/tagline with the correct organization name
-- Update the AboutSection, DonateSection, and any other components referencing the organization name
-- Update the ContactSection address to show "Maharajganj, Jaunpur"
-- Where Hindi text is used, update to "मस्जिद ए गौसिया वेलफेयर कमिटी" and "महराजगंज, जौनपुर"
+- Update CSS custom properties and Tailwind config to replace the current primary/forest green with the dhani color (#4a7c59 or closest olive-green equivalent)
+- Apply the dhani color to the header/navbar background
+- Update all primary CTA buttons (HeroSection, DonateSection, ContactSection) to use the dhani color
+- Update section headings and decorative accents across all sections (About, Services, Announcements, Donate, Contact) to the dhani color
+- Ensure no components retain the old primary green color
 
-**User-visible outcome:** The entire website consistently displays the correct organization name "Masjid-e-Gausia Welfare Committee" and location "Maharajganj, Jaunpur" across all sections and the browser tab title.
+**User-visible outcome:** The website displays a cohesive dhani (earthy olive-green) color theme across all UI elements, including the header, buttons, headings, and accents.

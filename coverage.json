@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-25T08:34:41.930Z",
+  "generatedAt": "2026-02-25T08:47:49.631Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,23 +12,22 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update all instances of the organization name and location across the website to read 'Masjid-e-Gausia Welfare Committee, Maharajganj, Jaunpur'. This includes the page title in index.html, the Header component (logo/name display), HeroSection tagline/title, AboutSection, ContactSection address, DonateSection, and any other component that references the organization name or location.",
+        "summary": "Update the website's color scheme to use dhani (a muted, earthy dark green, approximately #4a7c59 or similar olive-green tone) as the primary brand color throughout the site. Replace the current primary/forest green color tokens in the CSS custom properties and Tailwind config with the dhani color. Apply consistently to the header background, hero section accents, section headings, buttons, dividers, card borders, and any other elements currently using the primary green color.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/index.html",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
           "frontend/src/components/Header.tsx",
           "frontend/src/components/HeroSection.tsx",
           "frontend/src/components/AboutSection.tsx",
-          "frontend/src/components/ContactSection.tsx",
-          "frontend/src/components/DonateSection.tsx"
+          "frontend/src/components/ServicesSection.tsx",
+          "frontend/src/components/AnnouncementsSection.tsx",
+          "frontend/src/components/DonateSection.tsx",
+          "frontend/src/components/ContactSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/index.html",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/HeroSection.tsx",
-          "frontend/src/components/AboutSection.tsx",
-          "frontend/src/components/ContactSection.tsx",
-          "frontend/src/components/DonateSection.tsx"
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
         ]
       }
     ]
@@ -38,12 +37,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.html",
-    "frontend/src/components/AboutSection.tsx",
-    "frontend/src/components/ContactSection.tsx",
-    "frontend/src/components/DonateSection.tsx",
-    "frontend/src/components/Header.tsx",
-    "frontend/src/components/HeroSection.tsx",
+    "frontend/src/index.css",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

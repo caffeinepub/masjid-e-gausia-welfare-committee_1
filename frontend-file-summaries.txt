@@ -1,6 +1,6 @@
 {
-  "frontend/src/index.css": "Global stylesheet importing Google Fonts (Playfair Display, Cormorant Garamond, Inter) and defining an Islamic-themed OKLCH color system with deep green, gold, and cream palette, plus reusable component classes for the site.",
-  "frontend/tailwind.config.js": "Extended Tailwind config adding custom `forest`, `gold`, and `cream` color tokens, custom font families (playfair, cormorant, sans), and additional shadow/animation utilities for the Islamic-themed design system.",
+  "frontend/src/index.css": "Global stylesheet with dhani (earthy olive-green, oklch(0.49 0.08 152) ≈ #4a7c59) as the primary color replacing the old deep green, updating all CSS custom properties, component classes, and scrollbar colors to the new dhani palette while retaining gold and cream accents.",
+  "frontend/tailwind.config.js": "Extended Tailwind config updated with dhani color as the `forest` token (DEFAULT: oklch(0.49 0.08 152), dark: oklch(0.36 0.07 152), light: oklch(0.60 0.08 152)) so all bg-forest, text-forest, border-forest utility classes render the earthy olive-green dhani tone.",
   "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching announcements (sorted by date descending) and submitting contact inquiries to the backend canister.",
   "frontend/src/components/Header.tsx": "Sticky navigation header updated to display \"मस्जिद ए गौसिया\" and \"वेलफेयर कमिटी\" with the location \"महराजगंज, जौनपुर\" shown below the organization name.",
   "frontend/src/components/HeroSection.tsx": "Full-width hero section updated with organization name \"मस्जिद ए गौसिया वेलफेयर कमिटी\" and location \"महराजगंज, जौनपुर\" displayed prominently below the subtitle.",
