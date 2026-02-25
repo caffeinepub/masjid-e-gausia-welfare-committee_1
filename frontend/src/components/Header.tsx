@@ -7,6 +7,7 @@ const navLinks = [
   { label: 'हमारे बारे में', href: '#about' },
   { label: 'सेवाएं', href: '#services' },
   { label: 'घोषणाएं', href: '#announcements' },
+  { label: 'गैलरी', href: '#gallery' },
   { label: 'संपर्क', href: '#contact' },
 ];
 

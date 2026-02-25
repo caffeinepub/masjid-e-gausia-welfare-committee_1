@@ -1,21 +1,30 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "A web project (possibly for a social/community organization) that includes a counter feature and a gallery section. The counter is set to zero. A gallery entry named 'सालाना जलसा 2026' is being added.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Optimize and save the uploaded event photo showing a speaker presenting in front of a projected Hindi slide to an audience seated indoors (jalsa-2026-1.dim_1200x800.jpg)\n- Optimize and save the uploaded event photo showing a speaker presenting next to a green projected slide to an attentive outdoor audience (jalsa-2026-2.dim_1200x800.jpg)\n- Optimize and save the uploaded event photo showing a large outdoor gathering of men seated in chairs on a terrace/balcony area with lush trees in the background (jalsa-2026-3.dim_1200x800.jpg)\n- Optimize and save the uploaded event photo showing speakers addressing a large seated outdoor crowd on a terrace with tall trees visible in the background (jalsa-2026-4.dim_1200x800.jpg)",
   "existing_features": [
     {
-      "id": "feature-in-the-aboutsection-or-whichever-section-displays-the-stat-counter-for-dedicated-to-social-service-set-its-numeric-value-to-0-zero-for-now",
-      "title": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
+      "id": "feature-create-a-gallery-section-on-the-website-if-it-does-not-already-exist-and-add-a-gallery-album-entry-titled-2026-saalana-jalsa-2026-displaying-the-4-uploaded-event-photos-as-static-assets-served-from-frontend-public-assets-generated",
+      "title": "Create a Gallery section on the website (if it does not already exist) and add a gallery album entry titled 'सालाना जलसा 2026' (Saalana Jalsa 2026) displaying the 4 uploaded event photos as static assets served from frontend/public/assets/generated/.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "गैलेरी में 'सालाना जलसा 2026' नाम से एंट्री एड करें",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
   "projectName": "Masjid-e-Gausia Welfare",
   "clarification_mode": "instant",
   "clarification_rounds": 0

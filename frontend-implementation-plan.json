@@ -1,21 +1,59 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Set 'Samaj Ki Seva Mein Samarpit' stat counter to zero",
+  "title": "Add 'Saalana Jalsa 2026' gallery entry with uploaded photos",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Set the 'समाज की सेवा में समर्पित' (Dedicated to Social Service) stat value to 0 in the AboutSection component",
+      "summary": "Create a Gallery section displaying the 'सालाना जलसा 2026' album with 4 event photos served as static assets",
       "acceptanceCriteria": [
-        "The stat card or counter labeled 'समाज की सेवा में समर्पित' (or equivalent) displays 0 as its value.",
-        "No other stat values or UI elements are changed.",
-        "The change is visible on the live page without requiring a data refresh."
+        "A Gallery section is visible on the page, reachable via the navigation header and footer.",
+        "The gallery contains an album/card labelled 'सालाना जलसा 2026'.",
+        "All 4 uploaded event photos are displayed inside this album in a responsive photo grid.",
+        "Photos are served as static files from frontend/public/assets/generated/ using the filenames defined in imageRequirements.",
+        "Clicking a photo opens a lightbox or enlarged view.",
+        "The section visual style is consistent with the existing site theme (ivory/champagne/gold palette, Devanagari typography)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/AboutSection.tsx",
+          "path": "frontend/public/assets/generated/jalsa-2026-1.dim_1200x800.jpg",
+          "operation": "create",
+          "description": "Add the optimized event photo showing a speaker presenting in front of a projected Hindi slide to an audience seated indoors (jalsa-2026-1.dim_1200x800.jpg) to the generated assets directory."
+        },
+        {
+          "path": "frontend/public/assets/generated/jalsa-2026-2.dim_1200x800.jpg",
+          "operation": "create",
+          "description": "Add the optimized event photo showing a speaker presenting next to a green projected slide to an attentive outdoor audience (jalsa-2026-2.dim_1200x800.jpg) to the generated assets directory."
+        },
+        {
+          "path": "frontend/public/assets/generated/jalsa-2026-3.dim_1200x800.jpg",
+          "operation": "create",
+          "description": "Add the optimized event photo showing a large outdoor gathering of men seated in chairs on a terrace/balcony area with lush trees in the background (jalsa-2026-3.dim_1200x800.jpg) to the generated assets directory."
+        },
+        {
+          "path": "frontend/public/assets/generated/jalsa-2026-4.dim_1200x800.jpg",
+          "operation": "create",
+          "description": "Add the optimized event photo showing speakers addressing a large seated outdoor crowd on a terrace with tall trees visible in the background (jalsa-2026-4.dim_1200x800.jpg) to the generated assets directory."
+        },
+        {
+          "path": "frontend/src/components/GallerySection.tsx",
+          "operation": "create",
+          "description": "Create a new Gallery section component displaying the 'सालाना जलसा 2026' album with a responsive photo grid showing all 4 event photos from frontend/public/assets/generated/ (jalsa-2026-1.dim_1200x800.jpg, jalsa-2026-2.dim_1200x800.jpg, jalsa-2026-3.dim_1200x800.jpg, jalsa-2026-4.dim_1200x800.jpg). Include lightbox functionality for enlarged photo viewing. Style consistently with the site theme using ivory/champagne/gold palette and Devanagari typography."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Locate the stat counter for 'समाज की सेवा में समर्पित' (Dedicated to Social Service) within the AboutSection component and change its numeric value to 0. Keep all other stats, styling, and content unchanged."
+          "description": "Import and render the new GallerySection component in the appropriate position within the page flow (after Services section, before Contact section). Ensure it is wrapped with geometric dividers consistent with other sections."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a 'गैलरी' (Gallery) navigation link to both desktop and mobile menus that smoothly scrolls to the new Gallery section."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Add a 'गैलरी' (Gallery) quick link in the footer navigation that smoothly scrolls to the new Gallery section."
         }
       ]
     }

@@ -7,6 +7,7 @@ import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ServicesSection from './components/ServicesSection';
 import AnnouncementsSection from './components/AnnouncementsSection';
+import GallerySection from './components/GallerySection';
 import DonateSection from './components/DonateSection';
 import ContactSection from './components/ContactSection';
 import GeometricDivider from './components/GeometricDivider';
@@ -42,6 +43,8 @@ function AppContent() {
         <ServicesSection />
         <GeometricDivider />
         <AnnouncementsSection />
+        <GeometricDivider />
+        <GallerySection />
         <GeometricDivider />
         <DonateSection />
         <GeometricDivider />

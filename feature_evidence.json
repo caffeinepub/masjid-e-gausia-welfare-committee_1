@@ -2,10 +2,13 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-in-the-aboutsection-or-whichever-section-displays-the-stat-counter-for-dedicated-to-social-service-set-its-numeric-value-to-0-zero-for-now",
-      "featureTitle": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
+      "featureId": "feature-create-a-gallery-section-on-the-website-if-it-does-not-already-exist-and-add-a-gallery-album-entry-titled-2026-saalana-jalsa-2026-displaying-the-4-uploaded-event-photos-as-static-assets-served-from-frontend-public-assets-generated",
+      "featureTitle": "Create a Gallery section on the website (if it does not already exist) and add a gallery album entry titled 'सालाना जलसा 2026' (Saalana Jalsa 2026) displaying the 4 uploaded event photos as static assets served from frontend/public/assets/generated/.",
       "files": [
-        "frontend/src/components/AboutSection.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/GallerySection.tsx",
+        "frontend/src/components/Header.tsx"
       ],
       "components": [
         "blob-storage@4.0.0",

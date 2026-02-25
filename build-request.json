@@ -1,38 +1,46 @@
 {
   "kind": "build_request",
-  "title": "Set 'Samaj Ki Seva Mein Samarpит' stat counter to zero",
+  "title": "Add 'Saalana Jalsa 2026' gallery entry with uploaded photos",
   "projectName": "Masjid-e-Gausia Welfare",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "In the AboutSection (or whichever section displays the stat/counter for 'समाज की सेवा में समर्पित' — 'Dedicated to Social Service'), set its numeric value to 0 (zero) for now.",
+      "text": "Create a Gallery section on the website (if it does not already exist) and add a gallery album entry titled 'सालाना जलसा 2026' (Saalana Jalsa 2026) displaying the 4 uploaded event photos as static assets served from frontend/public/assets/generated/.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1"
         ],
         "quotes": [
-          "समाज की सेवा में समर्पित को अभी के लिये जीरो रखे"
+          "सालाना जलसा 2026 के नाम से गैलेरी में एड करे"
         ]
       },
       "acceptanceCriteria": [
-        "The stat card or counter labeled 'समाज की सेवा में समर्पित' (or equivalent) displays 0 as its value.",
-        "No other stat values or UI elements are changed.",
-        "The change is visible on the live page without requiring a data refresh."
+        "A Gallery section is visible on the page, reachable via the navigation header and footer.",
+        "The gallery contains an album/card labelled 'सालाना जलसा 2026'.",
+        "All 4 uploaded event photos are displayed inside this album in a responsive photo grid.",
+        "Photos are served as static files from frontend/public/assets/generated/ using the filenames defined in imageRequirements.",
+        "Clicking a photo opens a lightbox or enlarged view.",
+        "The section visual style is consistent with the existing site theme (ivory/champagne/gold palette, Devanagari typography)."
       ]
     }
   ],
   "constraints": [
-    "Only change the value of the 'समाज की सेवा में समर्पित' stat to 0; do not modify any other stats or content."
+    "Do not modify any file under frontend/src/hooks/ or frontend/src/components/ui.",
+    "All gallery images must be served as static assets from frontend/public/assets/generated/ — do not route them through the backend."
   ],
   "nonGoals": [
-    "Changing any other section's content.",
-    "Adding backend persistence for this stat value.",
-    "Modifying the ServicesSection or any other component."
+    "Backend storage or admin upload functionality for gallery images.",
+    "Changes to existing sections (Hero, About, Announcements, Donate, Contact, Services)."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": []
+    "edits": [
+      "Optimize and save the uploaded event photo showing a speaker presenting in front of a projected Hindi slide to an audience seated indoors (jalsa-2026-1.dim_1200x800.jpg)",
+      "Optimize and save the uploaded event photo showing a speaker presenting next to a green projected slide to an attentive outdoor audience (jalsa-2026-2.dim_1200x800.jpg)",
+      "Optimize and save the uploaded event photo showing a large outdoor gathering of men seated in chairs on a terrace/balcony area with lush trees in the background (jalsa-2026-3.dim_1200x800.jpg)",
+      "Optimize and save the uploaded event photo showing speakers addressing a large seated outdoor crowd on a terrace with tall trees visible in the background (jalsa-2026-4.dim_1200x800.jpg)"
+    ]
   }
 }
