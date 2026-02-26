@@ -1,17 +1,26 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "A web project (possibly for a social/community organization) that includes a counter feature and a gallery section. The counter is set to zero. A gallery entry named 'सालाना जलसा 2026' is being added.",
+  "summary": "Project is a gallery/community app for Masjid-e-Gausia Welfare Committee featuring a 'Saalana Jalsa 2026' section with photos.",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Optimize and save the uploaded event photo showing a speaker presenting in front of a projected Hindi slide to an audience seated indoors (jalsa-2026-1.dim_1200x800.jpg)\n- Optimize and save the uploaded event photo showing a speaker presenting next to a green projected slide to an attentive outdoor audience (jalsa-2026-2.dim_1200x800.jpg)\n- Optimize and save the uploaded event photo showing a large outdoor gathering of men seated in chairs on a terrace/balcony area with lush trees in the background (jalsa-2026-3.dim_1200x800.jpg)\n- Optimize and save the uploaded event photo showing speakers addressing a large seated outdoor crowd on a terrace with tall trees visible in the background (jalsa-2026-4.dim_1200x800.jpg)",
+  "known_issues": [
+    "Photos in Saalana Jalsa 2026 section not displaying when clicked"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-create-a-gallery-section-on-the-website-if-it-does-not-already-exist-and-add-a-gallery-album-entry-titled-2026-saalana-jalsa-2026-displaying-the-4-uploaded-event-photos-as-static-assets-served-from-frontend-public-assets-generated",
-      "title": "Create a Gallery section on the website (if it does not already exist) and add a gallery album entry titled 'सालाना जलसा 2026' (Saalana Jalsa 2026) displaying the 4 uploaded event photos as static assets served from frontend/public/assets/generated/.",
+      "id": "feature-fix-the-photo-lightbox-in-the-gallerysection-component-so-that-clicking-on-any-photo-in-the-saalana-jalsa-2026-album-correctly-opens-and-displays-the-full-size-image-investigate-and-resolve-any-broken-image-paths-missing-state-updates-or-incorrect-lightbox-open-close-logic-that-prevents-photos-from-showing-when-clicked",
+      "title": "Fix the photo lightbox in the GallerySection component so that clicking on any photo in the 'Saalana Jalsa 2026' album correctly opens and displays the full-size image. Investigate and resolve any broken image paths, missing state updates, or incorrect lightbox open/close logic that prevents photos from showing when clicked.",
       "reqIds": [
         "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-all-locations-where-masjid-e-gausia-welfare-committee-appears-as-a-title-or-subtitle-herosection-header-footer-index-html-and-any-other-components-append-maharajganj-jainpur-after-it-so-the-full-text-reads-masjid-e-gausia-welfare-committee-maharajganj-jainpur",
+      "title": "In all locations where 'Masjid-e-Gausia Welfare Committee' appears as a title or subtitle (HeroSection, Header, Footer, index.html, and any other components), append 'Maharajganj Jainpur' after it, so the full text reads 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'.",
+      "reqIds": [
+        "REQ-2"
       ],
       "version": 1
     }
@@ -19,13 +28,19 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "गैलेरी में 'सालाना जलसा 2026' नाम से एंट्री एड करें",
+      "summary": "Fix photo click/view issue in Saalana Jalsa section - photos not displaying when clicked",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add 'Maharajganj Jainpur' text after 'Masjid-e-Gausia Welfare Committee'",
       "reqIds": [],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "Masjid-e-Gausia Welfare",
+  "projectName": "Masjid-e-Gausia Welfare Committee",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

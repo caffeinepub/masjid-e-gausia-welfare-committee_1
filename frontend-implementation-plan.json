@@ -1,59 +1,53 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add 'Saalana Jalsa 2026' gallery entry with uploaded photos",
+  "title": "Fix gallery lightbox and add location text",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Create a Gallery section displaying the 'सालाना जलसा 2026' album with 4 event photos served as static assets",
+      "summary": "Fix the photo lightbox in GallerySection so clicking any photo correctly opens and displays the full-size image with proper navigation",
       "acceptanceCriteria": [
-        "A Gallery section is visible on the page, reachable via the navigation header and footer.",
-        "The gallery contains an album/card labelled 'सालाना जलसा 2026'.",
-        "All 4 uploaded event photos are displayed inside this album in a responsive photo grid.",
-        "Photos are served as static files from frontend/public/assets/generated/ using the filenames defined in imageRequirements.",
-        "Clicking a photo opens a lightbox or enlarged view.",
-        "The section visual style is consistent with the existing site theme (ivory/champagne/gold palette, Devanagari typography)."
+        "Clicking any photo thumbnail in the Saalana Jalsa 2026 gallery opens a lightbox overlay displaying the full-size image",
+        "The lightbox can be closed by clicking outside or pressing Escape",
+        "Keyboard navigation (left/right arrows) between photos works correctly in the lightbox",
+        "No broken image or blank overlay appears when a photo is clicked"
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/jalsa-2026-1.dim_1200x800.jpg",
-          "operation": "create",
-          "description": "Add the optimized event photo showing a speaker presenting in front of a projected Hindi slide to an audience seated indoors (jalsa-2026-1.dim_1200x800.jpg) to the generated assets directory."
-        },
-        {
-          "path": "frontend/public/assets/generated/jalsa-2026-2.dim_1200x800.jpg",
-          "operation": "create",
-          "description": "Add the optimized event photo showing a speaker presenting next to a green projected slide to an attentive outdoor audience (jalsa-2026-2.dim_1200x800.jpg) to the generated assets directory."
-        },
-        {
-          "path": "frontend/public/assets/generated/jalsa-2026-3.dim_1200x800.jpg",
-          "operation": "create",
-          "description": "Add the optimized event photo showing a large outdoor gathering of men seated in chairs on a terrace/balcony area with lush trees in the background (jalsa-2026-3.dim_1200x800.jpg) to the generated assets directory."
-        },
-        {
-          "path": "frontend/public/assets/generated/jalsa-2026-4.dim_1200x800.jpg",
-          "operation": "create",
-          "description": "Add the optimized event photo showing speakers addressing a large seated outdoor crowd on a terrace with tall trees visible in the background (jalsa-2026-4.dim_1200x800.jpg) to the generated assets directory."
-        },
-        {
           "path": "frontend/src/components/GallerySection.tsx",
-          "operation": "create",
-          "description": "Create a new Gallery section component displaying the 'सालाना जलसा 2026' album with a responsive photo grid showing all 4 event photos from frontend/public/assets/generated/ (jalsa-2026-1.dim_1200x800.jpg, jalsa-2026-2.dim_1200x800.jpg, jalsa-2026-3.dim_1200x800.jpg, jalsa-2026-4.dim_1200x800.jpg). Include lightbox functionality for enlarged photo viewing. Style consistently with the site theme using ivory/champagne/gold palette and Devanagari typography."
-        },
-        {
-          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Import and render the new GallerySection component in the appropriate position within the page flow (after Services section, before Contact section). Ensure it is wrapped with geometric dividers consistent with other sections."
+          "description": "Fix the lightbox functionality by ensuring the selectedImage state is properly set when a photo is clicked, the image src uses the correct workspace path (frontend/public/assets/<filename>), the modal overlay renders the full-size image, and keyboard event handlers for Escape and arrow keys work correctly. Verify that all four Saalana Jalsa photos (IMG-20260216-WA0033.jpg, IMG_20260215_145426.jpg, IMG_20260215_154805.jpg, IMG_20260215_164503.jpg) are accessible and display properly when clicked."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Append 'Maharajganj Jainpur' after all instances of 'Masjid-e-Gausia Welfare Committee' across the site",
+      "acceptanceCriteria": [
+        "Every visible instance of 'Masjid-e-Gausia Welfare Committee' on the page is followed by 'Maharajganj Jainpur'",
+        "The page title in index.html also reflects the updated name",
+        "The layout accommodates the longer text without overflow or wrapping issues"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Update the main heading text from 'मस्जिद ए गौसिया वेलफेयर कमिटी' to 'मस्जिद ए गौसिया वेलफेयर कमिटी महराजगंज जैनपुर' and update the English subtitle 'Masjid-e-Gausia Welfare Committee' to 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'. Ensure the layout accommodates the longer text without overflow."
         },
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Add a 'गैलरी' (Gallery) navigation link to both desktop and mobile menus that smoothly scrolls to the new Gallery section."
+          "description": "Update the organization name text from 'Masjid-e-Gausia Welfare Committee' to 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur' in both desktop and mobile navigation views. Adjust responsive styling if needed to prevent text overflow on smaller screens."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Add a 'गैलरी' (Gallery) quick link in the footer navigation that smoothly scrolls to the new Gallery section."
+          "description": "Update the organization name from 'मस्जिद ए गौसिया वेलफेयर कमिटी' to 'मस्जिद ए गौसिया वेलफेयर कमिटी महराजगंज जैनपुर' and the copyright text from 'Masjid-e-Gausia Welfare Committee' to 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'. Ensure the footer layout handles the longer text gracefully."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the page title from 'मस्जिद ए गौसिया वेलफेयर कमिटी' to 'मस्जिद ए गौसिया वेलफेयर कमिटी महराजगंज जैनपुर' and update the meta description to include 'Maharajganj Jainpur' after 'Masjid-e-Gausia Welfare Committee'."
         }
       ]
     }

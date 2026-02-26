@@ -50,9 +50,9 @@ export default function Header() {
             />
             <div className="hidden sm:block">
               <p className="text-forest font-bold text-sm leading-tight font-serif">
-                मस्जिद ए गौसिया
+                मस्जिद ए गौसिया वेलफेयर कमेटी
               </p>
-              <p className="text-near-black/60 text-xs leading-tight">वेलफेयर कमेटी</p>
+              <p className="text-near-black/60 text-xs leading-tight">महराजगंज जैनपुर</p>
             </div>
           </div>
 

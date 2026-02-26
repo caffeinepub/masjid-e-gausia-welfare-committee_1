@@ -50,9 +50,12 @@ export default function HeroSection() {
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ivory mb-4 font-serif leading-tight">
           मस्जिद ए गौसिया
         </h1>
-        <h2 className="text-xl sm:text-2xl lg:text-3xl text-gold font-semibold mb-6 font-serif">
+        <h2 className="text-xl sm:text-2xl lg:text-3xl text-gold font-semibold mb-2 font-serif">
           वेलफेयर कमेटी
         </h2>
+        <h3 className="text-base sm:text-lg lg:text-xl text-gold/80 font-medium mb-6 font-serif">
+          महराजगंज जैनपुर
+        </h3>
 
         <p className="text-ivory/85 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
           समाज की सेवा, शिक्षा का प्रसार, और जरूरतमंदों की मदद के लिए समर्पित एक संस्था।

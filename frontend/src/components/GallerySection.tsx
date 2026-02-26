@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight, Images } from 'lucide-react';
 
 const photos = [
   {
-    src: '/assets/generated/jalsa-2026-1.dim_1200x800.jpg',
-    alt: 'सालाना जलसा 2026 - वक्ता हिंदी स्लाइड के सामने प्रस्तुति दे रहे हैं',
+    src: '/assets/IMG-20260216-WA0033.jpg',
+    alt: 'सालाना जलसा 2026 - कार्यक्रम की झलकी',
     caption: 'वर्तमान समस्याओं पर चर्चा',
   },
   {
-    src: '/assets/generated/jalsa-2026-2.dim_1200x800.jpg',
-    alt: 'सालाना जलसा 2026 - वक्ता हरी स्लाइड के सामने प्रस्तुति दे रहे हैं',
+    src: '/assets/IMG_20260215_145426.jpg',
+    alt: 'सालाना जलसा 2026 - सभा का दृश्य',
     caption: 'मौजूदा मसाइल पर विचार-विमर्श',
   },
   {
-    src: '/assets/generated/jalsa-2026-3.dim_1200x800.jpg',
-    alt: 'सालाना जलसा 2026 - बड़ी सभा का दृश्य',
+    src: '/assets/IMG_20260215_154805.jpg',
+    alt: 'सालाना जलसा 2026 - समाज के सदस्य',
     caption: 'समाज के सदस्यों की उपस्थिति',
   },
   {
-    src: '/assets/generated/jalsa-2026-4.dim_1200x800.jpg',
-    alt: 'सालाना जलसा 2026 - वक्ता बड़ी सभा को संबोधित कर रहे हैं',
+    src: '/assets/IMG_20260215_164503.jpg',
+    alt: 'सालाना जलसा 2026 - मुख्य सत्र',
     caption: 'वार्षिक जलसे का मुख्य सत्र',
   },
 ];
@@ -28,23 +28,28 @@ export default function GallerySection() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-  const goPrev = () => {
+  const goPrev = useCallback(() => {
+    setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + photos.length) % photos.length));
+  }, []);
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % photos.length));
+  }, []);
+
+  useEffect(() => {
     if (lightboxIndex === null) return;
-    setLightboxIndex((lightboxIndex - 1 + photos.length) % photos.length);
-  };
 
-  const goNext = () => {
-    if (lightboxIndex === null) return;
-    setLightboxIndex((lightboxIndex + 1) % photos.length);
-  };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') goNext();
+    };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') goPrev();
-    if (e.key === 'ArrowRight') goNext();
-  };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, closeLightbox, goPrev, goNext]);
 
   return (
     <section id="gallery" className="py-20 bg-ivory">
@@ -111,15 +116,13 @@ export default function GallerySection() {
         <div
           className="fixed inset-0 z-50 bg-near-black/95 flex items-center justify-center p-4"
           onClick={closeLightbox}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
           role="dialog"
           aria-modal="true"
           aria-label="तस्वीर लाइटबॉक्स"
         >
           {/* Close button */}
           <button
-            onClick={closeLightbox}
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
             className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
             aria-label="बंद करें"
           >
@@ -129,7 +132,7 @@ export default function GallerySection() {
           {/* Prev button */}
           <button
             onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            className="absolute left-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
             aria-label="पिछली तस्वीर"
           >
             <ChevronLeft className="w-7 h-7" />
@@ -158,7 +161,7 @@ export default function GallerySection() {
           {/* Next button */}
           <button
             onClick={(e) => { e.stopPropagation(); goNext(); }}
-            className="absolute right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
             aria-label="अगली तस्वीर"
           >
             <ChevronRight className="w-7 h-7" />

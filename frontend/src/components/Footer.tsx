@@ -38,8 +38,8 @@ export default function Footer() {
                 className="w-12 h-12 rounded-full border-2 border-gold/40 object-cover"
               />
               <div>
-                <p className="text-forest font-bold font-serif">मस्जिद ए गौसिया</p>
-                <p className="text-near-black/55 text-xs">वेलफेयर कमेटी</p>
+                <p className="text-forest font-bold font-serif">मस्जिद ए गौसिया वेलफेयर कमेटी</p>
+                <p className="text-near-black/55 text-xs">महराजगंज जैनपुर</p>
               </div>
             </div>
             <p className="text-near-black/60 text-sm leading-relaxed">
@@ -73,6 +73,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-2 text-near-black/60 text-sm">
               <p>मस्जिद ए गौसिया, मुख्य सड़क</p>
+              <p>महराजगंज जैनपुर</p>
               <p>+91 98765 43210</p>
               <p>info@masjidgausia.org</p>
             </div>
@@ -82,7 +83,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-gold/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-near-black/45">
           <p>
-            &copy; {year} मस्जिद ए गौसिया वेलफेयर कमेटी। सर्वाधिकार सुरक्षित।
+            &copy; {year} मस्जिद ए गौसिया वेलफेयर कमेटी, महराजगंज जैनपुर। सर्वाधिकार सुरक्षित।
           </p>
           <p className="flex items-center gap-1">
             Built with{' '}

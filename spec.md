@@ -1,14 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Add a Gallery section to the Masjid-e-Gausia Welfare website with a "सालाना जलसा 2026" (Saalana Jalsa 2026) album containing 4 uploaded event photos.
+**Goal:** Fix the gallery lightbox so photos open correctly when clicked, and append "Maharajganj Jainpur" to the organization name everywhere it appears.
 
 **Planned changes:**
-- Add a Gallery section accessible via navigation header and footer links
-- Create a "सालाना जलसा 2026" album/card within the Gallery section
-- Display all 4 event photos in a responsive photo grid inside the album
-- Serve photos as static assets from `frontend/public/assets/generated/`
-- Add lightbox/enlarged view on photo click
-- Style the section consistent with the existing ivory/champagne/gold palette and Devanagari typography
+- Fix the lightbox in the GallerySection component so clicking a photo in the "Saalana Jalsa 2026" album opens the full-size image correctly, with working close and keyboard navigation
+- Append "Maharajganj Jainpur" after "Masjid-e-Gausia Welfare Committee" in all locations: HeroSection, Header, Footer, index.html, and any other components where it appears
 
-**User-visible outcome:** Visitors can navigate to the Gallery section, open the सालाना जलसा 2026 album, view all 4 event photos in a grid, and click any photo to see an enlarged lightbox view.
+**User-visible outcome:** Users can click any photo in the gallery album and view it in a lightbox overlay, and the full organization name "Masjid-e-Gausia Welfare Committee Maharajganj Jainpur" is displayed consistently across the entire site.
