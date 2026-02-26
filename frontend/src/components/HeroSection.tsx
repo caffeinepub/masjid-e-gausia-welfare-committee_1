@@ -54,7 +54,7 @@ export default function HeroSection() {
           वेलफेयर कमेटी
         </h2>
         <h3 className="text-base sm:text-lg lg:text-xl text-gold/80 font-medium mb-6 font-serif">
-          महराजगंज जैनपुर
+          महराजगंज जौनपुर
         </h3>
 
         <p className="text-ivory/85 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">

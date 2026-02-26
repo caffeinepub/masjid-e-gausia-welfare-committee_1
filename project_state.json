@@ -1,24 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Project is a gallery/community app for Masjid-e-Gausia Welfare Committee featuring a 'Saalana Jalsa 2026' section with photos.",
+  "summary": "Project involves a committee management app with branding and location data. UI changes include displaying committee name near logo on left side, and correcting spelling from 'जैनपुर' to 'जौनपुर'.",
   "architectural_notes": [],
-  "known_issues": [
-    "Photos in Saalana Jalsa 2026 section not displaying when clicked"
-  ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-fix-the-photo-lightbox-in-the-gallerysection-component-so-that-clicking-on-any-photo-in-the-saalana-jalsa-2026-album-correctly-opens-and-displays-the-full-size-image-investigate-and-resolve-any-broken-image-paths-missing-state-updates-or-incorrect-lightbox-open-close-logic-that-prevents-photos-from-showing-when-clicked",
-      "title": "Fix the photo lightbox in the GallerySection component so that clicking on any photo in the 'Saalana Jalsa 2026' album correctly opens and displays the full-size image. Investigate and resolve any broken image paths, missing state updates, or incorrect lightbox open/close logic that prevents photos from showing when clicked.",
+      "id": "feature-in-the-header-component-display-the-committee-name-text-next-to-below-the-logo-on-the-left-side-of-the-header-so-it-is-visible-alongside-the-logo-branding",
+      "title": "In the Header component, display the committee name text next to/below the logo on the left side of the header, so it is visible alongside the logo branding.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-in-all-locations-where-masjid-e-gausia-welfare-committee-appears-as-a-title-or-subtitle-herosection-header-footer-index-html-and-any-other-components-append-maharajganj-jainpur-after-it-so-the-full-text-reads-masjid-e-gausia-welfare-committee-maharajganj-jainpur",
-      "title": "In all locations where 'Masjid-e-Gausia Welfare Committee' appears as a title or subtitle (HeroSection, Header, Footer, index.html, and any other components), append 'Maharajganj Jainpur' after it, so the full text reads 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'.",
+      "id": "feature-replace-all-occurrences-of-with-across-all-frontend-files-including-header-footer-herosection-contactsection-index-html-and-any-other-component-or-config-file-where-this-text-appears",
+      "title": "Replace all occurrences of 'जैनपुर' with 'जौनपुर' across all frontend files, including Header, Footer, HeroSection, ContactSection, index.html, and any other component or config file where this text appears.",
       "reqIds": [
         "REQ-2"
       ],
@@ -28,19 +26,19 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Fix photo click/view issue in Saalana Jalsa section - photos not displaying when clicked",
+      "summary": "Display committee name near logo on left side of UI",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Add 'Maharajganj Jainpur' text after 'Masjid-e-Gausia Welfare Committee'",
+      "summary": "Correct spelling: 'जैनपुर' → 'जौनपुर'",
       "reqIds": [],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "Masjid-e-Gausia Welfare Committee",
+  "projectName": "Display committee name near logo and fix Jaunpur spelling",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

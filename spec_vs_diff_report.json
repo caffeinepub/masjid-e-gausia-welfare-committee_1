@@ -1,16 +1,15 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T00:09:48.597Z",
-  "summary": "Both REQ-1 (lightbox fix) and REQ-2 (location text addition) appear to be implemented in the diff. The GallerySection.tsx shows a complete lightbox implementation with state management, keyboard navigation, and open/close logic. The location text 'Maharajganj Jainpur' (in Hindi: महराजगंज जैनपुर) is added across Header, Footer, HeroSection, and index.html. No significant missing requirements or hallucinated features detected.",
+  "generatedAt": "2026-02-26T01:04:17.141Z",
+  "summary": "Both REQ-1 and REQ-2 appear to be implemented. The Header component now displays the committee name and location text next to the logo on the left side, visible on all screen sizes. The spelling 'जैनपुर' has been replaced with 'जौनपुर' across Header, Footer, HeroSection, and index.html. No missing requirements or hallucinated features were identified.",
   "missing_requirements": [],
   "hallucinated_features": [],
-  "confidence": 0.88,
+  "confidence": 0.92,
   "changed_files": [
     "frontend-file-summaries.txt",
     "frontend/index.html",
     "frontend/src/components/Footer.tsx",
-    "frontend/src/components/GallerySection.tsx",
     "frontend/src/components/Header.tsx",
     "frontend/src/components/HeroSection.tsx",
     "project_state.json"

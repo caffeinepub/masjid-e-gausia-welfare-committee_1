@@ -1,53 +1,57 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix gallery lightbox and add location text",
+  "title": "Display committee name near logo and fix Jaunpur spelling",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Fix the photo lightbox in GallerySection so clicking any photo correctly opens and displays the full-size image with proper navigation",
+      "summary": "Display committee name text adjacent to the logo in the Header component",
       "acceptanceCriteria": [
-        "Clicking any photo thumbnail in the Saalana Jalsa 2026 gallery opens a lightbox overlay displaying the full-size image",
-        "The lightbox can be closed by clicking outside or pressing Escape",
-        "Keyboard navigation (left/right arrows) between photos works correctly in the lightbox",
-        "No broken image or blank overlay appears when a photo is clicked"
+        "The committee name is rendered in the header, adjacent to (beside or below) the logo on the left side",
+        "The committee name is visible on both desktop and mobile layouts",
+        "Existing logo and navigation functionality remain unchanged"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/GallerySection.tsx",
+          "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Fix the lightbox functionality by ensuring the selectedImage state is properly set when a photo is clicked, the image src uses the correct workspace path (frontend/public/assets/<filename>), the modal overlay renders the full-size image, and keyboard event handlers for Escape and arrow keys work correctly. Verify that all four Saalana Jalsa photos (IMG-20260216-WA0033.jpg, IMG_20260215_145426.jpg, IMG_20260215_154805.jpg, IMG_20260215_164503.jpg) are accessible and display properly when clicked."
+          "description": "Add committee name text display next to/below the logo in the header's left branding section. Position the text to be visible on both desktop and mobile layouts without disrupting existing logo image or navigation elements. Use appropriate Devanagari typography and styling consistent with the site's warm color palette."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Append 'Maharajganj Jainpur' after all instances of 'Masjid-e-Gausia Welfare Committee' across the site",
+      "summary": "Replace all occurrences of 'जैनपुर' with 'जौनपुर' across frontend files",
       "acceptanceCriteria": [
-        "Every visible instance of 'Masjid-e-Gausia Welfare Committee' on the page is followed by 'Maharajganj Jainpur'",
-        "The page title in index.html also reflects the updated name",
-        "The layout accommodates the longer text without overflow or wrapping issues"
+        "No instance of 'जैनपुर' remains anywhere in the frontend source files",
+        "All replaced instances correctly read 'जौनपुर'",
+        "The page title in index.html is also updated if it contains 'जैनपुर'"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/HeroSection.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Update the main heading text from 'मस्जिद ए गौसिया वेलफेयर कमिटी' to 'मस्जिद ए गौसिया वेलफेयर कमिटी महराजगंज जैनपुर' and update the English subtitle 'Masjid-e-Gausia Welfare Committee' to 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'. Ensure the layout accommodates the longer text without overflow."
+          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in the HTML document, including the page title and meta description that reference महराजगंज जैनपुर."
         },
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Update the organization name text from 'Masjid-e-Gausia Welfare Committee' to 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur' in both desktop and mobile navigation views. Adjust responsive styling if needed to prevent text overflow on smaller screens."
+          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in any text content, including navigation labels, branding text, or accessibility labels."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update the organization name from 'मस्जिद ए गौसिया वेलफेयर कमिटी' to 'मस्जिद ए गौसिया वेलफेयर कमिटी महराजगंज जैनपुर' and the copyright text from 'Masjid-e-Gausia Welfare Committee' to 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'. Ensure the footer layout handles the longer text gracefully."
+          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in footer text content, including branding, contact details, or any other text references."
         },
         {
-          "path": "frontend/index.html",
+          "path": "frontend/src/components/HeroSection.tsx",
           "operation": "modify",
-          "description": "Update the page title from 'मस्जिद ए गौसिया वेलफेयर कमिटी' to 'मस्जिद ए गौसिया वेलफेयर कमिटी महराजगंज जैनपुर' and update the meta description to include 'Maharajganj Jainpur' after 'Masjid-e-Gausia Welfare Committee'."
+          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in hero section text content, including headings, subheadings, or descriptive text."
+        },
+        {
+          "path": "frontend/src/components/ContactSection.tsx",
+          "operation": "modify",
+          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in contact section text, including address details, location references, or any other content."
         }
       ]
     }

@@ -41,18 +41,18 @@ export default function Header() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo + Committee Name */}
           <div className="flex items-center gap-3">
             <img
               src="/assets/generated/committee-logo.dim_256x256.png"
               alt="मस्जिद ए गौसिया"
-              className="w-10 h-10 rounded-full object-cover border-2 border-gold/50"
+              className="w-10 h-10 rounded-full object-cover border-2 border-gold/50 flex-shrink-0"
             />
-            <div className="hidden sm:block">
+            <div>
               <p className="text-forest font-bold text-sm leading-tight font-serif">
                 मस्जिद ए गौसिया वेलफेयर कमेटी
               </p>
-              <p className="text-near-black/60 text-xs leading-tight">महराजगंज जैनपुर</p>
+              <p className="text-near-black/60 text-xs leading-tight">महराजगंज जौनपुर</p>
             </div>
           </div>
 

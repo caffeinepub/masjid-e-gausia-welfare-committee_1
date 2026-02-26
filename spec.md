@@ -1,10 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the gallery lightbox so photos open correctly when clicked, and append "Maharajganj Jainpur" to the organization name everywhere it appears.
+**Goal:** Display the committee name next to the logo in the header and fix the spelling of "जौनपुर" throughout the frontend.
 
 **Planned changes:**
-- Fix the lightbox in the GallerySection component so clicking a photo in the "Saalana Jalsa 2026" album opens the full-size image correctly, with working close and keyboard navigation
-- Append "Maharajganj Jainpur" after "Masjid-e-Gausia Welfare Committee" in all locations: HeroSection, Header, Footer, index.html, and any other components where it appears
+- In the Header component, render the committee name text alongside (next to or below) the logo on the left side, visible on both desktop and mobile
+- Replace all occurrences of "जैनपुर" with "जौनपुर" across all frontend files (Header, Footer, HeroSection, ContactSection, index.html, and any other component or config file)
 
-**User-visible outcome:** Users can click any photo in the gallery album and view it in a lightbox overlay, and the full organization name "Masjid-e-Gausia Welfare Committee Maharajganj Jainpur" is displayed consistently across the entire site.
+**User-visible outcome:** The header now shows the committee name beside the logo, and the city name is correctly spelled as "जौनपुर" everywhere on the site.

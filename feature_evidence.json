@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-fix-the-photo-lightbox-in-the-gallerysection-component-so-that-clicking-on-any-photo-in-the-saalana-jalsa-2026-album-correctly-opens-and-displays-the-full-size-image-investigate-and-resolve-any-broken-image-paths-missing-state-updates-or-incorrect-lightbox-open-close-logic-that-prevents-photos-from-showing-when-clicked",
-      "featureTitle": "Fix the photo lightbox in the GallerySection component so that clicking on any photo in the 'Saalana Jalsa 2026' album correctly opens and displays the full-size image. Investigate and resolve any broken image paths, missing state updates, or incorrect lightbox open/close logic that prevents photos from showing when clicked.",
+      "featureId": "feature-in-the-header-component-display-the-committee-name-text-next-to-below-the-logo-on-the-left-side-of-the-header-so-it-is-visible-alongside-the-logo-branding",
+      "featureTitle": "In the Header component, display the committee name text next to/below the logo on the left side of the header, so it is visible alongside the logo branding.",
       "files": [
-        "frontend/src/components/GallerySection.tsx"
+        "frontend/src/components/Header.tsx"
       ],
       "components": [
         "blob-storage@4.0.0",
@@ -22,8 +22,8 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-in-all-locations-where-masjid-e-gausia-welfare-committee-appears-as-a-title-or-subtitle-herosection-header-footer-index-html-and-any-other-components-append-maharajganj-jainpur-after-it-so-the-full-text-reads-masjid-e-gausia-welfare-committee-maharajganj-jainpur",
-      "featureTitle": "In all locations where 'Masjid-e-Gausia Welfare Committee' appears as a title or subtitle (HeroSection, Header, Footer, index.html, and any other components), append 'Maharajganj Jainpur' after it, so the full text reads 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'.",
+      "featureId": "feature-replace-all-occurrences-of-with-across-all-frontend-files-including-header-footer-herosection-contactsection-index-html-and-any-other-component-or-config-file-where-this-text-appears",
+      "featureTitle": "Replace all occurrences of 'जैनपुर' with 'जौनपुर' across all frontend files, including Header, Footer, HeroSection, ContactSection, index.html, and any other component or config file where this text appears.",
       "files": [
         "frontend/index.html",
         "frontend/src/components/Footer.tsx",

@@ -14,7 +14,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'फोन',
-    lines: ['+91 98765 43210', '+91 87654 32109'],
+    lines: ['+91 93246 15229'],
   },
   {
     icon: Mail,

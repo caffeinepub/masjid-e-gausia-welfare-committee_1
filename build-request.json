@@ -1,55 +1,52 @@
 {
   "kind": "build_request",
-  "title": "Fix gallery lightbox and add location text",
-  "projectName": "Masjid-e-Gausia Welfare Committee",
-  "priority": "high",
+  "title": "Display committee name near logo and fix Jaunpur spelling",
+  "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Fix the photo lightbox in the GallerySection component so that clicking on any photo in the 'Saalana Jalsa 2026' album correctly opens and displays the full-size image. Investigate and resolve any broken image paths, missing state updates, or incorrect lightbox open/close logic that prevents photos from showing when clicked.",
+      "text": "In the Header component, display the committee name text next to/below the logo on the left side of the header, so it is visible alongside the logo branding.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "सालाना जलसे के फोटो पर क्लिक करने से दिख नहीं रहा है उसे सही करे"
+          "कमिटी का नाम लेफ्ट साइड में ऊपर लोगो के पास भी लिखे"
         ]
       },
       "acceptanceCriteria": [
-        "Clicking any photo thumbnail in the Saalana Jalsa 2026 gallery opens a lightbox overlay displaying the full-size image",
-        "The lightbox can be closed by clicking outside or pressing Escape",
-        "Keyboard navigation (left/right arrows) between photos works correctly in the lightbox",
-        "No broken image or blank overlay appears when a photo is clicked"
+        "The committee name is rendered in the header, adjacent to (beside or below) the logo on the left side",
+        "The committee name is visible on both desktop and mobile layouts",
+        "Existing logo and navigation functionality remain unchanged"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "In all locations where 'Masjid-e-Gausia Welfare Committee' appears as a title or subtitle (HeroSection, Header, Footer, index.html, and any other components), append 'Maharajganj Jainpur' after it, so the full text reads 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'.",
+      "text": "Replace all occurrences of 'जैनपुर' with 'जौनपुर' across all frontend files, including Header, Footer, HeroSection, ContactSection, index.html, and any other component or config file where this text appears.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "मस्जिद ए गौसिया वेलफेयर कमिटी के बाद महराजगंज जैनपुर जोड़े"
+          "जैनपुर को जौनपुर करे"
         ]
       },
       "acceptanceCriteria": [
-        "Every visible instance of 'Masjid-e-Gausia Welfare Committee' on the page is followed by 'Maharajganj Jainpur'",
-        "The page title in index.html also reflects the updated name",
-        "The layout accommodates the longer text without overflow or wrapping issues"
+        "No instance of 'जैनपुर' remains anywhere in the frontend source files",
+        "All replaced instances correctly read 'जौनपुर'",
+        "The page title in index.html is also updated if it contains 'जैनपुर'"
       ]
     }
   ],
   "constraints": [
-    "Do not alter the existing color palette, font choices, or overall visual design",
-    "Do not modify files listed in frontend.immutablePaths"
+    "Do not modify any files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui"
   ],
   "nonGoals": [
-    "Adding new photos or gallery albums",
-    "Changes to backend data models or endpoints",
-    "Any new sections or features beyond the two fixes requested"
+    "Changing the committee logo or any imagery",
+    "Modifying backend data or Motoko files",
+    "Any other UI/UX changes beyond the two specified"
   ],
   "imageRequirements": {
     "required": [],

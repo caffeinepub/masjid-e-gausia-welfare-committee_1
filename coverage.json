@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T00:09:48.600Z",
+  "generatedAt": "2026-02-26T01:04:17.144Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,30 +12,31 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Fix the photo lightbox in the GallerySection component so that clicking on any photo in the 'Saalana Jalsa 2026' album correctly opens and displays the full-size image. Investigate and resolve any broken image paths, missing state updates, or incorrect lightbox open/close logic that prevents photos from showing when clicked.",
+        "summary": "In the Header component, display the committee name text next to/below the logo on the left side of the header, so it is visible alongside the logo branding.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/GallerySection.tsx"
+          "frontend/src/components/Header.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/GallerySection.tsx"
+          "frontend/src/components/Header.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "In all locations where 'Masjid-e-Gausia Welfare Committee' appears as a title or subtitle (HeroSection, Header, Footer, index.html, and any other components), append 'Maharajganj Jainpur' after it, so the full text reads 'Masjid-e-Gausia Welfare Committee Maharajganj Jainpur'.",
+        "summary": "Replace all occurrences of 'जैनपुर' with 'जौनपुर' across all frontend files, including Header, Footer, HeroSection, ContactSection, index.html, and any other component or config file where this text appears.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/HeroSection.tsx",
+          "frontend/index.html",
           "frontend/src/components/Header.tsx",
           "frontend/src/components/Footer.tsx",
-          "frontend/index.html"
+          "frontend/src/components/HeroSection.tsx",
+          "frontend/src/components/ContactSection.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/HeroSection.tsx",
+          "frontend/index.html",
           "frontend/src/components/Header.tsx",
           "frontend/src/components/Footer.tsx",
-          "frontend/index.html"
+          "frontend/src/components/HeroSection.tsx"
         ]
       }
     ]
@@ -47,7 +48,6 @@
     "frontend-implementation-plan.json",
     "frontend/index.html",
     "frontend/src/components/Footer.tsx",
-    "frontend/src/components/GallerySection.tsx",
     "frontend/src/components/Header.tsx",
     "frontend/src/components/HeroSection.tsx",
     "project_state.json",
