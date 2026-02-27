@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Menu, X } from 'lucide-react';
+import { Heart, Menu, X, ShieldCheck } from 'lucide-react';
 import LoginButton from './LoginButton';
+import { useIsCallerAdmin } from '../hooks/useAuthQueries';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
+
+interface HeaderProps {
+  onAdminPanelOpen: () => void;
+}
 
 const navLinks = [
   { label: 'होम', href: '#home' },
   { label: 'हमारे बारे में', href: '#about' },
   { label: 'सेवाएं', href: '#services' },
   { label: 'घोषणाएं', href: '#announcements' },
+  { label: 'जमा कलेक्शन', href: '#jama-collection' },
   { label: 'गैलरी', href: '#gallery' },
   { label: 'संपर्क', href: '#contact' },
 ];
 
-export default function Header() {
+export default function Header({ onAdminPanelOpen }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { identity } = useInternetIdentity();
+  const isAuthenticated = !!identity;
+  const { data: isAdmin } = useIsCallerAdmin();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -70,7 +80,16 @@ export default function Header() {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            {isAuthenticated && isAdmin && (
+              <button
+                onClick={onAdminPanelOpen}
+                className="hidden sm:flex items-center gap-2 px-3 py-2 bg-forest/15 text-forest border border-forest/30 font-semibold text-sm rounded-full hover:bg-forest/25 transition-colors duration-200"
+              >
+                <ShieldCheck className="w-4 h-4" />
+                एडमिन
+              </button>
+            )}
             <LoginButton />
             <button
               onClick={() => handleNavClick('#donate')}
@@ -106,6 +125,18 @@ export default function Header() {
               </button>
             ))}
             <div className="pt-2 pb-1 flex flex-col gap-2">
+              {isAuthenticated && isAdmin && (
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onAdminPanelOpen();
+                  }}
+                  className="flex items-center justify-center gap-2 px-4 py-3 bg-forest/15 text-forest border border-forest/30 font-semibold text-sm rounded-full hover:bg-forest/25 transition-colors"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  एडमिन पैनल
+                </button>
+              )}
               <button
                 onClick={() => handleNavClick('#donate')}
                 className="flex items-center justify-center gap-2 px-4 py-3 bg-orange text-white font-semibold text-sm rounded-full hover:bg-orange/90 transition-colors"

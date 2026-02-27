@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useInternetIdentity } from './hooks/useInternetIdentity';
 import { useGetCallerUserProfile } from './hooks/useAuthQueries';
@@ -7,12 +7,14 @@ import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ServicesSection from './components/ServicesSection';
 import AnnouncementsSection from './components/AnnouncementsSection';
+import JamaCollectionSection from './components/JamaCollectionSection';
 import GallerySection from './components/GallerySection';
 import DonateSection from './components/DonateSection';
 import ContactSection from './components/ContactSection';
 import GeometricDivider from './components/GeometricDivider';
 import Footer from './components/Footer';
 import ProfileSetupModal from './components/ProfileSetupModal';
+import AdminPanel from './components/AdminPanel';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +28,7 @@ const queryClient = new QueryClient({
 function AppContent() {
   const { identity } = useInternetIdentity();
   const isAuthenticated = !!identity;
+  const [adminPanelOpen, setAdminPanelOpen] = useState(false);
 
   const { data: userProfile, isLoading: profileLoading, isFetched } = useGetCallerUserProfile();
 
@@ -33,7 +36,7 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-ivory">
-      <Header />
+      <Header onAdminPanelOpen={() => setAdminPanelOpen(true)} />
 
       <main>
         <HeroSection />
@@ -43,6 +46,8 @@ function AppContent() {
         <ServicesSection />
         <GeometricDivider />
         <AnnouncementsSection />
+        <GeometricDivider />
+        <JamaCollectionSection />
         <GeometricDivider />
         <GallerySection />
         <GeometricDivider />
@@ -54,6 +59,7 @@ function AppContent() {
       <Footer />
 
       {showProfileSetup && <ProfileSetupModal open={showProfileSetup} />}
+      {adminPanelOpen && <AdminPanel onClose={() => setAdminPanelOpen(false)} />}
     </div>
   );
 }

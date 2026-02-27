@@ -11,6 +11,7 @@ import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
 export interface Announcement {
+  'id' : bigint,
   'title' : string,
   'body' : string,
   'date' : Time,
@@ -20,6 +21,13 @@ export interface ContactInquiry {
   'submittedAt' : Time,
   'email' : string,
   'message' : string,
+}
+export interface JamaCollection {
+  'id' : bigint,
+  'date' : bigint,
+  'description' : string,
+  'addedBy' : Principal,
+  'amount' : bigint,
 }
 export type Time = bigint;
 export interface UserProfile { 'name' : string }
@@ -55,11 +63,15 @@ export interface _SERVICE {
   '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
   '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
   'addAnnouncement' : ActorMethod<[string, string], undefined>,
+  'addJamaCollection' : ActorMethod<[bigint, string, bigint], undefined>,
   'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'deleteAnnouncement' : ActorMethod<[bigint], undefined>,
+  'deleteJamaCollection' : ActorMethod<[bigint], undefined>,
   'getAnnouncements' : ActorMethod<[], Array<Announcement>>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
   'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getContactInquiries' : ActorMethod<[], Array<ContactInquiry>>,
+  'getJamaCollections' : ActorMethod<[], Array<JamaCollection>>,
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,

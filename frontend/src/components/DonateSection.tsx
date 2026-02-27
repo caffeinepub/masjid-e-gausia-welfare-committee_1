@@ -12,10 +12,10 @@ const bankDetails = [
 ];
 
 const impactStats = [
-  { number: '₹50 लाख+', label: 'कुल दान राशि' },
-  { number: '1000+', label: 'लाभार्थी परिवार' },
-  { number: '95%', label: 'सीधे लाभार्थियों तक' },
-  { number: '100%', label: 'पारदर्शिता' },
+  { number: '0', label: 'कुल दान राशि' },
+  { number: '0', label: 'लाभार्थी परिवार' },
+  { number: '0', label: 'सीधे लाभार्थियों तक' },
+  { number: '0', label: 'पारदर्शिता' },
 ];
 
 export default function DonateSection() {

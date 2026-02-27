@@ -1,57 +1,97 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Display committee name near logo and fix Jaunpur spelling",
+  "title": "Add Jama Collection Tab to Menu & Create Admin Panel",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Display committee name text adjacent to the logo in the Header component",
+      "summary": "Add 'जमा कलेक्शन' (Jama Collection) navigation tab to header menu with smooth scroll to dedicated section",
       "acceptanceCriteria": [
-        "The committee name is rendered in the header, adjacent to (beside or below) the logo on the left side",
-        "The committee name is visible on both desktop and mobile layouts",
-        "Existing logo and navigation functionality remain unchanged"
+        "A 'जमा कलेक्शन' link appears in the desktop header navigation",
+        "The same link appears in the mobile hamburger menu",
+        "Clicking the link smoothly scrolls to a new Jama Collection section",
+        "The section is visually consistent with the rest of the page styling"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Add committee name text display next to/below the logo in the header's left branding section. Position the text to be visible on both desktop and mobile layouts without disrupting existing logo image or navigation elements. Use appropriate Devanagari typography and styling consistent with the site's warm color palette."
+          "description": "Add 'जमा कलेक्शन' navigation link to both the desktop nav and mobile menu arrays. The link should use smooth scroll behavior targeting '#jama-collection' section. Place it after the Announcements link and before the Gallery link to maintain logical section order."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Replace all occurrences of 'जैनपुर' with 'जौनपुर' across frontend files",
+      "summary": "Create Jama Collection section component displaying collection records with loading, error, and empty states",
       "acceptanceCriteria": [
-        "No instance of 'जैनपुर' remains anywhere in the frontend source files",
-        "All replaced instances correctly read 'जौनपुर'",
-        "The page title in index.html is also updated if it contains 'जैनपुर'"
+        "A JamaCollectionSection component renders on the main page",
+        "It displays collection records in a card/table grid",
+        "Shows loading spinner while fetching",
+        "Shows a Hindi empty-state message when no records exist",
+        "Styled with the site's existing orange/gold color palette"
       ],
       "file_operations": [
         {
-          "path": "frontend/index.html",
+          "path": "frontend/src/components/JamaCollectionSection.tsx",
+          "operation": "create",
+          "description": "Create a new section component (id='jama-collection') that uses the useGetJamaCollections hook to fetch and display collection records. Display each record in a card showing amount (formatted as currency), description, and date (formatted in Hindi). Include loading state with spinner, error state with Hindi message, and empty state when no records exist. Style using the existing orange/gold color palette from tailwind.config.js. Follow the same component structure and styling patterns as AnnouncementsSection.tsx."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in the HTML document, including the page title and meta description that reference महराजगंज जैनपुर."
+          "description": "Import and render the JamaCollectionSection component in the main page layout. Insert it between the AnnouncementsSection and GallerySection with a GeometricDivider above it to maintain visual consistency with other sections."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Create Admin Panel page with tabs for Announcements, Jama Collection, and Contact Inquiries management",
+      "acceptanceCriteria": [
+        "An 'Admin Panel' button/link is shown in the header only when the logged-in user is an admin",
+        "Non-admin or unauthenticated users cannot access the admin panel content",
+        "The admin panel has three tabs: Announcements, Jama Collection, Contact Inquiries",
+        "Admins can add and delete announcements from the Announcements tab",
+        "Admins can add and delete Jama Collection entries with amount, description, and date fields",
+        "Admins can view all submitted contact inquiries in the Inquiries tab",
+        "All admin mutations use the authenticated actor and provide Hindi success/error feedback"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AdminPanel.tsx",
+          "operation": "create",
+          "description": "Create an admin panel component with three tabs: (1) Announcements - form to add announcements (title, body) and list with delete buttons using useAddAnnouncement and useDeleteAnnouncement hooks; (2) Jama Collection - form to add entries (amount, description, date) and list with delete buttons using useAddJamaCollection and useDeleteJamaCollection hooks; (3) Contact Inquiries - read-only list displaying all submitted inquiries using useGetContactInquiries hook. Use isAdmin from useAuthQueries to gate access and show 'Access Denied' message in Hindi for non-admin users. Provide Hindi success/error toast feedback for all mutations. Style with the existing color palette."
         },
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in any text content, including navigation labels, branding text, or accessibility labels."
+          "description": "Add an 'Admin Panel' button/link in the header navigation (desktop and mobile) that is conditionally rendered only when isAdmin returns true from useAuthQueries hook. The button should toggle or navigate to show the AdminPanel component. Import and use the isAdmin check to control visibility."
         },
         {
-          "path": "frontend/src/components/Footer.tsx",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in footer text content, including branding, contact details, or any other text references."
+          "description": "Import and conditionally render the AdminPanel component. Add state to control admin panel visibility (toggled by the header button). When visible, render AdminPanel as an overlay or dedicated section that can be closed. Ensure it's only accessible when user is authenticated and is an admin."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add React Query hooks for Jama Collection and Contact Inquiries operations",
+      "acceptanceCriteria": [
+        "useGetJamaCollections fetches and caches collection records via React Query",
+        "useAddJamaCollection invalidates the collections cache on success",
+        "useDeleteJamaCollection invalidates the collections cache on success",
+        "Hooks follow the same pattern as existing useSubmitInquiry and announcement hooks"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add three new hooks following the existing patterns: (1) useGetJamaCollections - query hook with queryKey ['jamaCollections'] that calls actor.getJamaCollections() and sorts results by date descending; (2) useAddJamaCollection - mutation hook that calls actor.addJamaCollection(amount, description, date) and invalidates ['jamaCollections'] cache on success; (3) useDeleteJamaCollection - mutation hook that calls actor.deleteJamaCollection(collectionId) and invalidates ['jamaCollections'] cache on success. Also add useGetContactInquiries query hook with queryKey ['contactInquiries'] that calls actor.getContactInquiries() for the admin panel inquiries tab. Follow the same error handling and enabled patterns as existing hooks."
         },
         {
-          "path": "frontend/src/components/HeroSection.tsx",
+          "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in hero section text content, including headings, subheadings, or descriptive text."
-        },
-        {
-          "path": "frontend/src/components/ContactSection.tsx",
-          "operation": "modify",
-          "description": "Replace all instances of 'जैनपुर' with 'जौनपुर' in contact section text, including address details, location references, or any other content."
+          "description": "Add useAddAnnouncement and useDeleteAnnouncement mutation hooks if they don't already exist. useAddAnnouncement should call actor.addAnnouncement(title, body) and invalidate ['announcements'] cache. useDeleteAnnouncement should call actor.deleteAnnouncement(announcementId) and invalidate ['announcements'] cache. These are required for the admin panel Announcements tab management functionality."
         }
       ]
     }

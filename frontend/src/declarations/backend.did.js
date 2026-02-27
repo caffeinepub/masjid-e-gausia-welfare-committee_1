@@ -26,6 +26,7 @@ export const UserRole = IDL.Variant({
 });
 export const Time = IDL.Int;
 export const Announcement = IDL.Record({
+  'id' : IDL.Nat,
   'title' : IDL.Text,
   'body' : IDL.Text,
   'date' : Time,
@@ -36,6 +37,13 @@ export const ContactInquiry = IDL.Record({
   'submittedAt' : Time,
   'email' : IDL.Text,
   'message' : IDL.Text,
+});
+export const JamaCollection = IDL.Record({
+  'id' : IDL.Nat,
+  'date' : IDL.Int,
+  'description' : IDL.Text,
+  'addedBy' : IDL.Principal,
+  'amount' : IDL.Nat,
 });
 
 export const idlService = IDL.Service({
@@ -67,11 +75,15 @@ export const idlService = IDL.Service({
   '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
   '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
   'addAnnouncement' : IDL.Func([IDL.Text, IDL.Text], [], []),
+  'addJamaCollection' : IDL.Func([IDL.Nat, IDL.Text, IDL.Int], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'deleteAnnouncement' : IDL.Func([IDL.Nat], [], []),
+  'deleteJamaCollection' : IDL.Func([IDL.Nat], [], []),
   'getAnnouncements' : IDL.Func([], [IDL.Vec(Announcement)], ['query']),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getContactInquiries' : IDL.Func([], [IDL.Vec(ContactInquiry)], ['query']),
+  'getJamaCollections' : IDL.Func([], [IDL.Vec(JamaCollection)], ['query']),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
       [IDL.Opt(UserProfile)],
@@ -103,6 +115,7 @@ export const idlFactory = ({ IDL }) => {
   });
   const Time = IDL.Int;
   const Announcement = IDL.Record({
+    'id' : IDL.Nat,
     'title' : IDL.Text,
     'body' : IDL.Text,
     'date' : Time,
@@ -113,6 +126,13 @@ export const idlFactory = ({ IDL }) => {
     'submittedAt' : Time,
     'email' : IDL.Text,
     'message' : IDL.Text,
+  });
+  const JamaCollection = IDL.Record({
+    'id' : IDL.Nat,
+    'date' : IDL.Int,
+    'description' : IDL.Text,
+    'addedBy' : IDL.Principal,
+    'amount' : IDL.Nat,
   });
   
   return IDL.Service({
@@ -144,11 +164,15 @@ export const idlFactory = ({ IDL }) => {
     '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
     '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
     'addAnnouncement' : IDL.Func([IDL.Text, IDL.Text], [], []),
+    'addJamaCollection' : IDL.Func([IDL.Nat, IDL.Text, IDL.Int], [], []),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'deleteAnnouncement' : IDL.Func([IDL.Nat], [], []),
+    'deleteJamaCollection' : IDL.Func([IDL.Nat], [], []),
     'getAnnouncements' : IDL.Func([], [IDL.Vec(Announcement)], ['query']),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getContactInquiries' : IDL.Func([], [IDL.Vec(ContactInquiry)], ['query']),
+    'getJamaCollections' : IDL.Func([], [IDL.Vec(JamaCollection)], ['query']),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
         [IDL.Opt(UserProfile)],
