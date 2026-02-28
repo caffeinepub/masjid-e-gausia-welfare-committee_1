@@ -9,10 +9,10 @@ import Principal "mo:core/Principal";
 import MixinStorage "blob-storage/Mixin";
 import MixinAuthorization "authorization/MixinAuthorization";
 import AccessControl "authorization/access-control";
-import Migration "migration";
+
 
 // Specify the migration function in the with clause
-(with migration = Migration.run)
+
 actor {
   include MixinStorage();
 
@@ -60,7 +60,7 @@ actor {
     submittedAt : Time.Time;
   };
 
-  type JamaCollection = {
+  type JumaCollection = {
     id : Nat;
     amount : Nat;
     description : Text;
@@ -70,10 +70,10 @@ actor {
 
   let announcementList = List.empty<Announcement>();
   let contactInquiryList = List.empty<ContactInquiry>();
-  let jamaCollectionsList = List.empty<JamaCollection>();
+  let jumaCollectionsList = List.empty<JumaCollection>();
 
   var nextAnnouncementId : Nat = 0;
-  var nextJamaCollectionId : Nat = 0;
+  var nextJumaCollectionId : Nat = 0;
 
   // Announcements CRUD Operations
   // Admin-only: only admins should be able to post announcements
@@ -118,50 +118,50 @@ actor {
     announcementList.toArray();
   };
 
-  // Jama Collection Operations
-  // Admin-only: only admins can add Jama collection entries
-  public shared ({ caller }) func addJamaCollection(amount : Nat, description : Text, date : Int) : async () {
+  // Juma Collection Operations
+  // Admin-only: only admins can add Juma collection entries
+  public shared ({ caller }) func addJumaCollection(amount : Nat, description : Text, date : Int) : async () {
     if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can add Jama collections");
+      Runtime.trap("Unauthorized: Only admins can add Juma collections");
     };
     if (description.trim(#predicate(Char.isWhitespace)).size() == 0) {
       Runtime.trap("Description cannot be empty");
     };
     if (amount == 0) { Runtime.trap("Amount must be greater than 0") };
 
-    let collection : JamaCollection = {
-      id = nextJamaCollectionId;
+    let collection : JumaCollection = {
+      id = nextJumaCollectionId;
       amount;
       description;
       date;
       addedBy = caller;
     };
 
-    nextJamaCollectionId += 1;
-    jamaCollectionsList.add(collection);
+    nextJumaCollectionId += 1;
+    jumaCollectionsList.add(collection);
   };
 
-  // Public: anyone can view Jama collections
-  public query func getJamaCollections() : async [JamaCollection] {
-    jamaCollectionsList.toArray();
+  // Public: anyone can view Juma collections
+  public query func getJumaCollections() : async [JumaCollection] {
+    jumaCollectionsList.toArray();
   };
 
-  // Admin-only: only admins can delete Jama collection entries
-  public shared ({ caller }) func deleteJamaCollection(collectionId : Nat) : async () {
+  // Admin-only: only admins can delete Juma collection entries
+  public shared ({ caller }) func deleteJumaCollection(collectionId : Nat) : async () {
     if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
-      Runtime.trap("Unauthorized: Only admins can delete Jama collections");
+      Runtime.trap("Unauthorized: Only admins can delete Juma collections");
     };
-    let sizeBefore = jamaCollectionsList.size();
-    let filtered = jamaCollectionsList.filter(
+    let sizeBefore = jumaCollectionsList.size();
+    let filtered = jumaCollectionsList.filter(
       func(c) {
         c.id != collectionId;
       }
     );
     if (filtered.size() == sizeBefore) {
-      Runtime.trap("Jama collection entry not found");
+      Runtime.trap("Juma collection entry not found");
     };
-    jamaCollectionsList.clear();
-    jamaCollectionsList.addAll(filtered.values());
+    jumaCollectionsList.clear();
+    jumaCollectionsList.addAll(filtered.values());
   };
 
   // Contact Inquiries Operations

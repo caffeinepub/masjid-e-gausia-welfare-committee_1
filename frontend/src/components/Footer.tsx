@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'हमारे बारे में', href: '#about' },
   { label: 'सेवाएं', href: '#services' },
   { label: 'घोषणाएं', href: '#announcements' },
+  { label: 'जुमा कलेक्शन', href: '#juma-collection' },
   { label: 'गैलरी', href: '#gallery' },
   { label: 'दान करें', href: '#donate' },
   { label: 'संपर्क', href: '#contact' },

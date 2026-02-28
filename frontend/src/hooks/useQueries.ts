@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useActor } from './useActor';
-import type { Announcement, JamaCollection, ContactInquiry } from '../backend';
+import type { Announcement, JumaCollection, ContactInquiry } from '../backend';
 
 export function useGetAnnouncements() {
   const { actor, isFetching } = useActor();
@@ -69,21 +69,21 @@ export function useSubmitInquiry() {
   });
 }
 
-export function useGetJamaCollections() {
+export function useGetJumaCollections() {
   const { actor, isFetching } = useActor();
 
-  return useQuery<JamaCollection[]>({
-    queryKey: ['jamaCollections'],
+  return useQuery<JumaCollection[]>({
+    queryKey: ['jumaCollections'],
     queryFn: async () => {
       if (!actor) return [];
-      const results = await actor.getJamaCollections();
+      const results = await actor.getJumaCollections();
       return [...results].sort((a, b) => Number(b.date - a.date));
     },
     enabled: !!actor && !isFetching,
   });
 }
 
-export function useAddJamaCollection() {
+export function useAddJumaCollection() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
 
@@ -98,25 +98,25 @@ export function useAddJamaCollection() {
       date: bigint;
     }) => {
       if (!actor) throw new Error('Actor not available');
-      return actor.addJamaCollection(amount, description, date);
+      return actor.addJumaCollection(amount, description, date);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['jamaCollections'] });
+      queryClient.invalidateQueries({ queryKey: ['jumaCollections'] });
     },
   });
 }
 
-export function useDeleteJamaCollection() {
+export function useDeleteJumaCollection() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async (collectionId: bigint) => {
       if (!actor) throw new Error('Actor not available');
-      return actor.deleteJamaCollection(collectionId);
+      return actor.deleteJumaCollection(collectionId);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['jamaCollections'] });
+      queryClient.invalidateQueries({ queryKey: ['jumaCollections'] });
     },
   });
 }

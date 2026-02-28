@@ -1,121 +1,39 @@
 {
   "kind": "build_request",
-  "title": "Add Jama Collection Tab to Menu & Create Admin Panel",
+  "title": "Add Admin Panel link to hamburger menu",
   "projectName": "Masjid-e-Gausia Welfare",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add a 'जमा कलेक्शन' (Jama Collection) navigation tab to the site header menu. Clicking it should smooth-scroll to a new dedicated Jama Collection section on the page. The tab must appear in both the desktop navigation bar and the mobile menu alongside the existing nav links.",
+      "text": "Add an 'Admin Panel' link/button inside the hamburger (mobile) menu in the Header component, visible only to authenticated admin users — consistent with the existing desktop admin button logic already present in Header.tsx.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-6"
         ],
         "quotes": [
-          "मीनू में \" जमा कलेक्शन\" टैब ऐड करे"
+          "एडमिन पैनल का लिंक/बटन हैमबर्गर मीनू में जोड़े"
         ]
       },
       "acceptanceCriteria": [
-        "A 'जमा कलेक्शन' link appears in the desktop header navigation",
-        "The same link appears in the mobile hamburger menu",
-        "Clicking the link smoothly scrolls to a new Jama Collection section",
-        "The section is visually consistent with the rest of the page styling"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Create a new Jama Collection section on the main page (id='jama-collection'). This section should display a list of collection records (amount, date, description/purpose) fetched from the backend. It should show a loading state, an error state, and an empty state with appropriate Hindi messages.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "मीनू में \" जमा कलेक्शन\" टैब ऐड करे"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A JamaCollectionSection component renders on the main page",
-        "It displays collection records in a card/table grid",
-        "Shows loading spinner while fetching",
-        "Shows a Hindi empty-state message when no records exist",
-        "Styled with the site's existing orange/gold color palette"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Extend the backend (main.mo) to support Jama Collection records. Add a data type for a collection entry with fields: id (Nat), amount (Nat), description (Text), date (Int), and addedBy (Principal). Expose the following endpoints: addJamaCollection (admin-only), getJamaCollections (public), deleteJamaCollection (admin-only). Persist records in stable storage.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "मीनू में \" जमा कलेक्शन\" टैब ऐड करे"
-        ]
-      },
-      "acceptanceCriteria": [
-        "addJamaCollection rejects calls from non-admin principals",
-        "getJamaCollections returns all records sorted by date descending",
-        "deleteJamaCollection removes a record by id and is admin-only",
-        "Records persist across canister upgrades via stable storage"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Create an Admin Panel page/section accessible at a dedicated route or toggled via a button visible only to admin users. The panel must include the following management tabs: (1) Announcements — add/delete announcements; (2) Jama Collection — add/delete collection entries; (3) Contact Inquiries — view submitted inquiries. Use the existing isAdmin check from useAuthQueries to gate access. Non-admin users should see an 'Access Denied' message.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "एडमिन पैनल क्रिएट करे"
-        ]
-      },
-      "acceptanceCriteria": [
-        "An 'Admin Panel' button/link is shown in the header only when the logged-in user is an admin",
-        "Non-admin or unauthenticated users cannot access the admin panel content",
-        "The admin panel has three tabs: Announcements, Jama Collection, Contact Inquiries",
-        "Admins can add and delete announcements from the Announcements tab",
-        "Admins can add and delete Jama Collection entries with amount, description, and date fields",
-        "Admins can view all submitted contact inquiries in the Inquiries tab",
-        "All admin mutations use the authenticated actor and provide Hindi success/error feedback"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add React Query hooks for Jama Collection operations: useGetJamaCollections (public query), useAddJamaCollection (admin mutation), and useDeleteJamaCollection (admin mutation). Place them in frontend/src/hooks/useQueries.ts following the existing hook patterns.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "जमा कलेक्शन टैब जोड़े",
-          "एडमिन पैनल क्रिएट करे"
-        ]
-      },
-      "acceptanceCriteria": [
-        "useGetJamaCollections fetches and caches collection records via React Query",
-        "useAddJamaCollection invalidates the collections cache on success",
-        "useDeleteJamaCollection invalidates the collections cache on success",
-        "Hooks follow the same pattern as existing useSubmitInquiry and announcement hooks"
+        "When the hamburger menu is open on mobile, an 'Admin Panel' button/link appears in the menu list.",
+        "The Admin Panel button is only visible to users who are authenticated as admin (same role check used for the desktop header button).",
+        "Clicking the Admin Panel button in the hamburger menu opens the admin panel and closes the mobile menu.",
+        "Non-admin and unauthenticated users do not see the Admin Panel option in the hamburger menu.",
+        "The button styling is consistent with the rest of the hamburger menu items."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
-    "All Motoko logic must remain in the single backend/main.mo actor",
-    "Admin access must be gated using the existing isAdmin/role check pattern already present in the backend",
-    "New UI components must use the existing Tailwind color palette (ivory, champagne, orange, gold, forest) defined in tailwind.config.js"
+    "Do not modify any files under frontend/src/hooks/ (immutable paths).",
+    "Do not alter the existing desktop admin panel button behavior in Header.tsx.",
+    "Admin panel visibility must use the same role/auth check already implemented for the desktop view."
   ],
   "nonGoals": [
-    "No new authentication system — use existing Internet Identity integration",
-    "No external payment gateway or online donation collection",
-    "No real-time updates or WebSocket-based notifications",
-    "No separate microservice or additional canister for admin functionality"
+    "Redesigning the header or hamburger menu layout.",
+    "Adding admin panel access to the footer or any other section.",
+    "Changing admin authentication or role logic in the backend."
   ],
   "imageRequirements": {
     "required": [],

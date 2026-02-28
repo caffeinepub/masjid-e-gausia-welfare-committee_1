@@ -1,92 +1,30 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-27T06:14:18.872Z",
+  "generatedAt": "2026-02-27T19:23:21.057Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 5,
-    "implemented": 4,
+    "total": 1,
+    "implemented": 0,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add a 'जमा कलेक्शन' (Jama Collection) navigation tab to the site header menu. Clicking it should smooth-scroll to a new dedicated Jama Collection section on the page. The tab must appear in both the desktop navigation bar and the mobile menu alongside the existing nav links.",
-        "status": "implemented",
+        "summary": "Add an 'Admin Panel' link/button inside the hamburger (mobile) menu in the Header component, visible only to authenticated admin users — consistent with the existing desktop admin button logic already present in Header.tsx.",
+        "status": "missing",
         "plannedFiles": [
           "frontend/src/components/Header.tsx"
         ],
-        "matchedFiles": [
-          "frontend/src/components/Header.tsx"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Create a new Jama Collection section on the main page (id='jama-collection'). This section should display a list of collection records (amount, date, description/purpose) fetched from the backend. It should show a loading state, an error state, and an empty state with appropriate Hindi messages.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/JamaCollectionSection.tsx",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/JamaCollectionSection.tsx",
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Extend the backend (main.mo) to support Jama Collection records. Add a data type for a collection entry with fields: id (Nat), amount (Nat), description (Text), date (Int), and addedBy (Principal). Expose the following endpoints: addJamaCollection (admin-only), getJamaCollections (public), deleteJamaCollection (admin-only). Persist records in stable storage.",
-        "status": "unknown",
-        "plannedFiles": [],
         "matchedFiles": []
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Create an Admin Panel page/section accessible at a dedicated route or toggled via a button visible only to admin users. The panel must include the following management tabs: (1) Announcements — add/delete announcements; (2) Jama Collection — add/delete collection entries; (3) Contact Inquiries — view submitted inquiries. Use the existing isAdmin check from useAuthQueries to gate access. Non-admin users should see an 'Access Denied' message.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/AdminPanel.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/AdminPanel.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Add React Query hooks for Jama Collection operations: useGetJamaCollections (public query), useAddJamaCollection (admin mutation), and useDeleteJamaCollection (admin mutation). Place them in frontend/src/hooks/useQueries.ts following the existing hook patterns.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/hooks/useQueries.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/hooks/useQueries.ts"
-        ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
-    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/AdminPanel.tsx",
-    "frontend/src/components/Header.tsx",
-    "frontend/src/components/JamaCollectionSection.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -22,7 +22,7 @@ export interface ContactInquiry {
   'email' : string,
   'message' : string,
 }
-export interface JamaCollection {
+export interface JumaCollection {
   'id' : bigint,
   'date' : bigint,
   'description' : string,
@@ -63,15 +63,15 @@ export interface _SERVICE {
   '_caffeineStorageUpdateGatewayPrincipals' : ActorMethod<[], undefined>,
   '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
   'addAnnouncement' : ActorMethod<[string, string], undefined>,
-  'addJamaCollection' : ActorMethod<[bigint, string, bigint], undefined>,
+  'addJumaCollection' : ActorMethod<[bigint, string, bigint], undefined>,
   'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
   'deleteAnnouncement' : ActorMethod<[bigint], undefined>,
-  'deleteJamaCollection' : ActorMethod<[bigint], undefined>,
+  'deleteJumaCollection' : ActorMethod<[bigint], undefined>,
   'getAnnouncements' : ActorMethod<[], Array<Announcement>>,
   'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
   'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getContactInquiries' : ActorMethod<[], Array<ContactInquiry>>,
-  'getJamaCollections' : ActorMethod<[], Array<JamaCollection>>,
+  'getJumaCollections' : ActorMethod<[], Array<JumaCollection>>,
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { IndianRupee, Calendar, Loader2, AlertCircle, Wallet } from 'lucide-react';
-import { useGetJamaCollections } from '../hooks/useQueries';
+import { useGetJumaCollections } from '../hooks/useQueries';
 
 function formatDate(timestamp: bigint): string {
   const ms = Number(timestamp) * 1000;
@@ -20,14 +20,14 @@ function formatAmount(amount: bigint): string {
 }
 
 export default function JamaCollectionSection() {
-  const { data: collections, isLoading, isError } = useGetJamaCollections();
+  const { data: collections, isLoading, isError } = useGetJumaCollections();
 
   const totalAmount = collections
     ? collections.reduce((sum, c) => sum + Number(c.amount), 0)
     : 0;
 
   return (
-    <section id="jama-collection" className="py-20 bg-champagne relative overflow-hidden">
+    <section id="juma-collection" className="py-20 bg-champagne relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <img
@@ -44,7 +44,7 @@ export default function JamaCollectionSection() {
             वित्तीय रिकॉर्ड
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-near-black font-serif mb-4">
-            जमा कलेक्शन
+            जुमा कलेक्शन
           </h2>
           <div className="gold-divider" />
           <p className="text-near-black/65 max-w-xl mx-auto text-base mt-6 leading-relaxed">
@@ -60,7 +60,7 @@ export default function JamaCollectionSection() {
                 <IndianRupee className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="text-white/80 text-sm font-medium">कुल जमा राशि</p>
+                <p className="text-white/80 text-sm font-medium">कुल जुमा राशि</p>
                 <p className="text-2xl font-bold font-serif">
                   {new Intl.NumberFormat('hi-IN', {
                     style: 'currency',
@@ -77,7 +77,7 @@ export default function JamaCollectionSection() {
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-16 gap-4">
             <Loader2 className="w-10 h-10 text-orange animate-spin" />
-            <p className="text-near-black/60 text-sm">जमा कलेक्शन लोड हो रहा है...</p>
+            <p className="text-near-black/60 text-sm">जुमा कलेक्शन लोड हो रहा है...</p>
           </div>
         )}
 
@@ -98,10 +98,10 @@ export default function JamaCollectionSection() {
               <Wallet className="w-8 h-8 text-orange" />
             </div>
             <p className="text-near-black/60 text-base font-medium">
-              अभी कोई जमा रिकॉर्ड नहीं है।
+              अभी कोई जुमा रिकॉर्ड नहीं है।
             </p>
             <p className="text-near-black/45 text-sm">
-              नए जमा रिकॉर्ड यहां दिखाई देंगे।
+              नए जुमा रिकॉर्ड यहां दिखाई देंगे।
             </p>
           </div>
         )}

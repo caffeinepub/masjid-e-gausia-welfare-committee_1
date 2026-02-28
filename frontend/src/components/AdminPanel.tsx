@@ -19,9 +19,9 @@ import {
   useGetAnnouncements,
   useAddAnnouncement,
   useDeleteAnnouncement,
-  useGetJamaCollections,
-  useAddJamaCollection,
-  useDeleteJamaCollection,
+  useGetJumaCollections,
+  useAddJumaCollection,
+  useDeleteJumaCollection,
   useGetContactInquiries,
 } from '../hooks/useQueries';
 
@@ -38,7 +38,7 @@ function formatDate(timestamp: bigint): string {
   });
 }
 
-function formatJamaDate(timestamp: bigint): string {
+function formatJumaDate(timestamp: bigint): string {
   const ms = Number(timestamp) * 1000;
   return new Date(ms).toLocaleDateString('hi-IN', {
     year: 'numeric',
@@ -184,11 +184,11 @@ function AnnouncementsTab() {
   );
 }
 
-// ─── Jama Collection Tab ─────────────────────────────────────────────────────
-function JamaCollectionTab() {
-  const { data: collections, isLoading } = useGetJamaCollections();
-  const addMutation = useAddJamaCollection();
-  const deleteMutation = useDeleteJamaCollection();
+// ─── Juma Collection Tab ─────────────────────────────────────────────────────
+function JumaCollectionTab() {
+  const { data: collections, isLoading } = useGetJumaCollections();
+  const addMutation = useAddJumaCollection();
+  const deleteMutation = useDeleteJumaCollection();
 
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
@@ -220,7 +220,7 @@ function JamaCollectionTab() {
       setAmount('');
       setDescription('');
       setDate('');
-      setFeedback({ type: 'success', msg: 'जमा रिकॉर्ड सफलतापूर्वक जोड़ा गया!' });
+      setFeedback({ type: 'success', msg: 'जुमा रिकॉर्ड सफलतापूर्वक जोड़ा गया!' });
       setTimeout(() => setFeedback(null), 3000);
     } catch {
       setFeedback({ type: 'error', msg: 'रिकॉर्ड जोड़ने में त्रुटि हुई। पुनः प्रयास करें।' });
@@ -247,7 +247,7 @@ function JamaCollectionTab() {
       <div className="bg-champagne rounded-2xl p-6 border border-gold/20">
         <h3 className="font-bold text-near-black font-serif text-lg mb-4 flex items-center gap-2">
           <Plus className="w-5 h-5 text-orange" />
-          नया जमा रिकॉर्ड जोड़ें
+          नया जुमा रिकॉर्ड जोड़ें
         </h3>
         <form onSubmit={handleAdd} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -280,7 +280,7 @@ function JamaCollectionTab() {
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="जमा का विवरण..."
+              placeholder="जुमा का विवरण..."
               className="w-full px-4 py-2.5 rounded-xl border border-gold/30 bg-ivory text-near-black text-sm focus:outline-none focus:ring-2 focus:ring-orange/40"
             />
           </div>
@@ -304,7 +304,7 @@ function JamaCollectionTab() {
       {!isLoading && collections && collections.length > 0 && (
         <div className="flex items-center gap-3 bg-gradient-to-r from-orange/10 to-gold/10 rounded-xl px-5 py-3 border border-gold/20">
           <IndianRupee className="w-5 h-5 text-orange" />
-          <span className="text-near-black/70 text-sm font-medium">कुल जमा राशि:</span>
+          <span className="text-near-black/70 text-sm font-medium">कुल जुमा राशि:</span>
           <span className="text-orange font-bold text-base font-serif">
             {new Intl.NumberFormat('hi-IN', {
               style: 'currency',
@@ -318,14 +318,14 @@ function JamaCollectionTab() {
       {/* List */}
       <div>
         <h3 className="font-bold text-near-black font-serif text-base mb-3">
-          जमा रिकॉर्ड ({collections?.length ?? 0})
+          जुमा रिकॉर्ड ({collections?.length ?? 0})
         </h3>
         {isLoading ? (
           <div className="flex justify-center py-8">
             <Loader2 className="w-8 h-8 text-orange animate-spin" />
           </div>
         ) : !collections || collections.length === 0 ? (
-          <p className="text-near-black/50 text-sm text-center py-8">कोई जमा रिकॉर्ड नहीं है।</p>
+          <p className="text-near-black/50 text-sm text-center py-8">कोई जुमा रिकॉर्ड नहीं है।</p>
         ) : (
           <div className="space-y-3">
             {collections.map((c) => (
@@ -342,7 +342,7 @@ function JamaCollectionTab() {
                   <p className="text-near-black/70 text-sm">{c.description}</p>
                   <p className="text-near-black/40 text-xs mt-1 flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
-                    {formatJamaDate(c.date)}
+                    {formatJumaDate(c.date)}
                   </p>
                 </div>
                 <button
@@ -389,50 +389,46 @@ function ContactInquiriesTab() {
         </h3>
       </div>
 
-      {isLoading && (
+      {isLoading ? (
         <div className="flex justify-center py-8">
           <Loader2 className="w-8 h-8 text-orange animate-spin" />
         </div>
-      )}
-
-      {isError && (
-        <p className="text-red-600 text-sm text-center py-8">
-          संदेश लोड करने में त्रुटि हुई।
-        </p>
-      )}
-
-      {!isLoading && !isError && (!inquiries || inquiries.length === 0) && (
-        <p className="text-near-black/50 text-sm text-center py-8">
-          अभी कोई संपर्क संदेश नहीं है।
-        </p>
-      )}
-
-      {!isLoading && !isError && inquiries && inquiries.length > 0 && (
+      ) : isError ? (
+        <div className="text-center py-8">
+          <p className="text-red-500 text-sm">डेटा लोड करने में त्रुटि हुई।</p>
+        </div>
+      ) : !inquiries || inquiries.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-16 gap-3">
+          <div className="w-14 h-14 rounded-full bg-orange/10 flex items-center justify-center">
+            <MessageSquare className="w-7 h-7 text-orange" />
+          </div>
+          <p className="text-near-black/50 text-sm">कोई संपर्क संदेश नहीं है।</p>
+        </div>
+      ) : (
         <div className="space-y-3">
           {inquiries.map((inq, idx) => (
             <div
               key={idx}
               className="bg-ivory rounded-xl p-4 border border-gold/20 space-y-2"
             >
-              <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-orange" />
-                  <span className="font-semibold text-near-black text-sm">{inq.name}</span>
+                  <div className="w-8 h-8 rounded-full bg-orange/15 flex items-center justify-center flex-shrink-0">
+                    <User className="w-4 h-4 text-orange" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-near-black text-sm">{inq.name}</p>
+                    <p className="text-near-black/50 text-xs flex items-center gap-1">
+                      <Mail className="w-3 h-3" />
+                      {inq.email}
+                    </p>
+                  </div>
                 </div>
-                <span className="text-near-black/40 text-xs flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
+                <p className="text-near-black/35 text-xs flex-shrink-0">
                   {formatInquiryDate(inq.submittedAt)}
-                </span>
+                </p>
               </div>
-              <div className="flex items-center gap-2 text-near-black/60 text-xs">
-                <Mail className="w-3.5 h-3.5 text-gold" />
-                <a href={`mailto:${inq.email}`} className="hover:text-orange transition-colors">
-                  {inq.email}
-                </a>
-              </div>
-              <p className="text-near-black/70 text-sm leading-relaxed bg-champagne rounded-lg px-3 py-2">
-                {inq.message}
-              </p>
+              <p className="text-near-black/70 text-sm leading-relaxed pl-10">{inq.message}</p>
             </div>
           ))}
         </div>
@@ -445,86 +441,108 @@ function ContactInquiriesTab() {
 export default function AdminPanel({ onClose }: AdminPanelProps) {
   const { data: isAdmin, isLoading: adminLoading } = useIsCallerAdmin();
 
+  if (adminLoading) {
+    return (
+      <div className="fixed inset-0 z-[100] bg-near-black/60 flex items-center justify-center">
+        <div className="bg-ivory rounded-2xl p-8 flex items-center gap-3">
+          <Loader2 className="w-6 h-6 text-orange animate-spin" />
+          <span className="text-near-black font-medium">लोड हो रहा है...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="fixed inset-0 z-[100] bg-near-black/60 flex items-center justify-center">
+        <div className="bg-ivory rounded-2xl p-8 max-w-sm w-full mx-4 text-center space-y-4">
+          <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mx-auto">
+            <ShieldAlert className="w-7 h-7 text-red-500" />
+          </div>
+          <h2 className="text-near-black font-bold font-serif text-lg">अनुमति नहीं है</h2>
+          <p className="text-near-black/60 text-sm">
+            यह पैनल केवल एडमिन के लिए है।
+          </p>
+          <button
+            onClick={onClose}
+            className="px-6 py-2.5 bg-orange text-white font-semibold text-sm rounded-full hover:bg-orange/90 transition-colors"
+          >
+            बंद करें
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-start justify-center bg-near-black/60 backdrop-blur-sm overflow-y-auto py-8 px-4">
-      <div className="w-full max-w-3xl bg-ivory rounded-3xl shadow-2xl border border-gold/20 overflow-hidden">
+    <div className="fixed inset-0 z-[100] bg-near-black/60 flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <div className="bg-ivory w-full sm:max-w-2xl sm:rounded-2xl shadow-2xl flex flex-col max-h-screen sm:max-h-[90vh] overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-forest to-forest/80 px-6 py-5 flex items-center justify-between">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gold/20 bg-champagne flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
-              <ShieldAlert className="w-5 h-5 text-white" />
+            <div className="w-9 h-9 rounded-full bg-forest/15 flex items-center justify-center">
+              <ShieldAlert className="w-5 h-5 text-forest" />
             </div>
             <div>
-              <h2 className="text-white font-bold font-serif text-xl">एडमिन पैनल</h2>
-              <p className="text-white/70 text-xs">मस्जिद ए गौसिया वेलफेयर कमेटी</p>
+              <h2 className="font-bold text-near-black font-serif text-lg leading-tight">
+                एडमिन पैनल
+              </h2>
+              <p className="text-near-black/50 text-xs">मस्जिद ए गौसिया वेलफेयर कमेटी</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+            className="p-2 text-near-black/50 hover:text-near-black hover:bg-gold/20 rounded-lg transition-colors"
             aria-label="बंद करें"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Body */}
-        <div className="p-6">
-          {adminLoading ? (
-            <div className="flex flex-col items-center justify-center py-16 gap-4">
-              <Loader2 className="w-10 h-10 text-orange animate-spin" />
-              <p className="text-near-black/60 text-sm">जांच हो रही है...</p>
-            </div>
-          ) : !isAdmin ? (
-            <div className="flex flex-col items-center justify-center py-16 gap-4">
-              <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
-                <ShieldAlert className="w-8 h-8 text-red-500" />
-              </div>
-              <p className="text-near-black font-bold text-lg font-serif">पहुंच अस्वीकृत</p>
-              <p className="text-near-black/60 text-sm text-center max-w-xs">
-                आपके पास एडमिन पैनल तक पहुंचने की अनुमति नहीं है। केवल एडमिन ही इसे देख सकते हैं।
-              </p>
-            </div>
-          ) : (
-            <Tabs defaultValue="announcements">
-              <TabsList className="w-full mb-6 bg-champagne rounded-xl p-1">
+        {/* Tabs */}
+        <div className="flex-1 overflow-y-auto">
+          <Tabs defaultValue="announcements" className="h-full">
+            <div className="px-6 pt-4 pb-0 border-b border-gold/20 flex-shrink-0 bg-ivory sticky top-0 z-10">
+              <TabsList className="w-full bg-champagne rounded-xl p-1 h-auto gap-1">
                 <TabsTrigger
                   value="announcements"
-                  className="flex-1 flex items-center gap-1.5 text-xs sm:text-sm data-[state=active]:bg-orange data-[state=active]:text-white rounded-lg"
+                  className="flex-1 flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg data-[state=active]:bg-orange data-[state=active]:text-white"
                 >
-                  <Bell className="w-4 h-4" />
+                  <Bell className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">घोषणाएं</span>
                   <span className="sm:hidden">घोषणा</span>
                 </TabsTrigger>
                 <TabsTrigger
-                  value="jama"
-                  className="flex-1 flex items-center gap-1.5 text-xs sm:text-sm data-[state=active]:bg-orange data-[state=active]:text-white rounded-lg"
+                  value="juma"
+                  className="flex-1 flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg data-[state=active]:bg-orange data-[state=active]:text-white"
                 >
-                  <Wallet className="w-4 h-4" />
-                  <span className="hidden sm:inline">जमा कलेक्शन</span>
-                  <span className="sm:hidden">जमा</span>
+                  <Wallet className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">जुमा कलेक्शन</span>
+                  <span className="sm:hidden">जुमा</span>
                 </TabsTrigger>
                 <TabsTrigger
                   value="inquiries"
-                  className="flex-1 flex items-center gap-1.5 text-xs sm:text-sm data-[state=active]:bg-orange data-[state=active]:text-white rounded-lg"
+                  className="flex-1 flex items-center justify-center gap-1.5 text-xs sm:text-sm py-2 rounded-lg data-[state=active]:bg-orange data-[state=active]:text-white"
                 >
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">संपर्क संदेश</span>
                   <span className="sm:hidden">संदेश</span>
                 </TabsTrigger>
               </TabsList>
+            </div>
 
-              <TabsContent value="announcements">
+            <div className="px-6 py-6">
+              <TabsContent value="announcements" className="mt-0">
                 <AnnouncementsTab />
               </TabsContent>
-              <TabsContent value="jama">
-                <JamaCollectionTab />
+              <TabsContent value="juma" className="mt-0">
+                <JumaCollectionTab />
               </TabsContent>
-              <TabsContent value="inquiries">
+              <TabsContent value="inquiries" className="mt-0">
                 <ContactInquiriesTab />
               </TabsContent>
-            </Tabs>
-          )}
+            </div>
+          </Tabs>
         </div>
       </div>
     </div>

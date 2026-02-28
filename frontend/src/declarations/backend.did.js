@@ -38,7 +38,7 @@ export const ContactInquiry = IDL.Record({
   'email' : IDL.Text,
   'message' : IDL.Text,
 });
-export const JamaCollection = IDL.Record({
+export const JumaCollection = IDL.Record({
   'id' : IDL.Nat,
   'date' : IDL.Int,
   'description' : IDL.Text,
@@ -75,15 +75,15 @@ export const idlService = IDL.Service({
   '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
   '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
   'addAnnouncement' : IDL.Func([IDL.Text, IDL.Text], [], []),
-  'addJamaCollection' : IDL.Func([IDL.Nat, IDL.Text, IDL.Int], [], []),
+  'addJumaCollection' : IDL.Func([IDL.Nat, IDL.Text, IDL.Int], [], []),
   'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
   'deleteAnnouncement' : IDL.Func([IDL.Nat], [], []),
-  'deleteJamaCollection' : IDL.Func([IDL.Nat], [], []),
+  'deleteJumaCollection' : IDL.Func([IDL.Nat], [], []),
   'getAnnouncements' : IDL.Func([], [IDL.Vec(Announcement)], ['query']),
   'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
   'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getContactInquiries' : IDL.Func([], [IDL.Vec(ContactInquiry)], ['query']),
-  'getJamaCollections' : IDL.Func([], [IDL.Vec(JamaCollection)], ['query']),
+  'getJumaCollections' : IDL.Func([], [IDL.Vec(JumaCollection)], ['query']),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
       [IDL.Opt(UserProfile)],
@@ -127,7 +127,7 @@ export const idlFactory = ({ IDL }) => {
     'email' : IDL.Text,
     'message' : IDL.Text,
   });
-  const JamaCollection = IDL.Record({
+  const JumaCollection = IDL.Record({
     'id' : IDL.Nat,
     'date' : IDL.Int,
     'description' : IDL.Text,
@@ -164,15 +164,15 @@ export const idlFactory = ({ IDL }) => {
     '_caffeineStorageUpdateGatewayPrincipals' : IDL.Func([], [], []),
     '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
     'addAnnouncement' : IDL.Func([IDL.Text, IDL.Text], [], []),
-    'addJamaCollection' : IDL.Func([IDL.Nat, IDL.Text, IDL.Int], [], []),
+    'addJumaCollection' : IDL.Func([IDL.Nat, IDL.Text, IDL.Int], [], []),
     'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
     'deleteAnnouncement' : IDL.Func([IDL.Nat], [], []),
-    'deleteJamaCollection' : IDL.Func([IDL.Nat], [], []),
+    'deleteJumaCollection' : IDL.Func([IDL.Nat], [], []),
     'getAnnouncements' : IDL.Func([], [IDL.Vec(Announcement)], ['query']),
     'getCallerUserProfile' : IDL.Func([], [IDL.Opt(UserProfile)], ['query']),
     'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getContactInquiries' : IDL.Func([], [IDL.Vec(ContactInquiry)], ['query']),
-    'getJamaCollections' : IDL.Func([], [IDL.Vec(JamaCollection)], ['query']),
+    'getJumaCollections' : IDL.Func([], [IDL.Vec(JumaCollection)], ['query']),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
         [IDL.Opt(UserProfile)],

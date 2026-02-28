@@ -13,7 +13,7 @@ const navLinks = [
   { label: 'हमारे बारे में', href: '#about' },
   { label: 'सेवाएं', href: '#services' },
   { label: 'घोषणाएं', href: '#announcements' },
-  { label: 'जमा कलेक्शन', href: '#jama-collection' },
+  { label: 'जुमा कलेक्शन', href: '#juma-collection' },
   { label: 'गैलरी', href: '#gallery' },
   { label: 'संपर्क', href: '#contact' },
 ];

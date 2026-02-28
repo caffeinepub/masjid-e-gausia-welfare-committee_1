@@ -1,68 +1,33 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Web project with navigation menu, service sections, and hero section. User is adding a 'जमा कलेक्शन' tab to the menu and creating an admin panel.",
-  "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "existing_features": [
-    {
-      "id": "feature-add-a-jama-collection-navigation-tab-to-the-site-header-menu-clicking-it-should-smooth-scroll-to-a-new-dedicated-jama-collection-section-on-the-page-the-tab-must-appear-in-both-the-desktop-navigation-bar-and-the-mobile-menu-alongside-the-existing-nav-links",
-      "title": "Add a 'जमा कलेक्शन' (Jama Collection) navigation tab to the site header menu. Clicking it should smooth-scroll to a new dedicated Jama Collection section on the page. The tab must appear in both the desktop navigation bar and the mobile menu alongside the existing nav links.",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-new-jama-collection-section-on-the-main-page-id-jama-collection-this-section-should-display-a-list-of-collection-records-amount-date-description-purpose-fetched-from-the-backend-it-should-show-a-loading-state-an-error-state-and-an-empty-state-with-appropriate-hindi-messages",
-      "title": "Create a new Jama Collection section on the main page (id='jama-collection'). This section should display a list of collection records (amount, date, description/purpose) fetched from the backend. It should show a loading state, an error state, and an empty state with appropriate Hindi messages.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-an-admin-panel-page-section-accessible-at-a-dedicated-route-or-toggled-via-a-button-visible-only-to-admin-users-the-panel-must-include-the-following-management-tabs-1-announcements-add-delete-announcements-2-jama-collection-add-delete-collection-entries-3-contact-inquiries-view-submitted-inquiries-use-the-existing-isadmin-check-from-useauthqueries-to-gate-access-non-admin-users-should-see-an-access-denied-message",
-      "title": "Create an Admin Panel page/section accessible at a dedicated route or toggled via a button visible only to admin users. The panel must include the following management tabs: (1) Announcements — add/delete announcements; (2) Jama Collection — add/delete collection entries; (3) Contact Inquiries — view submitted inquiries. Use the existing isAdmin check from useAuthQueries to gate access. Non-admin users should see an 'Access Denied' message.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-react-query-hooks-for-jama-collection-operations-usegetjamacollections-public-query-useaddjamacollection-admin-mutation-and-usedeletejamacollection-admin-mutation-place-them-in-frontend-src-hooks-usequeries-ts-following-the-existing-hook-patterns",
-      "title": "Add React Query hooks for Jama Collection operations: useGetJamaCollections (public query), useAddJamaCollection (admin mutation), and useDeleteJamaCollection (admin mutation). Place them in frontend/src/hooks/useQueries.ts following the existing hook patterns.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    }
+  "summary": "Project with 'जुमा कलेक्शन' feature and admin panel. User requested admin panel link/button to be added in the hamburger menu.",
+  "architectural_notes": [
+    "Admin panel is accessible via /admin route"
   ],
+  "known_issues": [
+    "Admin panel link/button was missing from the UI navigation"
+  ],
+  "isFixRequest": false,
+  "existing_features": [],
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "मीनू में 'जमा कलेक्शन' टैब ऐड करें",
+      "summary": "Add admin panel link/button in the hamburger menu",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "एडमिन पैनल क्रिएट करें",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Extend the backend (main.mo) to support Jama Collection records. Add a data type for a collection entry with fields: id (Nat), amount (Nat), description (Text), date (Int), and addedBy (Principal). Expose the following endpoints: addJamaCollection (admin-only), getJamaCollections (public), deleteJamaCollection (admin-only). Persist records in stable storage.",
+      "summary": "Add an 'Admin Panel' link/button inside the hamburger (mobile) menu in the Header component, visible only to authenticated admin users — consistent with the existing desktop admin button logic already present in Header.tsx.",
       "reqIds": [
-        "REQ-3"
+        "REQ-1"
       ],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "Masjid-e-Gausia Welfare",
+  "projectName": "जुमा कलेक्शन",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

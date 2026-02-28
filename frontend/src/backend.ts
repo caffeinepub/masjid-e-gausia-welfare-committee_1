@@ -89,6 +89,10 @@ export class ExternalBlob {
         return this;
     }
 }
+export interface _CaffeineStorageRefillResult {
+    success?: boolean;
+    topped_up_amount?: bigint;
+}
 export type Time = bigint;
 export interface _CaffeineStorageRefillInformation {
     proposed_top_up_amount?: bigint;
@@ -103,13 +107,6 @@ export interface _CaffeineStorageCreateCertificateResult {
     method: string;
     blob_hash: string;
 }
-export interface JamaCollection {
-    id: bigint;
-    date: bigint;
-    description: string;
-    addedBy: Principal;
-    amount: bigint;
-}
 export interface ContactInquiry {
     name: string;
     submittedAt: Time;
@@ -119,9 +116,12 @@ export interface ContactInquiry {
 export interface UserProfile {
     name: string;
 }
-export interface _CaffeineStorageRefillResult {
-    success?: boolean;
-    topped_up_amount?: bigint;
+export interface JumaCollection {
+    id: bigint;
+    date: bigint;
+    description: string;
+    addedBy: Principal;
+    amount: bigint;
 }
 export enum UserRole {
     admin = "admin",
@@ -137,15 +137,15 @@ export interface backendInterface {
     _caffeineStorageUpdateGatewayPrincipals(): Promise<void>;
     _initializeAccessControlWithSecret(userSecret: string): Promise<void>;
     addAnnouncement(title: string, body: string): Promise<void>;
-    addJamaCollection(amount: bigint, description: string, date: bigint): Promise<void>;
+    addJumaCollection(amount: bigint, description: string, date: bigint): Promise<void>;
     assignCallerUserRole(user: Principal, role: UserRole): Promise<void>;
     deleteAnnouncement(announcementId: bigint): Promise<void>;
-    deleteJamaCollection(collectionId: bigint): Promise<void>;
+    deleteJumaCollection(collectionId: bigint): Promise<void>;
     getAnnouncements(): Promise<Array<Announcement>>;
     getCallerUserProfile(): Promise<UserProfile | null>;
     getCallerUserRole(): Promise<UserRole>;
     getContactInquiries(): Promise<Array<ContactInquiry>>;
-    getJamaCollections(): Promise<Array<JamaCollection>>;
+    getJumaCollections(): Promise<Array<JumaCollection>>;
     getUserProfile(user: Principal): Promise<UserProfile | null>;
     isCallerAdmin(): Promise<boolean>;
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
@@ -266,17 +266,17 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async addJamaCollection(arg0: bigint, arg1: string, arg2: bigint): Promise<void> {
+    async addJumaCollection(arg0: bigint, arg1: string, arg2: bigint): Promise<void> {
         if (this.processError) {
             try {
-                const result = await this.actor.addJamaCollection(arg0, arg1, arg2);
+                const result = await this.actor.addJumaCollection(arg0, arg1, arg2);
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.addJamaCollection(arg0, arg1, arg2);
+            const result = await this.actor.addJumaCollection(arg0, arg1, arg2);
             return result;
         }
     }
@@ -308,17 +308,17 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async deleteJamaCollection(arg0: bigint): Promise<void> {
+    async deleteJumaCollection(arg0: bigint): Promise<void> {
         if (this.processError) {
             try {
-                const result = await this.actor.deleteJamaCollection(arg0);
+                const result = await this.actor.deleteJumaCollection(arg0);
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.deleteJamaCollection(arg0);
+            const result = await this.actor.deleteJumaCollection(arg0);
             return result;
         }
     }
@@ -378,17 +378,17 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async getJamaCollections(): Promise<Array<JamaCollection>> {
+    async getJumaCollections(): Promise<Array<JumaCollection>> {
         if (this.processError) {
             try {
-                const result = await this.actor.getJamaCollections();
+                const result = await this.actor.getJumaCollections();
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.getJamaCollections();
+            const result = await this.actor.getJumaCollections();
             return result;
         }
     }

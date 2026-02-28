@@ -1,97 +1,23 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add Jama Collection Tab to Menu & Create Admin Panel",
+  "title": "Add Admin Panel link to hamburger menu",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add 'जमा कलेक्शन' (Jama Collection) navigation tab to header menu with smooth scroll to dedicated section",
+      "summary": "Add an 'Admin Panel' link/button inside the hamburger (mobile) menu in the Header component, visible only to authenticated admin users",
       "acceptanceCriteria": [
-        "A 'जमा कलेक्शन' link appears in the desktop header navigation",
-        "The same link appears in the mobile hamburger menu",
-        "Clicking the link smoothly scrolls to a new Jama Collection section",
-        "The section is visually consistent with the rest of the page styling"
+        "When the hamburger menu is open on mobile, an 'Admin Panel' button/link appears in the menu list.",
+        "The Admin Panel button is only visible to users who are authenticated as admin (same role check used for the desktop header button).",
+        "Clicking the Admin Panel button in the hamburger menu opens the admin panel and closes the mobile menu.",
+        "Non-admin and unauthenticated users do not see the Admin Panel option in the hamburger menu.",
+        "The button styling is consistent with the rest of the hamburger menu items."
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Add 'जमा कलेक्शन' navigation link to both the desktop nav and mobile menu arrays. The link should use smooth scroll behavior targeting '#jama-collection' section. Place it after the Announcements link and before the Gallery link to maintain logical section order."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Create Jama Collection section component displaying collection records with loading, error, and empty states",
-      "acceptanceCriteria": [
-        "A JamaCollectionSection component renders on the main page",
-        "It displays collection records in a card/table grid",
-        "Shows loading spinner while fetching",
-        "Shows a Hindi empty-state message when no records exist",
-        "Styled with the site's existing orange/gold color palette"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/JamaCollectionSection.tsx",
-          "operation": "create",
-          "description": "Create a new section component (id='jama-collection') that uses the useGetJamaCollections hook to fetch and display collection records. Display each record in a card showing amount (formatted as currency), description, and date (formatted in Hindi). Include loading state with spinner, error state with Hindi message, and empty state when no records exist. Style using the existing orange/gold color palette from tailwind.config.js. Follow the same component structure and styling patterns as AnnouncementsSection.tsx."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and render the JamaCollectionSection component in the main page layout. Insert it between the AnnouncementsSection and GallerySection with a GeometricDivider above it to maintain visual consistency with other sections."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Create Admin Panel page with tabs for Announcements, Jama Collection, and Contact Inquiries management",
-      "acceptanceCriteria": [
-        "An 'Admin Panel' button/link is shown in the header only when the logged-in user is an admin",
-        "Non-admin or unauthenticated users cannot access the admin panel content",
-        "The admin panel has three tabs: Announcements, Jama Collection, Contact Inquiries",
-        "Admins can add and delete announcements from the Announcements tab",
-        "Admins can add and delete Jama Collection entries with amount, description, and date fields",
-        "Admins can view all submitted contact inquiries in the Inquiries tab",
-        "All admin mutations use the authenticated actor and provide Hindi success/error feedback"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/AdminPanel.tsx",
-          "operation": "create",
-          "description": "Create an admin panel component with three tabs: (1) Announcements - form to add announcements (title, body) and list with delete buttons using useAddAnnouncement and useDeleteAnnouncement hooks; (2) Jama Collection - form to add entries (amount, description, date) and list with delete buttons using useAddJamaCollection and useDeleteJamaCollection hooks; (3) Contact Inquiries - read-only list displaying all submitted inquiries using useGetContactInquiries hook. Use isAdmin from useAuthQueries to gate access and show 'Access Denied' message in Hindi for non-admin users. Provide Hindi success/error toast feedback for all mutations. Style with the existing color palette."
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Add an 'Admin Panel' button/link in the header navigation (desktop and mobile) that is conditionally rendered only when isAdmin returns true from useAuthQueries hook. The button should toggle or navigate to show the AdminPanel component. Import and use the isAdmin check to control visibility."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Import and conditionally render the AdminPanel component. Add state to control admin panel visibility (toggled by the header button). When visible, render AdminPanel as an overlay or dedicated section that can be closed. Ensure it's only accessible when user is authenticated and is an admin."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Add React Query hooks for Jama Collection and Contact Inquiries operations",
-      "acceptanceCriteria": [
-        "useGetJamaCollections fetches and caches collection records via React Query",
-        "useAddJamaCollection invalidates the collections cache on success",
-        "useDeleteJamaCollection invalidates the collections cache on success",
-        "Hooks follow the same pattern as existing useSubmitInquiry and announcement hooks"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add three new hooks following the existing patterns: (1) useGetJamaCollections - query hook with queryKey ['jamaCollections'] that calls actor.getJamaCollections() and sorts results by date descending; (2) useAddJamaCollection - mutation hook that calls actor.addJamaCollection(amount, description, date) and invalidates ['jamaCollections'] cache on success; (3) useDeleteJamaCollection - mutation hook that calls actor.deleteJamaCollection(collectionId) and invalidates ['jamaCollections'] cache on success. Also add useGetContactInquiries query hook with queryKey ['contactInquiries'] that calls actor.getContactInquiries() for the admin panel inquiries tab. Follow the same error handling and enabled patterns as existing hooks."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Add useAddAnnouncement and useDeleteAnnouncement mutation hooks if they don't already exist. useAddAnnouncement should call actor.addAnnouncement(title, body) and invalidate ['announcements'] cache. useDeleteAnnouncement should call actor.deleteAnnouncement(announcementId) and invalidate ['announcements'] cache. These are required for the admin panel Announcements tab management functionality."
+          "description": "Add an 'Admin Panel' button inside the mobile hamburger menu navigation list, conditionally rendered using the same isAdmin check that controls the desktop admin panel button visibility. The button should call onAdminPanelOpen when clicked and close the mobile menu. Apply consistent styling with other mobile menu items and ensure proper Hindi translation if menu labels use Hindi."
         }
       ]
     }
